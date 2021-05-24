@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MainPageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->name();
 });
+Route::get('/', [MainPageController::class, 'index'])->name('index.show');
+
 
 Route::get('dyrektor', [HomeController::class, 'directorHome'])->name('director.home')->middleware('is_director');
 Route::get('nauczyciel', [HomeController::class, 'teacherHome'])->name('teacher.home')->middleware('is_teacher');

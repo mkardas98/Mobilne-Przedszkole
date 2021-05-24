@@ -26,6 +26,9 @@ class HomeController extends Controller
 //        return view('home');
 //    }
 
+    public function index(){
+    }
+
     public function directorHome()
     {
         return view('director.home');

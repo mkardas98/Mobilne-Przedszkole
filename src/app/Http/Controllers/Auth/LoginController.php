@@ -43,11 +43,12 @@ class LoginController extends Controller
         $input = $request->all();
 
         $this->validate($request, [
-            'email' => 'required|email',
+            'login' => 'required',
             'password' => 'required',
         ]);
+        $fieldType = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'login';
 
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        if(auth()->attempt(array($fieldType => $input['login'], 'password' => $input['password'])))
         {
             if (auth()->user()->role == 0) {
                 return redirect()->route('director.home');
@@ -59,9 +60,9 @@ class LoginController extends Controller
                 return redirect()->route('login')
                     ->with('error','Twoja rola w serwisie jest nie przypisana. Skontaktuj się z administratorem.');
             }
-        }else{
+        } else{
             return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+                ->with('error','Wprowadzone dane są niepoprawne.');
         }
 
     }

@@ -19,7 +19,6 @@ class IsTeacher
         if(auth()->user()->role == 1){
             return $next($request);
         }
-
-        return redirect(‘home’)->with(‘error’,"You don't have access.");
+        return redirect('not-access')->with('error',"Nie masz dostępu do tej strony.");
     }
 }
