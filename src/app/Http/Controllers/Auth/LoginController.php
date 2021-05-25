@@ -51,11 +51,11 @@ class LoginController extends Controller
         if(auth()->attempt(array($fieldType => $input['login'], 'password' => $input['password'])))
         {
             if (auth()->user()->role == 0) {
-                return redirect()->route('director.home');
+                return redirect()->route('director_home.show');
             }else if(auth()->user()->role == 1){
-                return redirect()->route('teacher.home');
+                return redirect()->route('teacher_home.show');
             } else if(auth()->user()->role == 2){
-                return redirect()->route('parent.home');
+                return redirect()->route('parent_home.show');
             } else {
                 return redirect()->route('login')
                     ->with('error','Twoja rola w serwisie jest nie przypisana. Skontaktuj się z administratorem.');

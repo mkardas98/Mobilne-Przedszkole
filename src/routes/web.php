@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,17 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome')->name();
-});
 Route::get('/', [MainPageController::class, 'index'])->name('index.show');
 
 
-Route::get('dyrektor', [HomeController::class, 'directorHome'])->name('director.home')->middleware('is_director');
-Route::get('nauczyciel', [HomeController::class, 'teacherHome'])->name('teacher.home')->middleware('is_teacher');
-Route::get('rodzic', [HomeController::class, 'parentHome'])->name('parent.home')->middleware('is_parent');
-
 Auth::routes();
 
+//PROFILE
+Route::get('profil', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('profil/edytuj', [ProfileController::class, 'editShow'])->name('profile_edit.show');
+Route::post('profil/edytuj/zapisz', [ProfileController::class, 'edit'])->name('profile.edit');
+
+
+Route::get('dyrektor', [HomeController::class, 'directorHome'])->name('director_home.show')->middleware('is_director');
+Route::get('nauczyciel', [HomeController::class, 'teacherHome'])->name('teacher_home.show')->middleware('is_teacher');
+Route::get('rodzic', [HomeController::class, 'parentHome'])->name('parent_home.show')->middleware('is_parent');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

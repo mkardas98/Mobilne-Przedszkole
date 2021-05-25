@@ -15,17 +15,19 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="loginSection__loginInputs -login">
-                  <div class="loginSection__input -login">
-                      <input id="login" type="login" class="form-control @error('login') is-invalid @enderror"
-                             name="login" value="{{ old('login') }}" required autofocus placeholder="{{__('Login lub adres e-mail')}}">
-                  </div>
+                    <div class="loginSection__input -login">
+                        <input id="login" type="login" class="form-control @error('login') is-invalid @enderror"
+                               name="login" value="{{ old('login') }}" required autofocus
+                               placeholder="{{__('Login lub adres e-mail')}}">
+                    </div>
                     <div class="loginSection__input -password">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                           name="password" required autocomplete="current-password"  placeholder="{{__('Hasło')}}">
+                        <input id="password" type="password"
+                               class="form-control @error('password') is-invalid @enderror"
+                               name="password" required autocomplete="current-password" placeholder="{{__('Hasło')}}">
                     </div>
                     @if (\Session::has('error'))
                         <div class="alert alert-danger">
-                                {!! \Session::get('error') !!}
+                            {!! \Session::get('error') !!}
                         </div>
                     @endif
 

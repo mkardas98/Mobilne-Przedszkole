@@ -15,9 +15,7 @@ class ViewServiceProvider extends ServiceProvider
 
 
     public function boot() {
-        View::composer('director.nav', 'App\Http\Controllers\HelperController@navDirector');
-        View::composer('teacher.nav', 'App\Http\Controllers\HelperController@navTeacher');
-        View::composer('parent.nav', 'App\Http\Controllers\HelperController@navParent');
+        View::composer('navigation.show', 'App\Http\Controllers\HelperController@navApp');
     }
 
 

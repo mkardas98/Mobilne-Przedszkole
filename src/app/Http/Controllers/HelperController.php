@@ -7,18 +7,21 @@ use Illuminate\Http\Request;
 class HelperController extends Controller
 {
 
-    public function navDirector($view)
+    public function navApp($view)
     {
-        $view->navSections = config('director_nav');
+        switch (auth()->user()->role) {
+            case 0:
+                $view->navSections = config('director_nav');
+                break;
+            case 1:
+                $view->navSections = config('teacher_nav');
+                break;
+            case 2:
+                $view->navSections = config('parent_nav');
+                break;
+        }
     }
 
-    public function navTeacher($view)
-    {
-        $view->navSections = config('teacher_nav');
-    }
-    public function navParent($view)
-    {
-        $view->navSections = config('parent_nav');
-    }
+
 
 }

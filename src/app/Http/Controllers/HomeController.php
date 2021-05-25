@@ -19,7 +19,7 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Support\Renderable|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
 //    public function index()
 //    {
@@ -27,6 +27,16 @@ class HomeController extends Controller
 //    }
 
     public function index(){
+        switch (auth()->user()->role) {
+            case 0:
+                return redirect(route('director_home.show'));
+            case 1:
+                return redirect(route('teacher_home.show'));
+            case 2:
+                return redirect(route('parent_home.show'));
+            default:
+                return redirect(route('login'));
+        }
     }
 
     public function directorHome()

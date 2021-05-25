@@ -2,37 +2,71 @@
 
 return [
     [
-        'label' => 'CMS',
+        'label' => 'Przedszkole',
         'icon' => '',
         'items' => [
-            'index' => [
-                'label' => 'admin.nav.index',
-                'icon' => 'home',
-                'route_name' => 'director.home',
+            'home' => [
+                'label' => 'Dashboard',
+                'icon' => 'fas fa-home',
+                'route_name' => 'director_home.show',
             ],
-            'const_field' => [
-                'label' => 'admin.const_field.plural',
-                'icon' => 'anchor',
-                'route_name' => 'director.home',
+            'group' => [
+                'label' => 'Grupy',
+                'icon' => 'fas fa-users',
+                'route_name' => 'index.show',
             ],
-            'nav_item' => [
-                'label' => 'admin.nav_item.plural',
-                'icon' => 'menu',
-                'route_name' => 'director.home',
-                'items' => [
-                    'nav_item_main' => [
-                        'label' => 'admin.navs.main',
-                        'icon' => 'arrow-up-left',
-                        'route_name' => 'director.home',
-                        'params' => 'main'
-                    ],
-                    'nav_item_footer' => [
-                        'label' => 'admin.navs.footer',
-                        'icon' => 'arrow-up-left',
-                        'route_name' => 'director.home',
-                        'params' => 'footer'
-                    ],
-                ]
+            'pupils' => [
+                'label' => 'Uczniowie',
+                'icon' => 'fas fa-child',
+                'route_name' => 'index.show',
+            ],
+            'announcements' => [
+                'label' => 'Ogłoszenia',
+                'icon' => 'fas fa-bullhorn',
+                'route_name' => 'index.show',
+            ],
+            'foods' => [
+                'label' => 'Jadłospis',
+                'icon' => 'fas fa-utensils',
+                'route_name' => 'index.show',
+            ],
+
+        ]
+    ],
+    [
+        'label' => 'Stona przedszkola',
+        'icon' => '',
+        'items' => [
+            'main_page' => [
+                'label' => 'Strona główna przeszkola',
+                'icon' => 'fas fa-laptop-house',
+                'route_name' => 'index.show',
+            ],
+            'kindergarten_data' => [
+                'label' => 'Dane przedszkola',
+                'icon' => 'fas fa-info-circle',
+                'route_name' => 'index.show',
+            ],
+            'gallery' => [
+                'label' => 'Galeria',
+                'icon' => 'fas fa-images',
+                'route_name' => 'index.show',
+            ],
+            'news' => [
+                'label' => 'Aktualności',
+                'icon' => 'fas fa-newspaper',
+                'route_name' => 'index.show',
+            ],
+        ]
+    ],
+    [
+        'label' => 'Użytkownicy',
+        'icon' => '',
+        'items' => [
+            'users' => [
+                'label' => 'Zarządzanie użytkownikami',
+                'icon' => 'fas fa-user-cog',
+                'route_name' => 'index.show',
             ],
         ]
     ],
