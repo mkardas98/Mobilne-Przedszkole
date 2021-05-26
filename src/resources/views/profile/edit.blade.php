@@ -6,10 +6,6 @@
         <span class="pageNavigation__title">
             {{__('Edytuj profil')}}
         </span>
-            <div class="pageNavigation__buttons">
-                <a href="{{route('profile.show')}}" class="primaryButton -red">{{__('Anuluj')}}</a>
-                <a href="" onclick="event.preventDefault(); document.querySelector('.profileEditShow__form').submit();" class="primaryButton -green">{{__('Zapisz')}}</a>
-            </div>
         </div>
         <div class="row justify-content-center">
             @if (\Session::has('success'))
@@ -25,6 +21,10 @@
                 <span class="card__headerTitle">
                     {{__('Edytuj dane twojego profilu')}}
                 </span>
+                        <div class="card__buttons">
+                            <a href="{{route('profile.show')}}" class="primaryButton -red">{{__('Anuluj')}}</a>
+                            <button onclick="event.preventDefault(); document.querySelector('.profileEditShow__form').submit();" class="primaryButton ">{{__('Zapisz')}}</button>
+                        </div>
                     </div>
                     <div class="card__body">
                         <form action="{{route('profile.edit')}}" method="POST" enctype="multipart/form-data" class="profileEditShow__form">

@@ -5,9 +5,7 @@
         <span class="pageNavigation__title">
             {{__('Twój profil')}}
         </span>
-        <div class="pageNavigation__buttons">
-            <a href="{{route('profile_edit.show')}}" class="primaryButton">{{__('Edytuj')}}</a>
-        </div>
+
     </div>
   <div class="row justify-content-center">
       <div class="col-lg-9">
@@ -16,6 +14,9 @@
                 <span class="card__headerTitle">
                     {{__('Aktualne dane twojego profilu')}}
                 </span>
+                  <div class="card__buttons">
+                      <a href="{{route('profile_edit.show')}}" class="primaryButton">{{__('Edytuj')}}</a>
+                  </div>
               </div>
               <div class="card__body">
                 <div class="row">
