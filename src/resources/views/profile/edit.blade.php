@@ -10,10 +10,17 @@
         <div class="row justify-content-center">
             @if (\Session::has('success'))
                 <div class="col-lg-8">
-                    <div class="alert alert-success text-center">
+                    <div class="alert alert-success text-center mx-3">
                         {!! \Session::get('success') !!}
                     </div>
                 </div>
+                @endif
+                @if (\Session::has('error'))
+                    <div class="col-lg-8">
+                        <div class="alert alert-danger text-center mx-3">
+                            {!! \Session::get('error') !!}
+                        </div>
+                    </div>
                 @endif
             <div class="col-lg-8">
                 <div class="card">
@@ -23,11 +30,11 @@
                 </span>
                         <div class="card__buttons">
                             <a href="{{route('profile.show')}}" class="primaryButton -red">{{__('Anuluj')}}</a>
-                            <button onclick="event.preventDefault(); document.querySelector('.profileEditShow__form').submit();" class="primaryButton ">{{__('Zapisz')}}</button>
+                            <button onclick="event.preventDefault(); document.getElementById('profileForm').submit();" class="primaryButton ">{{__('Zapisz')}}</button>
                         </div>
                     </div>
                     <div class="card__body">
-                        <form action="{{route('profile.edit')}}" method="POST" enctype="multipart/form-data" class="profileEditShow__form">
+                        <form action="{{route('profile.edit')}}" method="POST" id="profileForm" enctype="multipart/form-data" class="profileEditShow__form">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">
@@ -66,6 +73,7 @@
                            <div class="col-12">
                                @include('helpers.input', ['name' => 'email', 'label' => 'Adres e-mail', 'default' => $profile->email])
                            </div>
+
                        </div>
                                     </div>
                                 </div>
@@ -73,6 +81,40 @@
                         </form>
                     </div>
 
+                </div>
+            </div>
+
+
+            <div class="col-lg-8">
+                <div class="card ">
+                    <div class="card__header">
+                                       <span class="card__headerTitle">
+                    {{__('Zmień hasło')}}
+                </span>
+                        <div class="card__buttons">
+                            <button type="submit" onclick="event.preventDefault(); document.getElementById('passwordForm').submit();" class="primaryButton">{{__('Zmień hasło')}}</button>
+                        </div>
+                    </div>
+                    <div class="card__body">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <form action="{{route('profile_password.edit')}}" method="POST" id="passwordForm" class="profileEditShow__passwordForm">
+                                    @csrf
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-7">
+                                            @include('helpers.input', ['name' => 'password', 'label' => 'Aktualne hasło', 'default' => '', 'type' => 'password', 'old'=>false])
+                                        </div>
+                                        <div class="col-lg-7">
+                                            @include('helpers.input', ['name' => 'new_password', 'label' => 'Nowe hasło', 'default' => '', 'type' => 'password', 'old'=>false])
+                                        </div>
+                                        <div class="col-lg-7">
+                                            @include('helpers.input', ['name' => 'new_confirm_password', 'label' => 'Powtórz nowe hasło', 'default' => '', 'type' => 'password', 'old'=>false])
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

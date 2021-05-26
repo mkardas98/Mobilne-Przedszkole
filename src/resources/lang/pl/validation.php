@@ -35,7 +35,7 @@ return [
     'date_format'          => ':attribute nie jest w formacie :format.',
     'different'            => ':attribute oraz :other muszą się różnić.',
     'digits'               => ':attribute musi składać się z :digits cyfr.',
-    'digits_between'       => ':attribute musi mieć od :min do :max cyfr.',
+    'digits_between'       => 'Pole musi mieć od :min do :max cyfr.',
     'dimensions'           => ':attribute ma niepoprawne wymiary.',
     'distinct'             => ':attribute ma zduplikowane wartości.',
     'email'                => 'Format :attribute jest nieprawidłowy.',
@@ -86,8 +86,8 @@ return [
     'min'                  => [
         'numeric' => ':attribute musi być nie mniejszy od :min.',
         'file'    => ':attribute musi mieć przynajmniej :min kilobajtów.',
-        'string'  => ':attribute musi mieć przynajmniej :min znaków.',
-        'array'   => ':attribute musi mieć przynajmniej :min elementów.',
+        'string'  => 'Pole musi mieć przynajmniej :min znaków.',
+        'array'   => 'Pole musi mieć przynajmniej :min elementów.',
     ],
     'not_in'               => 'Zaznaczony :attribute jest nieprawidłowy.',
     'not_regex'            => 'Format :attribute jest nieprawidłowy.',
@@ -129,8 +129,16 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'new_confirm_password' => [
+            'same' => 'Powtórzone hasło musi być identyczne!',
+        ],
+        'new_password' => [
+            'min' => 'Nowe hasło musi zawierać min. :min',
+            'max' => 'Nowe hasło musi zawierać max. :max',
+            'regex' => 'Nowe hasło musi zawierać minimum jedną małą, dużą literę oraz jedną cyfrę!'
+        ],
+        'phone' => [
+            'numeric' => 'Numer telefonu może składać się tylko z liczb!',
         ],
     ],
 

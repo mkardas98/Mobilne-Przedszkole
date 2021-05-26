@@ -25,7 +25,8 @@ Auth::routes();
 //PROFILE
 Route::get('profil', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('profil/edytuj', [ProfileController::class, 'editShow'])->name('profile_edit.show');
-Route::post('profil/edytuj/zapisz', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('profil/edytuj', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('profil/edytuj/haslo', [ProfileController::class, 'changePassword'])->name('profile_password.edit');
 
 
 Route::get('dyrektor', [HomeController::class, 'directorHome'])->name('director_home.show')->middleware('is_director');

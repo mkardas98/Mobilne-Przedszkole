@@ -59,10 +59,10 @@
 @endsection
 
 @push('scripts.body.bottom')
-    <script>
-        const headerApp = $('.headerApp').outerHeight();
-        const footerApp = $('.footerApp').outerHeight();
-        $('.main').css('min-height', 'calc(100vh - ' + (headerApp + footerApp) + 'px)');
-    </script>
+{{--    <script>--}}
+{{--        const headerApp = $('.headerApp').outerHeight();--}}
+{{--        const footerApp = $('.footerApp').outerHeight();--}}
+{{--        $('.main').css('min-height', 'calc(100vh - ' + (headerApp + footerApp) + 'px)');--}}
+{{--    </script>--}}
 
 @endpush

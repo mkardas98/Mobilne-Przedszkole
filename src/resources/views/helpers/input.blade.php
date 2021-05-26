@@ -11,10 +11,14 @@ if((!(isset($default))) || $default == null){
 if(!isset($type)){
     $type = 'text';
 }
+if(!isset($old)){
+    $old = true;
+}
 @endphp
 
 <div class="input-wrapper">
-    {!! $errors->first($name, '<p class="help-block">:message</p>') !!}
     <label for="{{$name}}" class="custom-label ">{!! $label !!}</label>
-    <input type="{{$type}}" id="{{$name}}" name="{{$name}}" class="custom-input {{$errors->first($name) ? ' form-error' : '' }}" value="{{old($name, $default)}}">
+    <input type="{{$type}}" id="{{$name}}" name="{{$name}}" class="custom-input {{$errors->first($name) ? ' form-error' : '' }}" value="{{$old ? old($name, $default) : $default}}">
+    {!! $errors->first($name, '<p class="help-block">:message</p>') !!}
+
 </div>

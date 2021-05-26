@@ -100,7 +100,8 @@
         @include('navigation.show')
     @endguest
 
-    <div class="content">
+    <div class="content {{\Request::route()->getName() == "login" ? '-login' : ''}}">
+
         @yield('content')
     </div>
 
