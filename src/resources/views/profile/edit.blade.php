@@ -12,6 +12,13 @@
             </div>
         </div>
         <div class="row justify-content-center">
+            @if (\Session::has('success'))
+                <div class="col-lg-8">
+                    <div class="alert alert-success text-center">
+                        {!! \Session::get('success') !!}
+                    </div>
+                </div>
+                @endif
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card__header">
@@ -34,11 +41,33 @@
                                                 <label tabindex="0" for="avatar" class="input-file-trigger primaryButton">Zmień zdjęcie profilowe..</label>
                                                 <input class="input-file" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
                                                 <p class="file-return"></p>
+                                                {!! $errors->first('avatar', '<p class="help-block">:message</p>') !!}
                                             </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-
+                                    <div class="profileEditShow__inputs">
+                       <div class="row">
+                           <div class="col-12">
+                               @include('helpers.input', ['name' => 'login', 'label' => 'Login', 'default' => $profile->login])
+                           </div>
+                           <div class="col-6">
+                               @include('helpers.input', ['name' => 'first_name', 'label' => 'Imię', 'default' => $profile->first_name])
+                           </div>
+                           <div class="col-6">
+                               @include('helpers.input', ['name' => 'last_name', 'label' => 'Nazwisko', 'default' => $profile->last_name])
+                           </div>
+                           <div class="col-12">
+                               @include('helpers.input', ['name' => 'date_of_birth', 'label' => 'Data urodzenia', 'default' => $profile->date_of_birth, 'type' => 'date'])
+                           </div>
+                           <div class="col-12">
+                               @include('helpers.input', ['name' => 'phone', 'label' => 'Numer telefonu', 'default' => $profile->phone])
+                           </div>
+                           <div class="col-12">
+                               @include('helpers.input', ['name' => 'email', 'label' => 'Adres e-mail', 'default' => $profile->email])
+                           </div>
+                       </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>

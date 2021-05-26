@@ -1,7 +1,6 @@
 @extends('layouts.application')
 @section('content')
 <section class="profileShow">
-
     <div class="pageNavigation">
         <span class="pageNavigation__title">
             {{__('Twój profil')}}

@@ -16,20 +16,16 @@
                 @csrf
                 <div class="loginSection__loginInputs -login">
                     <div class="loginSection__input -login">
-                        <input id="login" type="login" class="form-control @error('login') is-invalid @enderror"
+                        <input id="login" type="login" class="form-control"
                                name="login" value="{{ old('login') }}" required autofocus
                                placeholder="{{__('Login lub adres e-mail')}}">
                     </div>
                     <div class="loginSection__input -password">
                         <input id="password" type="password"
-                               class="form-control @error('password') is-invalid @enderror"
+                               class="form-control"
                                name="password" required autocomplete="current-password" placeholder="{{__('Hasło')}}">
                     </div>
-                    @if (\Session::has('error'))
-                        <div class="alert alert-danger">
-                            {!! \Session::get('error') !!}
-                        </div>
-                    @endif
+
 
                     <input class="inp-cbx" id="remember" type="checkbox" name="remember"
                            style="display: none;" {{ old('remember') ? 'checked' : '' }}>
@@ -41,7 +37,9 @@
 
                 </div>
 
-
+                @if (\Session::has('error'))
+                    <p class="help-block text-center">{!! \Session::get('error') !!}</p>
+                @endif
                 <button type="submit" class="primaryButton">
                     {{ __('Zaloguj się') }}
                 </button>
