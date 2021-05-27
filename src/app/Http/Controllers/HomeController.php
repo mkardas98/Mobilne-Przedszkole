@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ViewHistory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,6 +31,7 @@ class HomeController extends Controller
     public function index(){
         switch (auth()->user()->role) {
             case 0:
+
                 return redirect(route('director_home.show'));
             case 1:
                 return redirect(route('teacher_home.show'));
@@ -41,7 +44,11 @@ class HomeController extends Controller
 
     public function directorHome()
     {
-        return view('director.home');
+       $viewsHistory = ViewHistory::all()->sortBy('date')->take(14);
+
+        return view('director.home', [
+            'views' => $viewsHistory,
+        ]);
     }
     public function teacherHome()
     {

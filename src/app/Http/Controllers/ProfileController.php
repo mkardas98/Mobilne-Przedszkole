@@ -36,7 +36,7 @@ class ProfileController extends Controller
             'first_name' => 'required | max:16',
             'last_name' => 'required | max:16',
             'date_of_birth' => 'required',
-            'phone' => 'required | max:16 | min:9 | numeric',
+            'phone' => 'required | digits_between:9,16 | numeric',
             'email' => 'required | unique:users,email,' . Auth::id(),
             'avatar' => 'file|image|mimes:jpg,jpeg,png,gif,webp|max:2048'
         ]);

@@ -139,6 +139,7 @@ return [
         ],
         'phone' => [
             'numeric' => 'Numer telefonu może składać się tylko z liczb!',
+            'digits_between' => 'Numer telefonu musi składać się od 9 do 16 liczb!',
         ],
     ],
 

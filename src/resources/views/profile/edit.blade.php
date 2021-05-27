@@ -45,7 +45,7 @@
                                             <img src="{{asset('images/app/profile/empty-avatar.jpg')}}" alt="">
                                         @endif
                                             <div class="input-file-container">
-                                                <label tabindex="0" for="avatar" class="input-file-trigger primaryButton">Zmień zdjęcie profilowe..</label>
+                                                <label tabindex="0" for="avatar" class="input-file-trigger primaryButton">{{__('Zmień zdjęcie profilowe')}}</label>
                                                 <input class="input-file" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
                                                 <p class="file-return"></p>
                                                 {!! $errors->first('avatar', '<p class="help-block">:message</p>') !!}

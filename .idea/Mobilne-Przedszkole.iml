@@ -118,6 +118,17 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-php73" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-php72" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/intervention/image" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/justinrainbow/json-schema" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/react/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/barryvdh/laravel-ide-helper" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/barryvdh/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/seld/phar-utils" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/seld/jsonlint" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/filesystem" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -93,7 +93,6 @@
     </ul>
 
 </header>
-
 <main class="main">
     @guest
     @else
@@ -113,8 +112,11 @@
     <div><span class="footerApp__author">Aplikacja stworzona przez: <a href="https://github.com/mkardas98"
                                                                        target="_blank"> Mariusz Kardaś</a></span></div>
 </footer>
+<div class="load"><div id="preload"></div></div>
 
 <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
+<script src="{{asset('js/chart.min.js')}}"></script>
+<script src="{{asset('js/scripts.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 @stack('scripts.body.bottom')
 </body>

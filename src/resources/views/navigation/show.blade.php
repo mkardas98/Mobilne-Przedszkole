@@ -1,5 +1,20 @@
 @if(count($navSections) > 0)
     <div class="navApp">
+        <div class="navApp__user" onclick="window.location.href = `{{route('profile.show')}}`">
+            <div class="navApp__userAvatarWrap">
+                @if($user->avatar)
+                    <img src="{{renderImage($user->avatar, [200,200, 'fit'])}}" alt="avatar" class="navApp__userAvatar">
+                @else
+                    <img src="{{asset('images/app/profile/empty-avatar.jpg')}}" alt="avatar" class="navApp__userAvatar">
+                @endif
+            </div>
+
+            <span class="navApp__userName">{{$user->first_name}} {{$user->last_name}}</span>
+            <span class="navApp__userRole">@if($user->role === 0) {{__('dyrektor')}} @elseif($user->role === 1) {{__('nauczyciel')}} @else
+                    {{__('rodzic')}} @endif</span>
+
+
+        </div>
         @foreach($navSections as $sectionKey => $section)
 
             @if(!empty($section['label']))

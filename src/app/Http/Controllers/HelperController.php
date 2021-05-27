@@ -9,6 +9,7 @@ class HelperController extends Controller
 
     public function navApp($view)
     {
+        $view->user = auth()->user();
         switch (auth()->user()->role) {
             case 0:
                 $view->navSections = config('director_nav');
