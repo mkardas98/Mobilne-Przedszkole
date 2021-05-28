@@ -3,7 +3,7 @@
 <section class="profileShow">
     <div class="pageNavigation">
         <span class="pageNavigation__title">
-            {{__('Twój profil')}}
+            Twój profil')}}
         </span>
 
     </div>
@@ -12,10 +12,10 @@
           <div class="card">
               <div class="card__header">
                 <span class="card__headerTitle">
-                    {{__('Aktualne dane twojego profilu')}}
+                    Aktualne dane twojego profilu
                 </span>
                   <div class="card__buttons">
-                      <a href="{{route('profile_edit.show')}}" class="primaryButton">{{__('Edytuj')}}</a>
+                      <a href="{{route('profile_edit.show')}}" class="primaryButton">Edytuj</a>
                   </div>
               </div>
               <div class="card__body">
@@ -35,7 +35,7 @@
                                 <div class="col-lg-6">
                                     <div class="profileShow__info">
                                     <span class="profileShow__name">
-                                        {{__('Imię')}}:
+                                        Imię:
                                     </span>
                                         <span class="profileShow__value">
                                         {{$profile->first_name}}
@@ -45,7 +45,7 @@
                                 <div class="col-lg-6">
                                     <div class="profileShow__info">
                                     <span class="profileShow__name">
-                                        {{__('Nazwisko')}}:
+                                        Nazwisko:
                                     </span>
                                         <span class="profileShow__value">
                                         {{$profile->last_name}}
@@ -55,7 +55,7 @@
                                 <div class="col-lg-6">
                                     <div class="profileShow__info">
                                     <span class="profileShow__name">
-                                        {{__('Numer telefonu')}}:
+                                        Numer telefonu:
                                     </span>
                                         <span class="profileShow__value">
                                         {{$profile->phone}}
@@ -65,7 +65,7 @@
                                 <div class="col-lg-6">
                                     <div class="profileShow__info">
                                     <span class="profileShow__name">
-                                        {{__('Adres e-mail')}}:
+                                        Adres e-mail:
                                     </span>
                                         <span class="profileShow__value">
                                         {{$profile->email}}
@@ -75,7 +75,7 @@
                                 <div class="col-lg-6">
                                     <div class="profileShow__info">
                                     <span class="profileShow__name">
-                                      {{__('Data urodzenia')}}:
+                                      Data urodzenia:
                                     </span>
                                         <span class="profileShow__value">
                                         {{date('d/m/Y', strtotime($profile->date_of_birth))}}
@@ -85,15 +85,35 @@
                                 <div class="col-lg-6">
                                     <div class="profileShow__info">
                                     <span class="profileShow__name">
-                                       {{__('Typ konta')}}:
+                                      Adres zamiesznia:
+                                    </span>
+                                        <span class="profileShow__value">
+                                        {{$profile->address}}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="profileShow__info">
+                                    <span class="profileShow__name">
+                                      PESEL:
+                                    </span>
+                                        <span class="profileShow__value">
+                                        {{$profile->pesel}}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="profileShow__info">
+                                    <span class="profileShow__name">
+                                       Typ konta:
                                     </span>
                                         <span class="profileShow__value">
                                         @if($profile->role === 0)
-                                                {{__('Dyrektor')}}
+                                                Dyrektor
                                             @elseif($profile->role === 1)
-                                                {{__('Nauczyciel')}}
+                                                Nauczyciel
                                             @else
-                                                {{__('Opiekun/Rodzic')}}
+                                                Opiekun/Rodzic
                                             @endif
 
                                     </span>

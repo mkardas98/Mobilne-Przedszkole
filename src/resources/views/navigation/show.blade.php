@@ -10,8 +10,8 @@
             </div>
 
             <span class="navApp__userName">{{$user->first_name}} {{$user->last_name}}</span>
-            <span class="navApp__userRole">@if($user->role === 0) {{__('dyrektor')}} @elseif($user->role === 1) {{__('nauczyciel')}} @else
-                    {{__('rodzic')}} @endif</span>
+            <span class="navApp__userRole">@if($user->role === 0) dyrektor @elseif($user->role === 1) nauczyciel @else
+                    rodzic @endif</span>
 
 
         </div>
@@ -19,7 +19,7 @@
 
             @if(!empty($section['label']))
                 <h6 class="navApp__titleGroup">
-                    <span>{{__($section['label'])}}</span>
+                    <span>{{$section['label']}}</span>
                     @if(!empty($section['icon']))
                         <a class="" href="#" aria-label="Add a new report">
                             <span data-feather="{{$section['icon']}}"></span>
@@ -42,7 +42,7 @@
                                         {{--                                        <span data-feather="{{$item['icon']}}"></span>--}}
                                         <i class="{{$item['icon']}}"></i>
                                     @endif
-                                    {{__($item['label'])}} <span class="">(current)</span>
+                                    {{($item['label'])}} <span class="">(current)</span>
                                 </button>
                                 <ul class="@foreach($item['items'] as $subItem)
                                 @php
@@ -61,7 +61,7 @@
                                                     {{--                                                    <span data-feather="{{$subItem['icon']}}"></span>--}}
                                                     <i class="{{$item['icon']}}"></i>
                                                 @endif
-                                                {{__($subItem['label'])}} <span class="sr-only">(current)</span>
+                                                {{($subItem['label'])}} <span class="sr-only">(current)</span>
                                             </a>
                                         </li>
                                     @endforeach
@@ -73,7 +73,7 @@
                                         {{--                                        <span data-feather="{{$item['icon']}}"></span>--}}
                                         <i class="{{$item['icon']}}"></i>
                                     @endif
-                                    {{__($item['label'])}} <span class="sr-only">(current)</span>
+                                    {{($item['label'])}} <span class="sr-only">(current)</span>
                                 </a>
                             @endif
                         </li>

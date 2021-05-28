@@ -1,17 +1,17 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Database\Query\Builder;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class ViewHistory extends Model
+class Group extends Model
 {
-    use HasFactory;
     public $timestamps = false;
-    protected $table = 'view_histories';
+    protected $table = 'groups';
     protected $primaryKey = 'id';
 
-
+    public function users(){
+        return $this->belongsToMany(User::class, 'user_groups');
+    }
 }

@@ -31,6 +31,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/application.css')}}">
 
 </head>
@@ -38,7 +39,7 @@
 
 <header class="headerApp">
     <a href="{{route('login')}}" class="headerApp__logoWrapper">
-        <img src="{{asset('images/app/logo.svg')}}" alt="{{__('Mobilne Przedszkole')}}" class="headerApp__logo">
+        <img src="{{asset('images/app/logo.svg')}}" alt="Mobilne Przedszkole" class="headerApp__logo">
     </a>
 
     <ul class="headerApp__links">
@@ -52,7 +53,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <img src="{{asset('images/app/icons/messages.svg')}}" alt="">
-                    {{__('Wiadomości')}}
+                    Wiadomości
                 </a>
             </li>
             <li>
@@ -65,7 +66,7 @@
                 <a class="nav-link" href="{{ route('logout') }}"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <img src="{{asset('images/app/icons/logout.svg')}}" alt="">
-                    {{__('Wyloguj')}}
+                    Wyloguj
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
@@ -116,6 +117,7 @@
 
 <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
 <script src="{{asset('js/chart.min.js')}}"></script>
+<script src="{{asset('js/jquery.dataTables.min.js')}}" defer></script>
 <script src="{{asset('js/scripts.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 @stack('scripts.body.bottom')

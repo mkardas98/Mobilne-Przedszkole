@@ -3,7 +3,7 @@
 @section('content')
     <div class="pageNavigation">
         <span class="pageNavigation__title">
-            {{__('Dashboard')}}
+            Dashboard
         </span>
     </div>
 
@@ -12,12 +12,12 @@
         <div class="colorCard -blue">
             <div class="colorCard__header">
                 <span class="colorCard__headerTitle">
-                    {{__('Liczba grup')}}
+                    Liczba aktywnych grup
                 </span>
             </div>
             <div class="colorCard__body">
                 <span class="colorCard__value">
-                    5
+                    {{$data['groups']}}
                 </span>
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="colorCard -red">
             <div class="colorCard__header">
                 <span class="colorCard__headerTitle">
-                    {{__('Liczba dzieci')}}
+                    Liczba dzieci
                 </span>
             </div>
             <div class="colorCard__body">
@@ -40,12 +40,12 @@
         <div class="colorCard -green">
             <div class="colorCard__header">
                 <span class="colorCard__headerTitle">
-                    {{__('Liczba nauczycieli')}}
+                    Liczba nauczycieli
                 </span>
             </div>
             <div class="colorCard__body">
                 <span class="colorCard__value">
-                    71
+                    {{$data['teachers']}}
                 </span>
             </div>
         </div>

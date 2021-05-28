@@ -36,7 +36,9 @@ class ProfileController extends Controller
             'first_name' => 'required | max:16',
             'last_name' => 'required | max:16',
             'date_of_birth' => 'required',
+            'address' => 'required',
             'phone' => 'required | digits_between:9,16 | numeric',
+            'pesel' => 'digits:11 | numeric',
             'email' => 'required | unique:users,email,' . Auth::id(),
             'avatar' => 'file|image|mimes:jpg,jpeg,png,gif,webp|max:2048'
         ]);
@@ -57,6 +59,12 @@ class ProfileController extends Controller
         }
         if (isset($post['phone'])) {
             $user->phone = $post['phone'];
+        }
+        if (isset($post['address'])) {
+            $user->address = $post['address'];
+        }
+        if (isset($post['pesel'])) {
+            $user->pesel = $post['pesel'];
         }
         if (isset($post['email'])) {
             $user->email = $post['email'];

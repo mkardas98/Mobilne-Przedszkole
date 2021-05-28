@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
+use App\Models\User;
 use App\Models\ViewHistory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -45,9 +47,12 @@ class HomeController extends Controller
     public function directorHome()
     {
        $viewsHistory = ViewHistory::all()->sortBy('date')->take(14);
-
+        $data = [];
+        $data['groups'] = count(Group::where('status', 1)->get());
+        $data['teachers'] = count(User::where('role', 1)->get());
         return view('director.home', [
             'views' => $viewsHistory,
+            'data' => $data,
         ]);
     }
     public function teacherHome()

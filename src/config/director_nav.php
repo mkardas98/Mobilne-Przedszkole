@@ -13,7 +13,7 @@ return [
             'group' => [
                 'label' => 'Grupy',
                 'icon' => 'fas fa-users',
-                'route_name' => 'index.show',
+                'route_name' => 'director.groups.index',
             ],
             'pupils' => [
                 'label' => 'Uczniowie',

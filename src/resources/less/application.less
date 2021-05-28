@@ -383,7 +383,7 @@ body {
         display: flex;
         align-items: center;
 
-        a {
+        a,button {
             margin: 0 0 0 .5rem;
         }
     }
@@ -423,6 +423,19 @@ body {
 
     &__body {
         padding: 2rem 0;
+    }
+
+    table {
+        tbody {
+            tr {
+                td {
+                    text-align: left;
+                    span {
+                        display: block;
+                    }
+                }
+            }
+        }
     }
 }
 .colorCard {
@@ -562,7 +575,6 @@ body {
     font-weight: 600;
     color: @darkBlue;
     margin-bottom: .2rem;
-
 }
 
 .custom-input {
@@ -578,6 +590,14 @@ body {
 
     &.form-error {
         border: 2px solid #e74c3c;
+    }
+}
+
+.checkbox-label {
+    display: flex;
+    input {
+        width: auto;
+        margin: .3rem .5rem 0 0
     }
 }
 

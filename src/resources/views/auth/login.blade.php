@@ -8,8 +8,8 @@
         <div class="loginSection__form">
 
             <div class="loginSection__text">
-                <span class="loginSection__title">{{__('Zaloguj się do')}}</span>
-                <span class="loginSection__subTitle">{{__('Mobilnego Przedszkola')}}</span>
+                <span class="loginSection__title">Zaloguj się do</span>
+                <span class="loginSection__subTitle">Mobilnego Przedszkola</span>
             </div>
 
             <form method="POST" action="{{ route('login') }}">
@@ -18,12 +18,12 @@
                     <div class="loginSection__input -login">
                         <input id="login" type="login" class="form-control"
                                name="login" value="{{ old('login') }}" required autofocus
-                               placeholder="{{__('Login lub adres e-mail')}}">
+                               placeholder="Login lub adres e-mail">
                     </div>
                     <div class="loginSection__input -password">
                         <input id="password" type="password"
                                class="form-control"
-                               name="password" required autocomplete="current-password" placeholder="{{__('Hasło')}}">
+                               name="password" required autocomplete="current-password" placeholder="Hasło">
                     </div>
 
 

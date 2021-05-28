@@ -4,7 +4,7 @@
 
         <div class="pageNavigation">
         <span class="pageNavigation__title">
-            {{__('Edytuj profil')}}
+            {{('Edytuj profil')}}
         </span>
         </div>
         <div class="row justify-content-center">
@@ -26,11 +26,11 @@
                 <div class="card">
                     <div class="card__header">
                 <span class="card__headerTitle">
-                    {{__('Edytuj dane twojego profilu')}}
+                    Edytuj dane twojego profilu
                 </span>
                         <div class="card__buttons">
-                            <a href="{{route('profile.show')}}" class="primaryButton -red">{{__('Anuluj')}}</a>
-                            <button onclick="event.preventDefault(); document.getElementById('profileForm').submit();" class="primaryButton ">{{__('Zapisz')}}</button>
+                            <a href="{{route('profile.show')}}" class="primaryButton -red">Anuluj</a>
+                            <button onclick="event.preventDefault(); document.getElementById('profileForm').submit();" class="primaryButton ">Zapisz</button>
                         </div>
                     </div>
                     <div class="card__body">
@@ -45,7 +45,7 @@
                                             <img src="{{asset('images/app/profile/empty-avatar.jpg')}}" alt="">
                                         @endif
                                             <div class="input-file-container">
-                                                <label tabindex="0" for="avatar" class="input-file-trigger primaryButton">{{__('Zmień zdjęcie profilowe')}}</label>
+                                                <label tabindex="0" for="avatar" class="input-file-trigger primaryButton">Zmień zdjęcie profilowe</label>
                                                 <input class="input-file" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
                                                 <p class="file-return"></p>
                                                 {!! $errors->first('avatar', '<p class="help-block">:message</p>') !!}
@@ -68,7 +68,13 @@
                                @include('helpers.input', ['name' => 'date_of_birth', 'label' => 'Data urodzenia', 'default' => $profile->date_of_birth, 'type' => 'date'])
                            </div>
                            <div class="col-12">
+                               @include('helpers.input', ['name' => 'pesel', 'label' => 'PESEL', 'default' => $profile->pesel])
+                           </div>
+                           <div class="col-12">
                                @include('helpers.input', ['name' => 'phone', 'label' => 'Numer telefonu', 'default' => $profile->phone])
+                           </div>
+                           <div class="col-12">
+                               @include('helpers.input', ['name' => 'address', 'label' => 'Adres zamieszkania', 'default' => $profile->address])
                            </div>
                            <div class="col-12">
                                @include('helpers.input', ['name' => 'email', 'label' => 'Adres e-mail', 'default' => $profile->email])
@@ -89,10 +95,10 @@
                 <div class="card ">
                     <div class="card__header">
                                        <span class="card__headerTitle">
-                    {{__('Zmień hasło')}}
+                    Zmień hasło
                 </span>
                         <div class="card__buttons">
-                            <button type="submit" onclick="event.preventDefault(); document.getElementById('passwordForm').submit();" class="primaryButton">{{__('Zmień hasło')}}</button>
+                            <button type="submit" onclick="event.preventDefault(); document.getElementById('passwordForm').submit();" class="primaryButton">Zmień hasło</button>
                         </div>
                     </div>
                     <div class="card__body">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
@@ -28,8 +29,17 @@ Route::get('profil/edytuj', [ProfileController::class, 'editShow'])->name('profi
 Route::post('profil/edytuj', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('profil/edytuj/haslo', [ProfileController::class, 'changePassword'])->name('profile_password.edit');
 
+//DYREKTOR
+Route::middleware('is_director')->group(function(){
+    Route::get('dyrektor', [HomeController::class, 'directorHome'])->name('director_home.show');
+    Route::get('dyrektor/grupy', [GroupsController::class, 'directorIndex'])->name('director.groups.index');
+    Route::match(['get', 'post'], '/dyrektor/grupy/edytuj/{id?}', [GroupsController::class, 'directorEdit'])->name('director.groups.edit');
+    Route::get('/dyrektor/grupy/usun/{id}', [GroupsController::class, 'directorDelete'])->name('director.groups.delete');
+});
 
-Route::get('dyrektor', [HomeController::class, 'directorHome'])->name('director_home.show')->middleware('is_director');
+
+
+
 Route::get('nauczyciel', [HomeController::class, 'teacherHome'])->name('teacher_home.show')->middleware('is_teacher');
 Route::get('rodzic', [HomeController::class, 'parentHome'])->name('parent_home.show')->middleware('is_parent');
 
