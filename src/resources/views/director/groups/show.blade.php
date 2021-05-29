@@ -50,10 +50,10 @@
                     </div>
                     <div class="col-lg-3">
                         <span class="card__valueName">
-                            Liczba dzieci:
+                            Widoczność w serwisie:
                         </span>
                         <span class="card__value">
-                            1
+                            {{$group->status ? 'Widoczna' : 'Nie widoczna'}}
                         </span>
                     </div>
                 </div>

@@ -74,11 +74,8 @@ class GroupsController extends Controller
             }
 
             $obj->status = $form['status'];
+            $obj->users()->sync($form['teachers']);
             $obj->save();
-
-            UserGroup::where('group_id', $obj->id)->delete();
-            $group = Group::find($obj->id);
-            $group->users()->attach($form['teachers']);
 
             return redirect()->route('director.groups.edit',['id'=>$obj->id])->with('success', 'Zmiany zostały zapisane!');
         }
@@ -102,9 +99,9 @@ class GroupsController extends Controller
 
     public function directorShow($id)
     {
-     $group = Group::findOrFail($id)->with('users')->first();
+        $group = Group::with('users')->find($id);
 
-     return view('director.groups.show', [
+        return view('director.groups.show', [
         'group'=>$group,
      ]);
     }

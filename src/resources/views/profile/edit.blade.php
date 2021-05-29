@@ -26,7 +26,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="profileEditShow__avatar">
+                                    <div class="editAvatar">
                                         @if(!(is_null($profile->avatar)))
                                             <img src="{{renderImage($profile->avatar, [300,300, 'fit'])}}" alt="">
                                         @else

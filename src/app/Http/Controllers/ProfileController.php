@@ -45,40 +45,19 @@ class ProfileController extends Controller
 
         $user = Auth::user();
 
-        if (isset($post['login'])) {
             $user->login = $post['login'];
-        }
-        if (isset($post['first_name'])) {
             $user->first_name = $post['first_name'];
-        }
-        if (isset($post['last_name'])) {
             $user->last_name = $post['last_name'];
-        }
-        if (isset($post['date_of_birth'])) {
             $user->date_of_birth = $post['date_of_birth'];
-        }
-        if (isset($post['phone'])) {
-            $user->phone = $post['phone'];
-        }
-        if (isset($post['address'])) {
             $user->address = $post['address'];
-        }
-        if (isset($post['pesel'])) {
-            $user->pesel = $post['pesel'];
-        }
-        if (isset($post['email'])) {
+            $user->phone = $post['phone'];
+            if(isset($post['pesel'])) {
+                $user->pesel = $post['pesel'];
+            }
             $user->email = $post['email'];
-        }
 
         if (isset($post['avatar'])) {
-            $filename = $post['avatar']->getClientOriginalName();
-            $filename = Filenameclean($filename);
-            $dir = 'avatar/';
-            $destFilename = $dir . $filename;
-            $destFilename = FileAvoidDuplicate($destFilename, Storage::disk('public'));
-
-            Storage::disk('public')->put($destFilename, $post['avatar']->get());
-            $user->avatar = $destFilename;
+                updateAvatar($post['avatar'], $user);
         }
 
         $user->save();

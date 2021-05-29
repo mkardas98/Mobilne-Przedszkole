@@ -4,6 +4,7 @@ use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,12 @@ Route::middleware('is_director')->group(function(){
     Route::match(['get', 'post'], '/dyrektor/grupy/edytuj/{id?}', [GroupsController::class, 'directorEdit'])->name('director.groups.edit');
     Route::get('/dyrektor/grupy/usun/{id}', [GroupsController::class, 'directorDelete'])->name('director.groups.delete');
     Route::get('/dyrektor/grupy/szczegoly/{id}', [GroupsController::class, 'directorShow'])->name('director.groups.show');
+
+    Route::get('/dyrektor/uzytkownicy', [UsersController::class, 'index'])->name('director.users.index');
+    Route::match(['get', 'post'], '/dyrektor/uzytkownicy/edytuj/{id?}', [UsersController::class, 'edit'])->name('director.users.edit');
+    Route::get('/dyrektor/uzytkownicy/usun/{id?}', [UsersController::class, 'delete'])->name('director.users.delete');
+
+
 });
 
 

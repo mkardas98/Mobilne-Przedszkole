@@ -66,7 +66,7 @@ return [
             'users' => [
                 'label' => 'Zarządzanie użytkownikami',
                 'icon' => 'fas fa-user-cog',
-                'route_name' => 'index.show',
+                'route_name' => 'director.users.index',
             ],
         ]
     ],
