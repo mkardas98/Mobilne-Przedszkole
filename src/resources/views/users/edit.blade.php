@@ -46,7 +46,7 @@
                                    @include('helpers.input', ['name' => 'last_name', 'label' => 'Nazwisko', 'default' => $obj->last_name])
                                </div>
                                <div class="col-lg-6">
-                                   @include('helpers.input', ['name' => 'email', 'label' => 'E-mail', 'default' => $obj->phone])
+                                   @include('helpers.input', ['name' => 'email', 'label' => 'E-mail', 'default' => $obj->email])
                                </div>
                                <div class="col-lg-6">
                                    @include('helpers.input', ['name' => 'phone', 'label' => 'Numer telefonu', 'default' => $obj->phone])
@@ -65,7 +65,7 @@
                                        <label for="role" class="custom-label ">Typ konta</label>
                                        <select id="role" name="role" class="custom-input {{$errors->first('role') ? ' form-error' : ''}}" onchange="changeRole()">
                                            <option value="">Wybierz</option>
-                                           <option value="0" @if($obj->role == 0) selected @endif>Dyrektor</option>
+                                           <option value="0" @if($obj->role == 0 && $obj->id) selected @endif>Dyrektor</option>
                                            <option value="1" @if($obj->role == 1) selected @endif>Nauczyciel</option>
                                            <option value="2" @if($obj->role == 2) selected @endif >Rodzic</option>
                                        </select>
@@ -80,7 +80,7 @@
                                        <label for="role" class="custom-label ">Dziecko</label>
                                        <select id="child" name="child" class="custom-input {{$errors->first('child') ? ' form-error' : ''}}">
                                            <option value="">Wybierz</option>
-                                           <option value="0" @if($obj->child == 0) selected @endif>dziecko1</option>
+                                           <option value="0" @if($obj->child == 0 && $obj->id) selected @endif>dziecko1</option>
                                            <option value="1" @if($obj->child == 1) selected @endif>dziecko2</option>
                                            <option value="2" @if($obj->child == 2) selected @endif >dziecko3</option>
                                        </select>
@@ -104,20 +104,41 @@
                 const child = $('#parentChild')
                 const roleSelected = $('#role');
 
-                    if(roleSelected.val() == 0 || roleSelected.val() == 1) {
+                    if(roleSelected.val() === '0' || roleSelected.val() === '1') {
                         specialization.removeClass('d-none');
                         child.addClass('d-none');
 
-                    } else if(roleSelected.val() == 2){
+                    } else if(roleSelected.val() === '2'){
                         child.removeClass('d-none');
                         specialization.addClass('d-none');
 
-                    } else  {
+                    } else if(roleSelected.val() === '')  {
                         child.addClass('d-none');
                         specialization.addClass('d-none');
                     }
             }
 
+            $(document).ready(()=> {
+                changeRole()
+            })
+
+
+            var fileInput  = document.querySelector( ".input-file" ),
+                button     = document.querySelector( ".input-file-trigger" ),
+                the_return = document.querySelector(".file-return");
+
+            button.addEventListener( "keydown", function( event ) {
+                if ( event.keyCode == 13 || event.keyCode == 32 ) {
+                    fileInput.focus();
+                }
+            });
+            button.addEventListener( "click", function( event ) {
+                fileInput.focus();
+                return false;
+            });
+            fileInput.addEventListener( "change", function( event ) {
+                the_return.innerHTML = this.value;
+            });
         </script>
     @endpush
 

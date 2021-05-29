@@ -9,7 +9,7 @@
             Użytkownicy
         </span>
         <div class="pageNavigation__buttons">
-            <a href="{{route('director.groups.edit')}}" class="primaryButton">Dodaj nowego użytkownika</a>
+            <a href="{{route('director.users.edit')}}" class="primaryButton">Dodaj nowego użytkownika</a>
         </div>
     </div>
     <div class="row">

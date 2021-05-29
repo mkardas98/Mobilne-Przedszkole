@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserGroup;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller {
 
@@ -23,6 +26,7 @@ class UsersController extends Controller {
     {
 
         $obj = ($id > 0) ? User::find($id) : new User();
+      ;
         if ($request->isMethod('post')) {
             $request->validate([
                 'first_name' => 'required | max:16',
@@ -54,6 +58,7 @@ class UsersController extends Controller {
             $obj->phone = $form['phone'];
             $obj->pesel = $form['pesel'];
             $obj->address = $form['address'];
+            $obj->date_of_birth = $form['date_of_birth'];
             if(($id == Auth::user()->id) && (!($form['role'] == '0'))){
                 return redirect()->route('director.users.edit',['id'=>$obj->id])->with('error', 'Nie możesz edytować swojego typu konta!');
             }
@@ -81,7 +86,11 @@ class UsersController extends Controller {
 
             if(($form['role'] == 2)){
                 $obj->child = $form['child'];
+            }
 
+            if(!($obj->exists)){
+                $obj->login = substr($form['first_name'], 0, 3) . substr($form['last_name'], 0, 3).date('mY', strtotime($form['date_of_birth']));
+                $obj->password = $hashed_random_password = Hash::make(Str::random(10));
             }
             $obj->save();
             return redirect()->route('director.users.edit',['id'=>$obj->id])->with('success', 'Zmiany zostały zapisane!');

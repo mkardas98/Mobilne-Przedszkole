@@ -15,7 +15,7 @@ class AddSpecializationAndChildToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('specialization')->default('')->after('role');
-            $table->integer('child')->default(null)->after('specialization');
+            $table->integer('child')->default(0)->after('specialization');
         });
     }
 

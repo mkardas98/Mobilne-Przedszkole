@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainPageController;
@@ -41,6 +42,8 @@ Route::middleware('is_director')->group(function(){
     Route::get('/dyrektor/uzytkownicy', [UsersController::class, 'index'])->name('director.users.index');
     Route::match(['get', 'post'], '/dyrektor/uzytkownicy/edytuj/{id?}', [UsersController::class, 'edit'])->name('director.users.edit');
     Route::get('/dyrektor/uzytkownicy/usun/{id?}', [UsersController::class, 'delete'])->name('director.users.delete');
+
+    Route::match(['get', 'post'], 'dyrektor/konfiguracja/email', [ConfigurationController::class, 'editMail'])->name('director.configuration.email');
 
 
 });

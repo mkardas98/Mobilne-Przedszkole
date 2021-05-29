@@ -42,11 +42,6 @@ return [
                 'icon' => 'fas fa-laptop-house',
                 'route_name' => 'index.show',
             ],
-            'kindergarten_data' => [
-                'label' => 'Dane przedszkola',
-                'icon' => 'fas fa-info-circle',
-                'route_name' => 'index.show',
-            ],
             'gallery' => [
                 'label' => 'Galeria',
                 'icon' => 'fas fa-images',
@@ -70,4 +65,21 @@ return [
             ],
         ]
     ],
+    [
+        'label' => 'Konfiguracja',
+        'icon' => '',
+        'items' => [
+            'kindergarten_data' => [
+                'label' => 'Dane przedszkola',
+                'icon' => 'fas fa-info-circle',
+                'route_name' => 'index.show',
+            ],
+            'mail' => [
+                'label' => 'SMTP - Email',
+                'icon' => 'fas fa-envelope-open-text',
+                'route_name' => 'director.configuration.email',
+            ],
+        ]
+    ],
+
 ];
