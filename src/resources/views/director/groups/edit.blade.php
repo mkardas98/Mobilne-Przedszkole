@@ -10,6 +10,7 @@
     </div>
 
     <div class="row">
+        @include('helpers.alert')
         <div class="col-12">
             <div class="card">
                 <div class="card__body">
@@ -35,10 +36,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
+                                @include('helpers.input', ['name' => 'color', 'label'=>'Kolor grupy', 'default'=>$obj->color, 'type'=>'color', 'class'=>'-color'])
+                            </div>
+                            <div class="col-md-3">
                                 <div class="checkbox-wrapper">
                                     <label class="custom-label">Status grupy</label>
-
                                     <label class="checkbox-label mt-2"><input type="checkbox" name="status" class="custom-input" value="1" @if($obj->status) checked="checked" @endif>Widoczna - aktywna</label>
                                 </div>
                             </div>

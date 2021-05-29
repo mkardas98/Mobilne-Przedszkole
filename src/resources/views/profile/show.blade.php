@@ -3,12 +3,13 @@
 <section class="profileShow">
     <div class="pageNavigation">
         <span class="pageNavigation__title">
-            Twój profil')}}
+            Twój profil
         </span>
 
     </div>
   <div class="row justify-content-center">
-      <div class="col-lg-9">
+      @include('helpers.alert')
+      <div class="col-lg-12">
           <div class="card">
               <div class="card__header">
                 <span class="card__headerTitle">

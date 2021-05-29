@@ -8,21 +8,9 @@
         </span>
         </div>
         <div class="row justify-content-center">
-            @if (\Session::has('success'))
-                <div class="col-lg-8">
-                    <div class="alert alert-success text-center mx-3">
-                        {!! \Session::get('success') !!}
-                    </div>
-                </div>
-                @endif
-                @if (\Session::has('error'))
-                    <div class="col-lg-8">
-                        <div class="alert alert-danger text-center mx-3">
-                            {!! \Session::get('error') !!}
-                        </div>
-                    </div>
-                @endif
-            <div class="col-lg-8">
+            @include('helpers.alert')
+
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card__header">
                 <span class="card__headerTitle">
@@ -91,7 +79,7 @@
             </div>
 
 
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="card ">
                     <div class="card__header">
                                        <span class="card__headerTitle">

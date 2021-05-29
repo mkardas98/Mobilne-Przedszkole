@@ -40,7 +40,7 @@ class GroupsController extends Controller
 //            $user->save();
 
 
-        $items = Group::with('users')->get();
+        $items = Group::with('users')->orderBy('name')->get();
 
         return view('director.groups.index', ['items'=>$items]);
     }
@@ -68,6 +68,7 @@ class GroupsController extends Controller
             $form = $request->all();
             $obj->name = $form['name'];
             $obj->room = $form['room'];
+            $obj->color = $form['color'];
             if(!isset($form['status'])){
                $form['status'] = 0;
             }
@@ -79,7 +80,7 @@ class GroupsController extends Controller
             $group = Group::find($obj->id);
             $group->users()->attach($form['teachers']);
 
-            return redirect()->route('director.groups.edit',['id'=>$obj->id]);
+            return redirect()->route('director.groups.edit',['id'=>$obj->id])->with('success', 'Zmiany zostały zapisane!');
         }
         if(Group::find($id)){
             $obj->teachers = UserGroup::where('group_id', $obj->id)->get();
@@ -89,14 +90,23 @@ class GroupsController extends Controller
         return view('director.groups.edit', [
             'teachers'=>$teachers,
             'obj' => $obj
-
         ]);
     }
 
     function directorDelete($id){
-        UserGroup::where('group_id', $id)->delete();
         Group::find($id)->delete();
-        return route('director.groups.index');
+        UserGroup::where('group_id', $id)->delete();
+
+        return redirect()->route('director.groups.index')->with('success', 'Grupa została usunięta!');
+    }
+
+    public function directorShow($id)
+    {
+     $group = Group::findOrFail($id)->with('users')->first();
+
+     return view('director.groups.show', [
+        'group'=>$group,
+     ]);
     }
 
 }

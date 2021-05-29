@@ -14,11 +14,14 @@ if(!isset($type)){
 if(!isset($old)){
     $old = true;
 }
+if(!isset($class)){
+    $class = '';
+}
 @endphp
 
 <div class="input-wrapper">
     <label for="{{$name}}" class="custom-label ">{!! $label !!}</label>
-    <input type="{{$type}}" id="{{$name}}" name="{{$name}}" class="custom-input {{$errors->first($name) ? ' form-error' : '' }}" value="{{$old ? old($name, $default) : $default}}">
+    <input type="{{$type}}" id="{{$name}}" name="{{$name}}" class="custom-input {{$class}} {{$errors->first($name) ? ' form-error' : ''}}" value="{{$old ? old($name, $default) : $default}}">
     {!! $errors->first($name, '<p class="help-block">:message</p>') !!}
 
 </div>

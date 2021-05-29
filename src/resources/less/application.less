@@ -5,7 +5,8 @@
 @xsBreakpoint: 0;
 
 @fontPrimary: 'Roboto', sans-serif;
-;
+@fontSecondary: 'Quicksand', sans-serif;
+
 
 @white: #ffffff;
 @white2: #deebfd;
@@ -17,6 +18,7 @@
 @darkBlue: #2F3A51;
 @blue: #0162E8;
 @greenLight: #29b186;
+@red: #f93a5a;
 
 body {
     display: flex;
@@ -43,7 +45,7 @@ body {
     transition: .3s ease-in-out;
 
     &.-red {
-        background: linear-gradient(45deg, #f93a5a, #cb596c);
+        background: linear-gradient(45deg, @red, #cb596c);
     }
 
     &.-green {
@@ -68,6 +70,37 @@ body {
         background: @darkBlue;
     }
 }
+
+.controlButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2px;
+    margin: 0 .1rem;
+    color: @white;
+    line-height: 1;
+    transition: .2s ease;
+
+    &.-red {
+        background: @red;
+    }
+
+    &.-blue {
+        background: @blue;
+    }
+    &.-green {
+        background: @greenLight;
+    }
+
+    &:hover {
+        color: @white;
+        background: @darkBlue;
+        text-decoration: none;
+    }
+}
+
 
 .main {
     position: relative;
@@ -373,8 +406,7 @@ body {
     margin: 1rem 0;
 
     &__title {
-        padding-left: 1rem;
-        font-size: 1.3rem;
+        font-size: 2rem;
         color: @darkBlue;
         font-weight: 600;
     }
@@ -424,14 +456,69 @@ body {
     &__body {
         padding: 2rem 0;
     }
+    &__name {
 
-    table {
+    }
+
+
+
+
+    &__valueName{
+        display: block;
+        font-size: 1.1rem;
+        color: @blue;
+        font-weight: 600;
+        padding-bottom: .2rem;
+    }
+    &__value {
+        display: block;
+        font-size: 1.25rem;
+        color: @black;
+    }
+
+    table.dataTable {
+        thead {
+            th {
+                font-family: @fontSecondary ;
+                padding: 10px;
+                text-align: center;
+                color: #030c75;
+            }
+        }
         tbody {
             tr {
                 td {
-                    text-align: left;
+                    font-family: @fontSecondary ;
+                    font-weight: 500;
+                    padding: 10px;
+                    text-align: center;
+
+                    &.tableButtons {
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .active, .not-active {
+                        display: inline-block;
+                        padding: .3rem;
+                        border-radius: 2px;
+                    }
+                    .active {
+                        background: @greenLight;
+                        color: @white;
+                    }
+
+                    .not-active {
+                        background: @red;
+                        color: @white;
+                    }
+                    .colorGroup {
+                      font-size: 1.3rem;
+                    }
                     span {
+                        font-size: .8rem;
                         display: block;
+                        line-height: 1.2;
                     }
                 }
             }
@@ -447,7 +534,7 @@ body {
     color: @white;
 
     &.-red {
-        background-image: linear-gradient(45deg, #f93a5a, #f7778c);
+        background: linear-gradient(45deg, @red, #f7778c);
     }
 
     &.-blue {
@@ -455,11 +542,11 @@ body {
     }
 
     &.-green {
-        background-image: linear-gradient(to left, #48d6a8 0%, #029666 100%);
+        background: linear-gradient(to left, #48d6a8 0%, #029666 100%);
     }
 
     &.-orange {
-        background-image: linear-gradient(to left, #efa65f, #f76a2d);
+        background: linear-gradient(to left, #efa65f, #f76a2d);
     }
 
 
@@ -590,6 +677,12 @@ body {
 
     &.form-error {
         border: 2px solid #e74c3c;
+    }
+
+    &.-color {
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
     }
 }
 
@@ -754,6 +847,7 @@ body {
         opacity: 0;
     }
 }
+
 
 
 #preload{

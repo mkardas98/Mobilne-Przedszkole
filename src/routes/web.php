@@ -35,6 +35,7 @@ Route::middleware('is_director')->group(function(){
     Route::get('dyrektor/grupy', [GroupsController::class, 'directorIndex'])->name('director.groups.index');
     Route::match(['get', 'post'], '/dyrektor/grupy/edytuj/{id?}', [GroupsController::class, 'directorEdit'])->name('director.groups.edit');
     Route::get('/dyrektor/grupy/usun/{id}', [GroupsController::class, 'directorDelete'])->name('director.groups.delete');
+    Route::get('/dyrektor/grupy/szczegoly/{id}', [GroupsController::class, 'directorShow'])->name('director.groups.show');
 });
 
 

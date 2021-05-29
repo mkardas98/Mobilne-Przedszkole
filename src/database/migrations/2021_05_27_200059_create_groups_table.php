@@ -17,6 +17,7 @@ class CreateGroupsTable extends Migration
             $table->id();
             $table->string('room');
             $table->string('name');
+            $table->char('color');
             $table->tinyInteger('status')->default(0);
         });
     }
