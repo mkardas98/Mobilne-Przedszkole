@@ -3,12 +3,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewUserMail;
 use App\Models\User;
 use App\Models\UserGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 class UsersController extends Controller {
 
@@ -90,8 +92,11 @@ class UsersController extends Controller {
                 $obj->login = substr($form['first_name'], 0, 3) . substr($form['last_name'], 0, 3).date('mY', strtotime($form['date_of_birth']));
                 $password = Str::random(10);
                 $obj->password = Hash::make($password);
+                $data = [];
                 $data['login'] =  $obj->login;
                 $data['password'] = $password;
+                Mail::to($form['email'])->send(new NewUserMail($data, 'Dane do logowania - Mobilne Przedszkole' ));
+
             }
             $obj->save();
             return redirect()->route('director.users.edit',['id'=>$obj->id])->with('success', 'Zmiany zostały zapisane!');
