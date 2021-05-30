@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\GroupsForm;
+use App\Forms\ProfileForm;
 use App\Models\Group;
 use App\Models\User;
 use App\Models\UserGroup;
@@ -12,6 +14,7 @@ use Faker\Provider\PhoneNumber;
 use Faker\Provider\pl_PL\Person;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class GroupsController extends Controller
 {
@@ -42,7 +45,7 @@ class GroupsController extends Controller
 
         $items = Group::with('users')->orderBy('name')->get();
 
-        return view('director.groups.index', ['items'=>$items]);
+        return view('director.groups.index', ['items' => $items]);
     }
 
     public function directorEdit(Request $request, $id = 0)
@@ -50,47 +53,56 @@ class GroupsController extends Controller
 
         $obj = ($id > 0) ? Group::find($id) : new Group();
 
-        $teachers = User::where(function ($query) {
-            $query->where('role', '=', '0')
-                ->orWhere('role', '=', 1);
-        })
-            ->orderBy('last_name')
-            ->get();
-
 
         if ($request->isMethod('post')) {
-            $request->validate([
-                'name' => 'required | max:40 | min:3',
-                'room' => 'required | max:30',
-                'teachers' => 'required',
-            ]);
+            $rules = [];
+
+            foreach (GroupsForm::FIELDS as $field) {
+                $rules[$field['name']] = $field['rules'];
+            }
+
+            $request->validate($rules);
 
             $form = $request->all();
             $obj->name = $form['name'];
             $obj->room = $form['room'];
             $obj->color = $form['color'];
-            if(!isset($form['status'])){
-               $form['status'] = 0;
+            if (!isset($form['status'])) {
+                $form['status'] = 0;
             }
 
             $obj->status = $form['status'];
-            $obj->users()->sync($form['teachers']);
             $obj->save();
 
-            return redirect()->route('director.groups.edit',['id'=>$obj->id])->with('success', 'Zmiany zostały zapisane!');
+            $obj->users()->sync($form['teachers']);
+
+
+
+
+
+            return redirect()->route('director.groups.edit', ['id' => $obj->id])->with('success', 'Zmiany zostały zapisane!');
         }
-        if(Group::find($id)){
-            $obj->teachers = UserGroup::where('group_id', $obj->id)->get();
+
+        if (Group::find($id)) {
+            $currentTeachers = UserGroup::where('group_id', $obj->id)->get();
+            $teachers = array();
+            foreach ($currentTeachers as $currentTeacher) {
+                array_push($teachers, $currentTeacher->user_id);
+            }
+            $obj->teachers = array_unique($teachers);
+
         }
+        $form = new GroupsForm($obj);
 
 
         return view('director.groups.edit', [
-            'teachers'=>$teachers,
-            'obj' => $obj
+            'obj' => $obj,
+            'form' => $form,
         ]);
     }
 
-    function directorDelete($id){
+    function directorDelete($id)
+    {
         Group::find($id)->delete();
         UserGroup::where('group_id', $id)->delete();
 
@@ -102,8 +114,8 @@ class GroupsController extends Controller
         $group = Group::with('users')->find($id);
 
         return view('director.groups.show', [
-        'group'=>$group,
-     ]);
+            'group' => $group,
+        ]);
     }
 
 }

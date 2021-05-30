@@ -40,52 +40,46 @@
                        <div class="card__body">
                            <div class="row">
                                <div class="col-lg-6">
-                                   @include('helpers.input', ['name' => 'first_name', 'label' => 'Imię', 'default' => $obj->first_name])
+                                   {!! $form->renderFieldGroup('first_name') !!}
                                </div>
                                <div class="col-lg-6">
-                                   @include('helpers.input', ['name' => 'last_name', 'label' => 'Nazwisko', 'default' => $obj->last_name])
+                                   {!! $form->renderFieldGroup('last_name') !!}
                                </div>
                                <div class="col-lg-6">
-                                   @include('helpers.input', ['name' => 'email', 'label' => 'E-mail', 'default' => $obj->email])
+                                   {!! $form->renderFieldGroup('email') !!}
                                </div>
                                <div class="col-lg-6">
-                                   @include('helpers.input', ['name' => 'phone', 'label' => 'Numer telefonu', 'default' => $obj->phone])
+                                   {!! $form->renderFieldGroup('phone') !!}
+
                                </div>
                                <div class="col-lg-6">
-                                   @include('helpers.input', ['name' => 'pesel', 'label' => 'PESEL', 'default' => $obj->pesel])
+                                   {!! $form->renderFieldGroup('pesel') !!}
                                </div>
                                <div class="col-lg-6">
-                                   @include('helpers.input', ['name' => 'date_of_birth', 'label' => 'Data urodzenia', 'default' => $obj->date_of_birth, 'type' => 'date'])
+                                   {!! $form->renderFieldGroup('date_of_birth') !!}
                                </div>
                                <div class="col-lg-6">
-                                   @include('helpers.input', ['name' => 'address', 'label' => 'Adres zamieszkania', 'default' => $obj->address])
+                                   {!! $form->renderFieldGroup('address') !!}
                                </div>
                                <div class="col-lg-6">
-                                   <div class="input-wrapper">
-                                       <label for="role" class="custom-label ">Typ konta</label>
-                                       <select id="role" name="role" class="custom-input {{$errors->first('role') ? ' form-error' : ''}}" onchange="changeRole()">
-                                           <option value="">Wybierz</option>
-                                           <option value="0" @if($obj->role == 0 && $obj->id) selected @endif>Dyrektor</option>
-                                           <option value="1" @if($obj->role == 1) selected @endif>Nauczyciel</option>
-                                           <option value="2" @if($obj->role == 2) selected @endif >Rodzic</option>
-                                       </select>
-                                       {!! $errors->first('role', '<p class="help-block">:message</p>') !!}
-                                   </div>
+                                   {!! $form->renderFieldGroup('role') !!}
+{{--                                   <div class="input-wrapper">--}}
+{{--                                       <label for="role" class="custom-label ">Typ konta</label>--}}
+{{--                                       <select id="role" name="role" class="custom-input {{$errors->first('role') ? ' form-error' : ''}}" onchange="changeRole()">--}}
+{{--                                           <option value="">Wybierz</option>--}}
+{{--                                           <option value="0" @if($obj->role == 0 && $obj->id) selected @endif>Dyrektor</option>--}}
+{{--                                           <option value="1" @if($obj->role == 1) selected @endif>Nauczyciel</option>--}}
+{{--                                           <option value="2" @if($obj->role == 2) selected @endif >Rodzic</option>--}}
+{{--                                       </select>--}}
+{{--                                       {!! $errors->first('role', '<p class="help-block">:message</p>') !!}--}}
+{{--                                   </div>--}}
                                </div>
                                <div class="col-lg-12 @if($obj->role == 2) d-none @endif" id="teacherSpecialization">
-                                       @include('helpers.input', ['name' => 'specialization', 'label' => 'Specjalizacja', 'default' => $obj->specialization])
+                                   {!! $form->renderFieldGroup('specialization') !!}
+{{--                                       @include('helpers.input', ['name' => 'specialization', 'label' => 'Specjalizacja', 'default' => $obj->specialization])--}}
                                </div>
                                <div class="col-lg-12  @if($obj->role == 1 || $obj->role === 0) d-none @endif" id="parentChild">
-                                   <div class="input-wrapper">
-                                       <label for="role" class="custom-label ">Dziecko</label>
-                                       <select id="child" name="child" class="custom-input {{$errors->first('child') ? ' form-error' : ''}}">
-                                           <option value="">Wybierz</option>
-                                           <option value="0" @if($obj->child == 0 && $obj->id) selected @endif>dziecko1</option>
-                                           <option value="1" @if($obj->child == 1) selected @endif>dziecko2</option>
-                                           <option value="2" @if($obj->child == 2) selected @endif >dziecko3</option>
-                                       </select>
-                                       {!! $errors->first('child', '<p class="help-block">:message</p>') !!}
-                                   </div>
+                                   {!! $form->renderFieldGroup('child') !!}
                                </div>
                            </div>
                        </div>
@@ -117,6 +111,9 @@
                         specialization.addClass('d-none');
                     }
             }
+            $('#role').change(()=>{
+                changeRole();
+            })
 
             $(document).ready(()=> {
                 changeRole()

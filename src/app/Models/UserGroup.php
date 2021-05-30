@@ -12,6 +12,9 @@ class UserGroup extends Model
     public $timestamps = false;
     protected $table = 'user_groups';
     protected $primaryKey = 'id';
-
+    protected $fillable = [
+        'user_id',
+        'group_id',
+    ];
 
 }

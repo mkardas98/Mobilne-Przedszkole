@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\EditPasswordForm;
+use App\Forms\ProfileForm;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -21,29 +24,27 @@ class ProfileController extends Controller
         return view('profile.show', ['profile' => Auth::user()]);
     }
 
-    public function editShow()
-    {
-        return view('profile.edit', ['profile' => Auth::user()]);
-    }
 
     public function edit(Request $request)
     {
 
-        $post = $request->all();
-
-        $request->validate([
-            'login' => 'required | max:16 | min:5 | unique:users,login,' . Auth::id(),
-            'first_name' => 'required | max:16',
-            'last_name' => 'required | max:16',
-            'date_of_birth' => 'required',
-            'address' => 'required',
-            'phone' => 'required | digits_between:9,16 | numeric',
-            'pesel' => 'digits:11 | numeric',
-            'email' => 'required | unique:users,email,' . Auth::id(),
-            'avatar' => 'file|image|mimes:jpg,jpeg,png,gif,webp|max:2048'
-        ]);
 
         $user = Auth::user();
+        $form = new ProfileForm($user);
+
+
+        if($request->isMethod('post')){
+            $rules = [];
+
+            foreach (ProfileForm::FIELDS as $field) {
+                $rules[$field['name']] = $field['rules'];
+            }
+            $rules['login'][] = Rule::unique('users')->ignore($user->id);
+            $rules['email'][] = Rule::unique('users')->ignore($user->id);
+
+            $request->validate($rules);
+
+            $post = $request->all();
 
             $user->login = $post['login'];
             $user->first_name = $post['first_name'];
@@ -56,35 +57,34 @@ class ProfileController extends Controller
             }
             $user->email = $post['email'];
 
-        if (isset($post['avatar'])) {
+            if (isset($post['avatar'])) {
                 updateAvatar($post['avatar'], $user);
+            }
+            $user->save();
+            return redirect(route('profile_edit', [
+                'profile' => $user,
+                'form' => $form
+            ]))->with('success', 'Zmiany zostały zapisane!');
+
         }
 
-        $user->save();
+        return view('profile.edit', [
+            'profile' => $user,
+            'form' => $form
+        ]);
 
-        return redirect(route('profile_edit.show'))->with('success', 'Zmiany zostały zapisane!');
 
     }
 
     public function changePassword(Request $request)
     {
-        $request->validate([
-            'password' => [
-                'required'
-            ],
-            'new_password' => [
-                'required',
-                'min:6',
-                'max:100',
-                'regex:/[a-z]/',
-                'regex:/[A-Z]/',
-                'regex:/[0-9]/',
-            ],
-            'new_confirm_password' => [
-                'same:new_password'
-            ],
-        ]);
 
+        $rules = [];
+
+        foreach (EditPasswordForm::FIELDS as $field) {
+            $rules[$field['name']] = $field['rules'];
+        }
+        $request->validate($rules);
 
         $user = Auth::user();
 

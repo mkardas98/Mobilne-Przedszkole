@@ -45,7 +45,8 @@
                                 <td>@if($user->role === 0) Dyrektor @elseif ($user->role === 1) Nauczyciel @else Rodzic @endif</td>
                                 <td class="tableButtons">
                                     <a class="controlButton -blue" href="{{route('director.users.edit', ['id'=>$user->id])}}"><i class="far fa-edit"></i></a>
-                                    <a class="controlButton -red" href="{{route('director.users.delete', ['id'=>$user->id])}}"><i class="fas fa-ban"></i></a>
+                                    @php($delete = route('director.users.delete', $user->id))
+                                    <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i class="fas fa-ban"></i></button>
                                     <a class="controlButton -green" href="{{--{{route('director.groups.show', ['id'=>$user->id])}}--}}"><i class="far fa-hand-pointer"></i></a>
                                 </td>
                             </tr>
@@ -64,6 +65,8 @@
         $(document).ready(function() {
             $('#dataTable').DataTable();
         });
+
+
     </script>
 @endpush
 

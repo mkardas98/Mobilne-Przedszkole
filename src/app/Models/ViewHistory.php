@@ -13,5 +13,8 @@ class ViewHistory extends Model
     protected $table = 'view_histories';
     protected $primaryKey = 'id';
 
-
+    protected $fillable = [
+        'date',
+        'views',
+    ];
 }

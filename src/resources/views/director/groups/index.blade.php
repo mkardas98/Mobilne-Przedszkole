@@ -54,7 +54,8 @@
                                 </td>
                                 <td class="tableButtons">
                                     <a class="controlButton -blue" href="{{route('director.groups.edit', ['id'=>$item->id])}}"><i class="far fa-edit"></i></a>
-                                    <a class="controlButton -red" href="{{route('director.groups.delete', ['id'=>$item->id])}}"><i class="fas fa-ban"></i></a>
+                                    @php($delete = route('director.groups.delete', $item->id))
+                                    <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i class="fas fa-ban"></i></button>
                                     <a class="controlButton -green" href="{{route('director.groups.show', ['id'=>$item->id])}}"><i class="far fa-hand-pointer"></i></a>
                                 </td>
                             </tr>

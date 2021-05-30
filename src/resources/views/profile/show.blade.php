@@ -16,7 +16,7 @@
                     Aktualne dane twojego profilu
                 </span>
                   <div class="card__buttons">
-                      <a href="{{route('profile_edit.show')}}" class="primaryButton">Edytuj</a>
+                      <a href="{{route('profile.edit')}}" class="primaryButton">Edytuj</a>
                   </div>
               </div>
               <div class="card__body">

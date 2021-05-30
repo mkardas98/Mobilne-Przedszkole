@@ -10,7 +10,6 @@ class Group extends Model
     public $timestamps = false;
     protected $table = 'groups';
     protected $primaryKey = 'id';
-
     public function users(){
         return $this->belongsToMany(User::class, 'user_groups');
     }

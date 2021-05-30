@@ -43,29 +43,27 @@
                                 <div class="col-lg-6">
                                     <div class="profileEditShow__inputs">
                        <div class="row">
-                           <div class="col-12">
-                               @include('helpers.input', ['name' => 'login', 'label' => 'Login', 'default' => $profile->login])
+
+                           <div class="col-6">
+                               {!! $form->renderFieldGroup('first_name') !!}
                            </div>
                            <div class="col-6">
-                               @include('helpers.input', ['name' => 'first_name', 'label' => 'Imię', 'default' => $profile->first_name])
-                           </div>
-                           <div class="col-6">
-                               @include('helpers.input', ['name' => 'last_name', 'label' => 'Nazwisko', 'default' => $profile->last_name])
+                               {!! $form->renderFieldGroup('last_name') !!}
                            </div>
                            <div class="col-12">
-                               @include('helpers.input', ['name' => 'date_of_birth', 'label' => 'Data urodzenia', 'default' => $profile->date_of_birth, 'type' => 'date'])
+                               {!! $form->renderFieldGroup('date_of_birth') !!}
                            </div>
                            <div class="col-12">
-                               @include('helpers.input', ['name' => 'pesel', 'label' => 'PESEL', 'default' => $profile->pesel])
+                               {!! $form->renderFieldGroup('pesel') !!}
                            </div>
                            <div class="col-12">
-                               @include('helpers.input', ['name' => 'phone', 'label' => 'Numer telefonu', 'default' => $profile->phone])
+                               {!! $form->renderFieldGroup('phone') !!}
                            </div>
                            <div class="col-12">
-                               @include('helpers.input', ['name' => 'address', 'label' => 'Adres zamieszkania', 'default' => $profile->address])
+                               {!! $form->renderFieldGroup('address') !!}
                            </div>
                            <div class="col-12">
-                               @include('helpers.input', ['name' => 'email', 'label' => 'Adres e-mail', 'default' => $profile->email])
+                               {!! $form->renderFieldGroup('email') !!}
                            </div>
 
                        </div>
@@ -96,13 +94,13 @@
                                     @csrf
                                     <div class="row justify-content-center">
                                         <div class="col-lg-7">
-                                            @include('helpers.input', ['name' => 'password', 'label' => 'Aktualne hasło', 'default' => '', 'type' => 'password', 'old'=>false])
+                                            {!! $form->renderFieldGroup('password') !!}
                                         </div>
                                         <div class="col-lg-7">
-                                            @include('helpers.input', ['name' => 'new_password', 'label' => 'Nowe hasło', 'default' => '', 'type' => 'password', 'old'=>false])
+                                            {!! $form->renderFieldGroup('new_password') !!}
                                         </div>
                                         <div class="col-lg-7">
-                                            @include('helpers.input', ['name' => 'new_confirm_password', 'label' => 'Powtórz nowe hasło', 'default' => '', 'type' => 'password', 'old'=>false])
+                                            {!! $form->renderFieldGroup('new_confirm_password') !!}
                                         </div>
                                     </div>
                                 </form>
