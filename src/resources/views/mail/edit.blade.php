@@ -10,6 +10,7 @@
         </div>
     </div>
     <div class="row">
+        @include('helpers.alert')
         <div class="col-12">
             <div class="card">
                 <div class="card__body">

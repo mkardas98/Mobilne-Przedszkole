@@ -32,6 +32,7 @@ class ConfigurationController extends Controller
             $obj->user_name = $form['user_name'];
             $obj->password = $form['password'];
             $obj->save();
+            return redirect(route('director.configuration.email', ['obj'=>$obj]))->with('success', 'Zmiany zostały zapisane!');
         }
 
 
