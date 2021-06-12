@@ -18,11 +18,11 @@ class MailSeeder extends Seeder
         $user = [
             [
                 'from_name'=> 'Mobilne Przedszkole',
-                'from_address'=>'tomsolution_noreply@rescodev.pl',
+                'from_address'=>'kontakt@mobilne-przedszkole.rescodev.pl',
                 'host'=>'serwer2000157.home.pl',
                 'port'=>'465',
-                'user_name' => 'tomsolution_noreply@rescodev.pl',
-                'password'=>'',
+                'user_name' => 'kontakt@mobilne-przedszkole.rescodev.pl',
+                'password'=>'Ayano31031998',
                 'encryption'=>'SSL'
             ],
         ];
