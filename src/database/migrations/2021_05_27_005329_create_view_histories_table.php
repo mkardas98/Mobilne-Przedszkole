@@ -17,6 +17,8 @@ class CreateViewHistoriesTable extends Migration
             $table->id();
             $table->date('date');
             $table->integer('views');
+            $table->timestamps();
+
         });
     }
 

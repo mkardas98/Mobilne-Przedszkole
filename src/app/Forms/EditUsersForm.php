@@ -30,7 +30,7 @@ class EditUsersForm extends Form
             'name' => 'email',
             'type' => 'email',
             'label' => 'Email',
-            'rules' => ['required', 'max:16'],
+            'rules' => ['required'],
             'options' => [],
         ],
         'phone' => [
@@ -69,6 +69,7 @@ class EditUsersForm extends Form
             'rules' => ['file','image', 'mimes:jpg,jpeg,png,gif,webp', 'max:2048'],
             'options' => [],
         ],
+
         'role' => [
             'name' => 'role',
             'type' => 'select',

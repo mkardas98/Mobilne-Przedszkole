@@ -45,7 +45,6 @@ class ProfileController extends Controller
             $request->validate($rules);
 
             $post = $request->all();
-
             $user->login = $post['login'];
             $user->first_name = $post['first_name'];
             $user->last_name = $post['last_name'];

@@ -19,6 +19,8 @@ class CreateGroupsTable extends Migration
             $table->string('name');
             $table->char('color');
             $table->tinyInteger('status')->default(0);
+            $table->timestamps();
+
         });
     }
 
