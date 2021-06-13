@@ -43,7 +43,6 @@ class UsersController extends Controller {
             $request->validate($rules);
 
             $post = $request->all();
-            dd($post);
 
             if($post['role'] == '1' || $post['role'] == '0'){
                 $request->validate([

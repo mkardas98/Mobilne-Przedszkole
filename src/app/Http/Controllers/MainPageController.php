@@ -16,20 +16,20 @@ class MainPageController extends Controller
 
     public function index()
     {
-        $now = CarbonImmutable::now();
-        $weekStartDate = $now->startOfWeek();
-        $weekEndDate = $now->endOfWeek();
+//        $now = CarbonImmutable::now();
+//        $weekStartDate = $now->startOfWeek();
+//        $weekEndDate = $now->endOfWeek();
 
 
         if (!isset($_COOKIE['TodayIsVisitMobilnePrzedszkole'])) {
             setcookie('TodayIsVisitMobilnePrzedszkole', 1, time() + 60 * 60 * 24);
-            if (ViewHistory::where('date', Carbon::now()->format('d-m-Y'))->first() === null) {
+            if (ViewHistory::where('date', Carbon::now()->format('Y-m-d'))->first() === null) {
                 $newDay = new ViewHistory;
-                $newDay->date = Carbon::now()->format('d-m-Y');
+                $newDay->date = Carbon::now()->format('Y-m-d');
                 $newDay->views = 1;
                 $newDay->save();
             } else {
-                ViewHistory::where('date', Carbon::now()->format('d-m-Y'))
+                ViewHistory::where('date', Carbon::now()->format('Y-m-d'))
                     ->increment('views');
             }
         }

@@ -94,13 +94,13 @@
                                     @csrf
                                     <div class="row justify-content-center">
                                         <div class="col-lg-7">
-                                            {!! $form->renderFieldGroup('password') !!}
+                                            {!! $formPassword->renderFieldGroup('password') !!}
                                         </div>
                                         <div class="col-lg-7">
-                                            {!! $form->renderFieldGroup('new_password') !!}
+                                            {!! $formPassword->renderFieldGroup('new_password') !!}
                                         </div>
                                         <div class="col-lg-7">
-                                            {!! $form->renderFieldGroup('new_confirm_password') !!}
+                                            {!! $formPassword->renderFieldGroup('new_confirm_password') !!}
                                         </div>
                                     </div>
                                 </form>

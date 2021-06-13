@@ -12,6 +12,7 @@ class ViewHistory extends Model
     public $timestamps = false;
     protected $table = 'view_histories';
     protected $primaryKey = 'id';
+    protected $dateFormat = 'd-m-Y';
 
     protected $fillable = [
         'date',

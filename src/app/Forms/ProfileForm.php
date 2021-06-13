@@ -61,27 +61,8 @@ class ProfileForm extends Form
             'rules' => ['required'],
             'options' => [],
         ],
-        'password' => [
-            'name' => 'password',
-            'type' => 'password',
-            'label' => 'Aktualne hasło',
-            'rules' => ['required'],
-            'options' => [],
-        ],
-        'new_password' => [
-            'name' => 'new_password',
-            'type' => 'password',
-            'label' => 'Nowe hasło',
-            'rules' => ['required', 'min:6', 'max:30', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/', 'regex:/[0-9]/'],
-            'options' => [],
-        ],
-        'new_confirm_password' => [
-            'name' => 'new_confirm_password',
-            'type' => 'password',
-            'label' => 'Powtórz nowe hasło',
-            'rules' => ['same:new_password'],
-            'options' => [],
-        ],
+
+
     ];
 
 

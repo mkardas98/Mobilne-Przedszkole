@@ -31,6 +31,7 @@ class ProfileController extends Controller
 
         $user = Auth::user();
         $form = new ProfileForm($user);
+        $formPassword = new EditPasswordForm($user);
 
 
         if($request->isMethod('post')){
@@ -45,7 +46,6 @@ class ProfileController extends Controller
             $request->validate($rules);
 
             $post = $request->all();
-            $user->login = $post['login'];
             $user->first_name = $post['first_name'];
             $user->last_name = $post['last_name'];
             $user->date_of_birth = $post['date_of_birth'];
@@ -60,7 +60,7 @@ class ProfileController extends Controller
                 updateAvatar($post['avatar'], $user);
             }
             $user->save();
-            return redirect(route('profile_edit', [
+            return redirect(route('profile.edit', [
                 'profile' => $user,
                 'form' => $form
             ]))->with('success', 'Zmiany zostały zapisane!');
@@ -69,7 +69,8 @@ class ProfileController extends Controller
 
         return view('profile.edit', [
             'profile' => $user,
-            'form' => $form
+            'form' => $form,
+            'formPassword' => $formPassword
         ]);
 
 
