@@ -5,10 +5,11 @@ namespace App\Forms;
 
 
 use App\Helpers\Form;
+use App\Models\Kid;
 use App\Models\User;
 
 
-class EditUsersForm extends Form
+class UserForm extends Form
 {
 
     const FIELDS = [
@@ -81,22 +82,12 @@ class EditUsersForm extends Form
                 '2' => 'Rodzic',
             ],
         ],
-        'child' => [
-            'name' => 'child',
-            'type' => 'select',
-            'label' => 'Dziecko',
-            'rules' => ['required'],
-            'options' => [
-                '0' => 'Dziecko1',
-                '1' => 'Dziecko2',
-                '2' => 'Dziecko3',
-            ],
-        ],
+
         'specialization' => [
             'name' => 'specialization',
             'type' => 'text',
             'label' => 'Specjalizacja',
-            'rules' => ['required'],
+            'rules' => [],
             'options' => [],
         ],
     ];

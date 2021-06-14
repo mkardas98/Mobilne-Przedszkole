@@ -47,7 +47,7 @@
                                     <a class="controlButton -blue" href="{{route('director.users.edit', ['id'=>$user->id])}}"><i class="far fa-edit"></i></a>
                                     @php($delete = route('director.users.delete', $user->id))
                                     <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i class="fas fa-ban"></i></button>
-                                    <a class="controlButton -green" href="{{--{{route('director.groups.show', ['id'=>$user->id])}}--}}"><i class="far fa-hand-pointer"></i></a>
+{{--                                    <a class="controlButton -green" href="--}}{{--{{route('director.groups.show', ['id'=>$user->id])}}--}}{{--"><i class="far fa-hand-pointer"></i></a>--}}
                                 </td>
                             </tr>
                         @endforeach
@@ -65,8 +65,6 @@
         $(document).ready(function() {
             $('#dataTable').DataTable();
         });
-
-
     </script>
 @endpush
 

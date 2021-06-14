@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class CreateUsersSeeder extends Seeder
+class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -35,15 +35,24 @@ class CreateUsersSeeder extends Seeder
 //                'role'=>'1',
 //                'password'=> bcrypt('nauczyciel'),
 //            ],
-//            [
-//                'login'=> 'RodRod051993',
-//                'first_name'=>'Rodzic',
-//                'last_name'=>'Rodzic',
-//                'email'=>'rodzic@rodzic.pl',
-//                'date_of_birth' => '1993-05-05',
-//                'role'=>'2',
-//                'password'=> bcrypt('rodzic'),
-//            ],
+            [
+                'login'=> 'RodRod0519932',
+                'first_name'=>'Ania',
+                'last_name'=>'Kowalska',
+                'email'=>'rodzic@rodzic1.pl',
+                'date_of_birth' => '1993-05-05',
+                'role'=>'2',
+                'password'=> bcrypt('rodzic'),
+            ],
+            [
+                'login'=> 'RodRod05199312',
+                'first_name'=>'Wojtek',
+                'last_name'=>'Nowak',
+                'email'=>'rodzic@rodzic.pl',
+                'date_of_birth' => '1993-05-05',
+                'role'=>'2',
+                'password'=> bcrypt('rodzic'),
+            ],
         ];
 
         foreach ($user as $key => $value) {

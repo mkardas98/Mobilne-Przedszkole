@@ -15,13 +15,13 @@ class CreateMailTable extends Migration
     {
         Schema::create('mail', function (Blueprint $table) {
             $table->id();
-            $table->string('from_name');
-            $table->string('from_address');
-            $table->string('host');
-            $table->string('port');
-            $table->string('user_name');
-            $table->string('password');
-            $table->string('encryption');
+            $table->string('from_name', 40);
+            $table->string('from_address', 40);
+            $table->string('host', 40);
+            $table->string('port', 5);
+            $table->string('user_name', 40);
+            $table->string('password', 50);
+            $table->string('encryption', 5);
             $table->timestamps();
         });
     }

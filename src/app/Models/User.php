@@ -28,7 +28,6 @@ class User extends Authenticatable
         'email',
         'role',
         'specialization',
-        'child',
         'password',
     ];
 
@@ -53,5 +52,9 @@ class User extends Authenticatable
 
     public function groups(){
         return $this->belongsToMany(Group::class, 'user_groups');
+    }
+
+        public function kid() {
+        return $this->hasOne(Kid::class);
     }
 }

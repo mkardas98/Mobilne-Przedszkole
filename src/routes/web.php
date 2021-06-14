@@ -5,6 +5,7 @@ use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\KidsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,15 +35,19 @@ Route::post('profil/edytuj/haslo', [ProfileController::class, 'changePassword'])
 Route::middleware('is_director')->group(function(){
     Route::get('dyrektor', [HomeController::class, 'directorHome'])->name('director_home.show');
     Route::get('dyrektor/grupy', [GroupsController::class, 'directorIndex'])->name('director.groups.index');
-    Route::match(['get', 'post'], '/dyrektor/grupy/edytuj/{id?}', [GroupsController::class, 'directorEdit'])->name('director.groups.edit');
-    Route::get('/dyrektor/grupy/usun/{id}', [GroupsController::class, 'directorDelete'])->name('director.groups.delete');
-    Route::get('/dyrektor/grupy/szczegoly/{id}', [GroupsController::class, 'directorShow'])->name('director.groups.show');
+    Route::match(['get', 'post'], 'dyrektor/grupy/edytuj/{id?}', [GroupsController::class, 'directorEdit'])->name('director.groups.edit');
+    Route::get('dyrektor/grupy/usun/{id}', [GroupsController::class, 'directorDelete'])->name('director.groups.delete');
+    Route::get('dyrektor/grupy/szczegoly/{id}', [GroupsController::class, 'directorShow'])->name('director.groups.show');
 
-    Route::get('/dyrektor/uzytkownicy', [UsersController::class, 'index'])->name('director.users.index');
-    Route::match(['get', 'post'], '/dyrektor/uzytkownicy/edytuj/{id?}', [UsersController::class, 'edit'])->name('director.users.edit');
-    Route::get('/dyrektor/uzytkownicy/usun/{id?}', [UsersController::class, 'delete'])->name('director.users.delete');
+    Route::get('dyrektor/uzytkownicy', [UsersController::class, 'index'])->name('director.users.index');
+    Route::match(['get', 'post'], 'dyrektor/uzytkownicy/edytuj/{id?}', [UsersController::class, 'edit'])->name('director.users.edit');
+    Route::get('dyrektor/uzytkownicy/usun/{id?}', [UsersController::class, 'delete'])->name('director.users.delete');
 
     Route::match(['get', 'post'], 'dyrektor/konfiguracja/email', [ConfigurationController::class, 'editMail'])->name('director.configuration.email');
+
+    Route::get('dyrektor/dzieci', [KidsController::class, 'directorIndex'])->name('director.kids.index');
+    Route::match(['get', 'post'], 'dyrektor/dzieci/edytuj/{id?}', [KidsController::class, 'directorEdit'])->name('director.kids.edit');
+    Route::get('dyrektor/dzieci/usun/{id?}', [KidsController::class, 'directorDelete'])->name('director.kids.delete');
 
 
 });

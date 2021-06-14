@@ -40,7 +40,6 @@ class ProfileController extends Controller
             foreach (ProfileForm::FIELDS as $field) {
                 $rules[$field['name']] = $field['rules'];
             }
-            $rules['login'][] = Rule::unique('users')->ignore($user->id);
             $rules['email'][] = Rule::unique('users')->ignore($user->id);
 
             $request->validate($rules);

@@ -16,9 +16,9 @@ return [
                 'route_name' => 'director.groups.index',
             ],
             'pupils' => [
-                'label' => 'Uczniowie',
+                'label' => 'Dzieci',
                 'icon' => 'fas fa-child',
-                'route_name' => 'index.show',
+                'route_name' => 'director.kids.index',
             ],
             'announcements' => [
                 'label' => 'Ogłoszenia',
