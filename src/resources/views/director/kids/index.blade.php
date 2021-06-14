@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             @include('helpers.alert')
-            <div class="col-lg-12">
+            <div class="col-12">
                 <div class="card">
 
                     <div class="card__body">
@@ -42,7 +42,7 @@
                                     <td>{{$kid->first_name}}</td>
                                     <td>{{$kid->last_name}}</td>
                                     <td> {{date('d/m/Y', strtotime($kid->date_of_birth))}}</td>
-                                    <td> </td>
+                                    <td> {{$kid->group->name}} </td>
                                     <td>@if($kid->user){{$kid->user->first_name}} {{$kid->user->last_name}} @else Nie przypisano @endif</td>
                                     <td class="tableButtons">
                                         <a class="controlButton -blue" href="{{route('director.kids.edit', ['id'=>$kid->id])}}"><i class="far fa-edit"></i></a>
@@ -57,6 +57,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
     </section>

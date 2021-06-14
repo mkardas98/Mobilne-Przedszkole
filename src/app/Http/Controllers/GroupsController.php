@@ -111,8 +111,7 @@ class GroupsController extends Controller
 
     public function directorShow($id)
     {
-        $group = Group::with('users')->find($id);
-
+        $group = Group::with('users', 'kids.user')->find($id);
         return view('director.groups.show', [
             'group' => $group,
         ]);
