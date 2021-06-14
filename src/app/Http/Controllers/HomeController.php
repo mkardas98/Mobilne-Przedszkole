@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\Kid;
 use App\Models\User;
 use App\Models\ViewHistory;
 use Carbon\Carbon;
@@ -50,6 +51,7 @@ class HomeController extends Controller
         $data = [];
         $data['groups'] = count(Group::where('status', 1)->get());
         $data['teachers'] = count(User::where('role', 1)->get());
+        $data['kids'] = count(Kid::all());
         return view('director.home', [
             'views' => $viewsHistory,
             'data' => $data,

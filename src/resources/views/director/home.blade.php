@@ -31,7 +31,7 @@
             </div>
             <div class="colorCard__body">
                 <span class="colorCard__value">
-                    10
+                    {{$data['kids']}}
                 </span>
             </div>
         </div>
