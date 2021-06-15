@@ -92,6 +92,6 @@ class KidForm extends Form
             $this->modelFields['group_id']['options'][$group->id] = $group->name;
         }
 
-        parent::__construct($model, User::class);
+        parent::__construct($model, Kid::class);
     }
 }

@@ -68,7 +68,8 @@ class KidsController extends Controller
 
     public function directorDelete($id)
     {
-
+        Kid::find($id)->delete();
+        return redirect()->back()->with('success', 'Element został usunięty!');
     }
 
 }

@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/application.css')}}">
 
+    <script src="{{asset('js/ckeditor.js')}}"></script>
+
 </head>
 <body>
 

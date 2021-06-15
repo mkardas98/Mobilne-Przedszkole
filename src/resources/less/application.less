@@ -20,6 +20,8 @@
 @greenLight: #29b186;
 @red: #f93a5a;
 
+
+
 body {
     display: flex;
     flex-direction: column;
@@ -36,6 +38,10 @@ a, button {
     &:focus {
         outline: none;
     }
+}
+
+section {
+    margin: 2.5rem 0;
 }
 
 .primaryButton {
@@ -431,6 +437,10 @@ a, button {
     .primaryButton {
         display: inline-block;
     }
+
+    .groupColor {
+        text-shadow: 0 0 10px @black;
+    }
 }
 
 .card {
@@ -446,6 +456,7 @@ a, button {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 100%;
     }
     &__buttons {
         display: flex;
@@ -548,6 +559,7 @@ a, button {
     background: @white;
     box-shadow: -8px 12px 18px 0 #dadee8;
     color: @white;
+    height: 100%;
 
     &.-red {
         background: linear-gradient(45deg, @red, #f7778c);
@@ -565,7 +577,12 @@ a, button {
         background: linear-gradient(to left, #efa65f, #f76a2d);
     }
 
-
+    &.-small {
+        margin: 0;
+        .colorCard__value {
+            font-size: 1.3rem;
+        }
+    }
     &__header {
 
     }
@@ -888,6 +905,71 @@ a, button {
     100%{
         transform:rotate(360deg);
         border-top:20px solid @greenLight;
+    }
+}
+
+.announcementItem {
+    margin: 2rem 0;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px 5px rgba(0,0,0,.2);
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .5rem 1rem;
+        border-bottom: 1px solid rgba(0,0,0,.1);
+
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    &__title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        display: block;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    &__date {
+    font-size: .8rem;
+        line-height: 1.1;
+        font-weight: 600;
+        color: @greenLight;
+
+    }
+
+    &__status {
+    font-size: .8rem;
+        line-height: 1.1;
+        font-weight: 600;
+
+    }
+
+    &__buttons {
+        display: flex;
+        a {
+            margin-left: .5rem;
+        }
+    }
+
+    &__text {
+        padding: .5rem 1rem;
+        text-align: center;
+        width: 80%;
+        margin: 0 auto;
+
+        ul {
+            text-align: left;
+            li {
+
+            }
+        }
+
     }
 }
 

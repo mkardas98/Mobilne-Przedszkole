@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mail extends Model
 {
+    protected $table = 'mail';
+    protected $primaryKey = 'id';
     protected $fillable = [
         "host",
         "port",
@@ -17,6 +19,5 @@ class Mail extends Model
         "from_address",
         "from_name"
     ];
-    protected $table = 'mail';
-    protected $primaryKey = 'id';
+
 }

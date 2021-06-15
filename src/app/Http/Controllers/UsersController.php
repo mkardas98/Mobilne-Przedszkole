@@ -94,7 +94,7 @@ class UsersController extends Controller {
 
         User::find($id)->delete();
         UserGroup::where('user_id', $id)->delete();
-        return redirect()->route('director.users.index')->with('success', 'Konto zostało usunięte');
+        return redirect()->back()->with('success', 'Konto zostało usunięte');
     }
 
 }

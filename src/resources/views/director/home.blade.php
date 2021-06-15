@@ -63,6 +63,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 @push('scripts.body.bottom')
     <script>
@@ -71,7 +72,7 @@
             data: {
                 labels: [
                     @foreach($views as $view)
-                        "{{$view->date}}",
+                        "{{date('d/m/Y', strtotime($view->date))}}",
                     @endforeach
                 ],
                 datasets: [{

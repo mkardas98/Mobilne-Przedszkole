@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnouncementsController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\HomeController;
@@ -49,7 +50,8 @@ Route::middleware('is_director')->group(function(){
     Route::match(['get', 'post'], 'dyrektor/dzieci/edytuj/{id?}', [KidsController::class, 'directorEdit'])->name('director.kids.edit');
     Route::get('dyrektor/dzieci/usun/{id?}', [KidsController::class, 'directorDelete'])->name('director.kids.delete');
 
-
+    Route::match(['get', 'post'], 'dyrektor/grupy/ogloszenia/edytuj/{group_id}/{id?}', [AnnouncementsController::class, 'edit'])->name('director.announcement.edit');
+    Route::get('dyrektor/grupy/ogloszenia/usun/{id?}', [AnnouncementsController::class, 'delete'])->name('director.announcement.delete');
 });
 
 

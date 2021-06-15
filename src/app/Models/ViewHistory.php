@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class ViewHistory extends Model
 {
     use HasFactory;
-    public $timestamps = false;
     protected $table = 'view_histories';
     protected $primaryKey = 'id';
-    protected $dateFormat = 'd-m-Y';
 
     protected $fillable = [
         'date',

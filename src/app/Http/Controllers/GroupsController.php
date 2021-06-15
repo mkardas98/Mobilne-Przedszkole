@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Forms\GroupsForm;
 use App\Forms\ProfileForm;
+use App\Models\Announcement;
 use App\Models\Group;
+use App\Models\Kid;
 use App\Models\User;
 use App\Models\UserGroup;
 use Carbon\Carbon;
@@ -19,6 +21,8 @@ use Illuminate\Validation\Rule;
 class GroupsController extends Controller
 {
 
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -26,25 +30,7 @@ class GroupsController extends Controller
 
     public function directorIndex()
     {
-
-//            $user = new User();
-//            $user->login = 'user5';
-//            $user->first_name = Person::firstNameFemale();
-//            $user->last_name = Person::lastNameFemale();
-//            $user->phone = PhoneNumber::numberBetween(100000000, 999999999);
-//            $user->address = \Faker\Provider\pl_PL\Address::streetSuffix() . ' ' . \Faker\Provider\pl_PL\Address::postcode() . ' ' . \Faker\Provider\pl_PL\Address::citySuffix();
-//            $user->pesel = Person::numberBetween(10000000000, 99999999999);
-//            $user->date_of_birth = DateTime::date('Y-m-d');
-//            $user->email = 'adres5@email.com';
-//            $user->role = 2;
-//            $user->password = bcrypt('user');
-//            $user->created_at = Carbon::now();
-//            $user->updated_at = Carbon::now();
-//            $user->save();
-
-
         $items = Group::with('users')->orderBy('name')->get();
-
         return view('director.groups.index', ['items' => $items]);
     }
 
@@ -104,14 +90,18 @@ class GroupsController extends Controller
     function directorDelete($id)
     {
         Group::find($id)->delete();
-        UserGroup::where('group_id', $id)->delete();
+        Group::where('group_id', $id)->delete();
+        Kid::where('group_id', $id)->update(['group_id', 0]);
+        Announcement::where('group_id', $id)->delete();
 
-        return redirect()->route('director.groups.index')->with('success', 'Grupa została usunięta!');
+        return redirect()->back()->with('success', 'Grupa została usunięta!');
     }
 
     public function directorShow($id)
     {
-        $group = Group::with('users', 'kids.user')->find($id);
+
+        $group = Group::with('users', 'kids.user', 'announcements')->find($id);
+        $group->announcements = $group->announcements->take(3);
         return view('director.groups.show', [
             'group' => $group,
         ]);

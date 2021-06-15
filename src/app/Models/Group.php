@@ -7,15 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    public $timestamps = false;
     protected $table = 'groups';
     protected $primaryKey = 'id';
+    protected $fillable = [
+        'room',
+        'name',
+        'color',
+        'status'
+    ];
 
-
-    public function users(){
+    public function users()
+    {
         return $this->belongsToMany(User::class, 'user_groups');
     }
-    public function kids(){
+
+    public function kids()
+    {
         return $this->hasMany(Kid::class);
+    }
+
+    public function announcements(){
+        return $this->hasMany(Announcement::class)->orderBy('created_at', 'desc');
     }
 }
