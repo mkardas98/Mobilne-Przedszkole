@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="checkbox-wrapper">
-                                    <label class="custom-label">Status grupy</label>
+                                    <label class="custom-label">Status ogłoszenia</label>
                                     <label class="checkbox-label mt-2"><input type="checkbox" name="status" class="custom-input" value="1" @if($obj->status) checked="checked" @endif>Widoczna - aktywna</label>
                                 </div>
                             </div>

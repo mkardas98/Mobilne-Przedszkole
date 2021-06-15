@@ -174,7 +174,7 @@
                                     DODANO: {{date('d/m/Y H:i', strtotime($item->created_at))}}
                                 </span>
                                 <span class="announcementItem__status">
-                                    {{$item->status ? 'Ogłoszenie widoczne' : 'Ogłoszenie niewidoczne'}}
+                                    {!! $item->status ? '<i class="fas fa-eye"></i> Ogłoszenie widoczne' : ' <i class="fas fa-eye-slash"></i> Ogłoszenie niewidoczne' !!}
                                 </span>
                             </div>
                             <div class="announcementItem__buttons">
