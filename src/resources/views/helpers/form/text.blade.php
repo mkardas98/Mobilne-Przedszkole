@@ -5,6 +5,7 @@
            @foreach($field['rules'] as $ruleName=>$ruleValue) {{--{{$ruleName}}="{{$ruleValue}}"--}} @endforeach
             @foreach($field['attrs'] as $attr=>$value){{$attr}}="{{$value == 1 ? $attr : $value}}"@endforeach
     >
+    @dump($field)
 
     {!! $errors->first($field['name'], '<p class="help-block">:message</p>') !!}
 

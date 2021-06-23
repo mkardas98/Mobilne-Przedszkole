@@ -3,20 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Forms\GroupsForm;
-use App\Forms\ProfileForm;
 use App\Models\Announcement;
 use App\Models\Group;
 use App\Models\Kid;
-use App\Models\User;
+use App\Models\LessonPlan;
 use App\Models\UserGroup;
-use Carbon\Carbon;
-use Faker\Provider\Address;
-use Faker\Provider\DateTime;
-use Faker\Provider\PhoneNumber;
-use Faker\Provider\pl_PL\Person;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class GroupsController extends Controller
 {
@@ -93,6 +85,7 @@ class GroupsController extends Controller
         Group::where('group_id', $id)->delete();
         Kid::where('group_id', $id)->update(['group_id', 0]);
         Announcement::where('group_id', $id)->delete();
+        LessonPlan::where('group_id', $id)->delete();
 
         return redirect()->back()->with('success', 'Grupa została usunięta!');
     }
@@ -100,7 +93,7 @@ class GroupsController extends Controller
     public function directorShow($id)
     {
 
-        $group = Group::with('users', 'kids.user', 'announcements')->find($id);
+        $group = Group::with('users', 'kids.user', 'announcements', 'lessonPlan')->find($id);
         $group->announcements = $group->announcements->take(3);
         return view('director.groups.show', [
             'group' => $group,

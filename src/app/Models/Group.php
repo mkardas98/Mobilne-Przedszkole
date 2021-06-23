@@ -29,4 +29,8 @@ class Group extends Model
     public function announcements(){
         return $this->hasMany(Announcement::class)->orderBy('created_at', 'desc');
     }
+
+    public function lessonPlan(){
+        return $this->hasMany(LessonPlan::class)->orderBy('date', 'desc');
+    }
 }

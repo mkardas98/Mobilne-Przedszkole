@@ -158,13 +158,11 @@
                            href="{{route('director.announcement.edit', ['group_id' => $group->id])}}">Dodaj nowe
                             ogłoszenie</a>
                     </div>
-
-
                 </div>
             </div>
 
             <div class="card__body">
-
+                @if(count($group->announcements)>0)
                @foreach($group->announcements as $item)
                     <div class="announcementItem">
                         <div class="announcementItem__header">
@@ -192,9 +190,58 @@
                         </div>
                     </div>
                 @endforeach
+                   @if(count($group->announcements) == 3)
+                       <a href="{{route('director.announcement.group.index', $group->id)}}" class="primaryButton -green">Zobacz wszystie ogłoszenia</a>
+                       @endif
+                @else
+                    <span class="emptySection">Brak ogłoszeń dla tej grupy!</span>
+                @endif
             </div>
         </div>
     </section>
+    <section class="lessonPlan">
+        <div class="card">
+            <div class="card__header">
+                <span class="card__headerTitle">
+                    Plan zajęć
+                </span>
+                <div class="card__buttons">
+                    <a class="primaryButton"
+                       href="{{route('lesson_plan.edit', ['group_id' => $group->id])}}">Dodaj nowy dzień</a>
+                </div>
+            </div>
+            <div class="card__body">
+                <table id="dataTable2" class="ui celled table">
+                    <thead>
+                    <tr>
+                        <th><i class="fas fa-hashtag"></i></th>
+                        <th>Data</th>
+                        <th><i class="fas fa-cogs"></i> Zarządzanie</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($group->lessonPlan as $key=>$plan)
+                        <tr>
+                            <td>{{$key + 1}}</td>
+                            <td> {{date('d/m/Y', strtotime($plan->date))}}</td>
+                            <td class="tableButtons">
+                                <a class="controlButton -blue" href="{{route('lesson_plan.edit', ['id'=>$plan->id, 'group_id'=>$group->id])}}"><i
+                                        class="far fa-edit"></i></a>
+{{--                                @php($delete = route('director.kids.delete', $plan->id))--}}
+{{--                                <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i--}}
+{{--                                        class="fas fa-ban"></i></button>--}}
+{{--                                <a class="controlButton -green"--}}
+{{--                                   href="{{route('director.groups.show', ['id'=>$kid->id])}}"><i--}}
+{{--                                        class="far fa-hand-pointer"></i></a>--}}
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
 
 @endsection
 
@@ -202,6 +249,7 @@
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();
+            $('#dataTable2').DataTable();
         });
 
 

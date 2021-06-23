@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Forms\AnnouncementForm;
 use App\Models\Announcement;
+use App\Models\Group;
 use Illuminate\Http\Request;
 
 class AnnouncementsController extends Controller
@@ -47,9 +48,9 @@ class AnnouncementsController extends Controller
             $obj->save();
             return redirect()->route('director.announcement.edit',
                 [
-                    'id'=>$obj->id,
-                    'group_id'=>$obj->group_id,
-                    'obj'=>$obj
+                    'id' => $obj->id,
+                    'group_id' => $obj->group_id,
+                    'obj' => $obj
                 ]
             )->with('success', 'Zmiany zostały zapisane!');
         }
@@ -57,17 +58,19 @@ class AnnouncementsController extends Controller
         return view('director.announcements.edit', [
             'obj' => $obj,
             'form' => $form,
-            'group_id'=> $group_id
+            'group_id' => $group_id
         ]);
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         Announcement::find($id)->delete();
         return redirect()->back()->with('success', 'Ogłoszenie został usunięte!');
-
     }
 
-
-
+    public function indexGroup($id)
+    {
+        return view('director.announcements.group_index', ['item' => Group::with('announcements')->find($id)]);
+    }
 
 }

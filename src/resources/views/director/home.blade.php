@@ -50,6 +50,7 @@
             </div>
         </div>
     </div>
+    <hr class="no-line">
     <div class="col-12">
         <div class="card">
             <div class="card__header">

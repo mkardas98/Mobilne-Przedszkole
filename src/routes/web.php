@@ -4,10 +4,12 @@ use App\Http\Controllers\AnnouncementsController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LessonPlansController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KidsController;
 use App\Http\Controllers\UsersController;
+use App\Models\LessonPlan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +54,10 @@ Route::middleware('is_director')->group(function(){
 
     Route::match(['get', 'post'], 'dyrektor/grupy/ogloszenia/edytuj/{group_id}/{id?}', [AnnouncementsController::class, 'edit'])->name('director.announcement.edit');
     Route::get('dyrektor/grupy/ogloszenia/usun/{id?}', [AnnouncementsController::class, 'delete'])->name('director.announcement.delete');
+    Route::get('dyrektor/grupy/szczegoly/{id}/ogloszenia', [AnnouncementsController::class, 'indexGroup'])->name('director.announcement.group.index');
+
+    Route::match(['get', 'post'], 'dyrektor/grupy/szczegoly/plan/{group_id}/{id?}', [LessonPlansController::class, 'edit'])->name('lesson_plan.edit');
+
 });
 
 
