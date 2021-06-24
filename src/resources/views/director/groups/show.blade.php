@@ -97,13 +97,15 @@
     <section class="directorGroupKids">
         <div class="card">
             <div class="card__header">
-                                       <span class="card__headerTitle">
+                <span class="card__headerTitle">
                     Dzieci należące do grupy
                 </span>
-
+                <div class="card__buttons">
+                    <a class="primaryButton" href="{{route('attendance_list.edit', ['group_id'=>$group->id, 'date'=>date('Y-m-d', strtotime(\Carbon\Carbon::now()))])}}">Sprawdź obecność</a>
+                </div>
             </div>
             <div class="card__body">
-                <table id="dataTable" class="ui celled table">
+                <table id="dataTable" class="ui celled table" >
                     <thead>
                     <tr>
                         <th><i class="fas fa-hashtag"></i></th>
@@ -227,12 +229,12 @@
                             <td class="tableButtons">
                                 <a class="controlButton -blue" href="{{route('lesson_plan.edit', ['id'=>$plan->id, 'group_id'=>$group->id])}}"><i
                                         class="far fa-edit"></i></a>
-{{--                                @php($delete = route('director.kids.delete', $plan->id))--}}
-{{--                                <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i--}}
-{{--                                        class="fas fa-ban"></i></button>--}}
-{{--                                <a class="controlButton -green"--}}
-{{--                                   href="{{route('director.groups.show', ['id'=>$kid->id])}}"><i--}}
-{{--                                        class="far fa-hand-pointer"></i></a>--}}
+                                @php($delete = route('lesson_plan.delete', $plan->id))
+                                <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i
+                                        class="fas fa-ban"></i></button>
+                                <a class="controlButton -green"
+                                   href="{{route('lesson_plan.show', ['id'=>$plan->id])}}"><i
+                                        class="far fa-hand-pointer"></i></a>
                             </td>
                         </tr>
                     @endforeach

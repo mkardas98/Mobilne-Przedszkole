@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnnouncementsController;
+use App\Http\Controllers\AttendanceListController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\HomeController;
@@ -56,7 +57,12 @@ Route::middleware('is_director')->group(function(){
     Route::get('dyrektor/grupy/ogloszenia/usun/{id?}', [AnnouncementsController::class, 'delete'])->name('director.announcement.delete');
     Route::get('dyrektor/grupy/szczegoly/{id}/ogloszenia', [AnnouncementsController::class, 'indexGroup'])->name('director.announcement.group.index');
 
-    Route::match(['get', 'post'], 'dyrektor/grupy/szczegoly/plan/{group_id}/{id?}', [LessonPlansController::class, 'edit'])->name('lesson_plan.edit');
+    Route::match(['get', 'post'], 'dyrektor/grupy/szczegoly/plan/{group_id}/edytuj/{id?}', [LessonPlansController::class, 'edit'])->name('lesson_plan.edit');
+    Route::get('dyrektor/grupy/szczegoly/plan/{id?}', [LessonPlansController::class, 'show'])->name('lesson_plan.show');
+    Route::get('dyrektor/grupy/szczegoly/plan/usun/{id?}', [LessonPlansController::class, 'delete'])->name('lesson_plan.delete');
+
+    Route::match(['get', 'post'], 'dyrektor/grupy/szczegoly/obecnosci/{group_id}/edytuj/{date}', [AttendanceListController::class, 'edit'])->name('attendance_list.edit');
+
 
 });
 

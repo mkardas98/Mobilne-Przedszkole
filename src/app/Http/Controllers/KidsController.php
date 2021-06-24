@@ -72,4 +72,6 @@ class KidsController extends Controller
         return redirect()->back()->with('success', 'Element został usunięty!');
     }
 
+
+
 }

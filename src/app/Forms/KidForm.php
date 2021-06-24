@@ -54,7 +54,7 @@ class KidForm extends Form
             'name' => 'user_id',
             'type' => 'select',
             'label' => 'Opiekun',
-            'rules' => [],
+            'rules' => ['required'],
             'options' => [],
         ],
         'group_id' => [

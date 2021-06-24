@@ -17,6 +17,10 @@ class Kid extends Model
         'avatar',
         'group_id',
         'user_id',
+        'attendance_list',
+    ];
+    protected $casts = [
+        'attendance_list' => 'array',
     ];
 
     public function user(){

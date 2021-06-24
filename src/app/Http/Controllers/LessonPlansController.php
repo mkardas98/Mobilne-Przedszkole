@@ -12,7 +12,6 @@ class LessonPlansController extends Controller
 {
 
 
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -64,6 +63,16 @@ class LessonPlansController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        return view('lesson_plan.show', ['obj' => LessonPlan::find($id)]);
+    }
+
+    public function delete($id)
+    {
+        LessonPlan::find($id)->delete();
+        return redirect()->back()->with('success', 'Plan dnia został usunięty!');
+    }
 
 
 }

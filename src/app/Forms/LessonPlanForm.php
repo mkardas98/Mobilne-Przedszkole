@@ -169,9 +169,6 @@ class LessonPlanForm extends Form
             'options' => [],
         ],
 
-
-
-
     ];
 
 
@@ -180,22 +177,6 @@ class LessonPlanForm extends Form
     {
         foreach (self::FIELDS as $name => $field) {
             $this->modelFields[$name] = $field;
-        }
-        $teachers = User::where(function ($query) {
-            $query->where('role', '=', '0')
-                ->orWhere('role', '=', 1);
-        })
-            ->orderBy('last_name')
-            ->get();
-
-        foreach ($teachers as $teacher){
-            $this->modelFields['plan[1][teacher]']['options'][$teacher->first_name . ' ' . $teacher->last_name] = $teacher->first_name . ' ' . $teacher->last_name;
-            $this->modelFields['plan[2][teacher]']['options'][$teacher->first_name . ' ' . $teacher->last_name] = $teacher->first_name . ' ' . $teacher->last_name;
-            $this->modelFields['plan[3][teacher]']['options'][$teacher->first_name . ' ' . $teacher->last_name] = $teacher->first_name . ' ' . $teacher->last_name;
-            $this->modelFields['plan[4][teacher]']['options'][$teacher->first_name . ' ' . $teacher->last_name] = $teacher->first_name . ' ' . $teacher->last_name;
-            $this->modelFields['plan[5][teacher]']['options'][$teacher->first_name . ' ' . $teacher->last_name] = $teacher->first_name . ' ' . $teacher->last_name;
-            $this->modelFields['plan[6][teacher]']['options'][$teacher->first_name . ' ' . $teacher->last_name] = $teacher->first_name . ' ' . $teacher->last_name;
-            $this->modelFields['plan[7][teacher]']['options'][$teacher->first_name . ' ' . $teacher->last_name] = $teacher->first_name . ' ' . $teacher->last_name;
         }
 
         parent::__construct($model, Kid::class);

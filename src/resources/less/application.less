@@ -994,3 +994,85 @@ section {
         margin: 2rem 0 0;
     }
 }
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+
+    thead {
+        tr {
+            background-color: @greenLight;
+            color: #ffffff;
+            text-align: center;
+        }
+    }
+    th, td {
+        padding: 12px 15px;
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid #dddddd;
+            text-align: center;
+            &:nth-of-type(even){
+                background-color: #f3f3f3;
+            }
+            &:last-of-type {
+                border-bottom: 2px solid @greenLight;
+            }
+            &.active-row {
+                font-weight: bold;
+                color: @greenLight;
+            }
+        }
+    }
+}
+
+.switch {
+    display: inline-block;
+    position: relative;
+    width: 45px;
+    height: 20px;
+}
+.switch input[type="checkbox"]:checked + .slider {
+    background-color: turquoise;
+}
+
+.switch input[type="checkbox"]:checked + .slider::before {
+    transform: translateX(26px);
+}
+
+/* Round */
+.round {
+    border-radius: 20px;
+}
+
+.round::before {
+    border-radius: 50%;
+}
+.slider {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    transition: all 0.4s ease;
+}
