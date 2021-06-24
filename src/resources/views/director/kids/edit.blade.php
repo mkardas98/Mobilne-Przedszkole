@@ -8,7 +8,7 @@
             Edytuj dziecko
         </span>
             <div class="pageNavigation__buttons">
-                <a href="{{route('director.kids.index')}}" class="primaryButton -red">Anuluj</a>
+                <a href="{{redirect()->back()}}" class="primaryButton -red">Anuluj</a>
                 <button onclick="event.preventDefault(); document.getElementById('userForm').submit();" class="primaryButton ">Zapisz</button>
             </div>
         </div>

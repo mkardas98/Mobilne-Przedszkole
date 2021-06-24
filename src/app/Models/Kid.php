@@ -30,6 +30,11 @@ class Kid extends Model
         return $this->belongsTo(Group::class);
     }
 
+    public function allergens()
+    {
+        return $this->hasMany(Allergen::class);
+    }
+
 
 }
 

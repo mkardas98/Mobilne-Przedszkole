@@ -48,7 +48,7 @@
                                         <a class="controlButton -blue" href="{{route('director.kids.edit', ['id'=>$kid->id])}}"><i class="far fa-edit"></i></a>
                                         @php($delete = route('director.kids.delete', $kid->id))
                                         <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i class="fas fa-ban"></i></button>
-                                        <a class="controlButton -green" href="{{--{{route('director.groups.show', ['id'=>$kid->id])}}--}}"><i class="far fa-hand-pointer"></i></a>
+                                        <a class="controlButton -green" href="{{route('director.kids.show', ['id'=>$kid->id])}}"><i class="far fa-hand-pointer"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

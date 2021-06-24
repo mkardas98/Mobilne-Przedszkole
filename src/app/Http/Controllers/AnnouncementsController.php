@@ -46,7 +46,7 @@ class AnnouncementsController extends Controller
             }
 
             $obj->save();
-            return redirect()->route('director.announcement.edit',
+            return redirect()->back('director.announcement.edit',
                 [
                     'id' => $obj->id,
                     'group_id' => $obj->group_id,

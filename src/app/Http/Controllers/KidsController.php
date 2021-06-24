@@ -50,14 +50,13 @@ class KidsController extends Controller
             $obj->user_id = $post['user_id'];
             $obj->group_id = $post['group_id'];
 
-            if(isset($post['avatar'])){
+            if (isset($post['avatar'])) {
                 updateAvatar($post['avatar'], $obj);
             }
 
 
-
             $obj->save();
-            return redirect()->route('director.kids.edit',['id'=>$obj->id])->with('success', 'Zmiany zostały zapisane!');
+            return redirect()->route('director.kids.edit', ['id' => $obj->id])->with('success', 'Zmiany zostały zapisane!');
         }
 
         return view('director.kids.edit', [
@@ -72,6 +71,14 @@ class KidsController extends Controller
         return redirect()->back()->with('success', 'Element został usunięty!');
     }
 
+    public function directorShow($id)
+    {
+        $kid = Kid::with('group')->find($id);
+
+        return view('director.kids.show', [
+            'obj' => $kid
+        ]);
+    }
 
 
 }

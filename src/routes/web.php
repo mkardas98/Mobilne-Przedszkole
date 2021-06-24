@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AllergensController;
 use App\Http\Controllers\AnnouncementsController;
 use App\Http\Controllers\AttendanceListController;
 use App\Http\Controllers\ConfigurationController;
@@ -51,7 +52,10 @@ Route::middleware('is_director')->group(function(){
 
     Route::get('dyrektor/dzieci', [KidsController::class, 'directorIndex'])->name('director.kids.index');
     Route::match(['get', 'post'], 'dyrektor/dzieci/edytuj/{id?}', [KidsController::class, 'directorEdit'])->name('director.kids.edit');
+    Route::get('dyrektor/dzieci/szczegoły/{id}', [KidsController::class, 'directorShow'])->name('director.kids.show');
     Route::get('dyrektor/dzieci/usun/{id?}', [KidsController::class, 'directorDelete'])->name('director.kids.delete');
+
+    Route::match(['get', 'post'],'dyrektor/dzieci/szczegóły/{kid_id}/alergeny/edytuj/{id?}', [AllergensController::class, 'directorEdit'])->name('director.allergens.edit');
 
     Route::match(['get', 'post'], 'dyrektor/grupy/ogloszenia/edytuj/{group_id}/{id?}', [AnnouncementsController::class, 'edit'])->name('director.announcement.edit');
     Route::get('dyrektor/grupy/ogloszenia/usun/{id?}', [AnnouncementsController::class, 'delete'])->name('director.announcement.delete');
