@@ -21,7 +21,6 @@
 @red: #f93a5a;
 
 
-
 body {
     display: flex;
     flex-direction: column;
@@ -55,6 +54,7 @@ section {
     border: none;
     margin: .3rem auto;
     transition: .3s ease-in-out;
+    white-space: nowrap;
 
     &.-red {
         background: linear-gradient(45deg, @red, #cb596c);
@@ -104,6 +104,7 @@ section {
     &.-blue {
         background: @blue;
     }
+
     &.-green {
         background: @greenLight;
     }
@@ -323,9 +324,10 @@ section {
         cursor: pointer;
     }
 
-    &__userAvatarWrap{
+    &__userAvatarWrap {
         margin-bottom: 1rem;
     }
+
     &__userAvatar {
         display: block;
         border: 2px solid #c9d2e8;
@@ -339,6 +341,7 @@ section {
         color: @darkBlue;
         font-weight: 600;
     }
+
     &__userRole {
         color: @grey;
         font-size: .8rem;
@@ -429,7 +432,7 @@ section {
         display: flex;
         align-items: center;
 
-        a,button {
+        a, button {
             margin: 0 0 0 .5rem;
         }
     }
@@ -458,9 +461,11 @@ section {
         align-items: center;
         width: 100%;
     }
+
     &__buttons {
         display: flex;
         align-items: center;
+
         a, button {
             margin-left: .5rem;
         }
@@ -475,20 +480,20 @@ section {
     &__body {
         padding: 2rem 0;
     }
+
     &__name {
 
     }
 
 
-
-
-    &__valueName{
+    &__valueName {
         display: block;
         font-size: 1.1rem;
         color: @blue;
         font-weight: 600;
         padding-bottom: .2rem;
     }
+
     &__value {
         display: block;
         font-size: 1.25rem;
@@ -498,16 +503,17 @@ section {
     table.dataTable {
         thead {
             th {
-                font-family: @fontSecondary ;
+                font-family: @fontSecondary;
                 padding: 10px;
                 text-align: center;
                 color: #030c75;
             }
         }
+
         tbody {
             tr {
                 td {
-                    font-family: @fontSecondary ;
+                    font-family: @fontSecondary;
                     font-weight: 500;
                     padding: 10px;
                     text-align: center;
@@ -522,6 +528,7 @@ section {
                         padding: .3rem;
                         border-radius: 2px;
                     }
+
                     .active {
                         background: @greenLight;
                         color: @white;
@@ -531,27 +538,49 @@ section {
                         background: @red;
                         color: @white;
                     }
+
                     .colorGroup {
-                      font-size: 1.3rem;
+                        font-size: 1.3rem;
                     }
+
                     span {
                         font-size: .8rem;
                         display: block;
                         line-height: 1.2;
                     }
+
                     .avatar {
                         display: block;
                         width: 80px;
                         margin: 0 auto;
-                    &.-small {
-                        width: 40px;
+
+                        &.-small {
+                            width: 40px;
+                        }
+
+
                     }
+
+                    i {
+                        &.true {
+                            line-height: 1;
+                            font-weight: 600;
+                            color: @greenLight;
+                        }
+
+                        &.false {
+                            line-height: 1;
+                            font-weight: 600;
+                            color: @red;
+                        }
                     }
+
                 }
             }
         }
     }
 }
+
 .colorCard {
     padding: 1.25rem;
     margin: 1rem 0;
@@ -579,13 +608,16 @@ section {
 
     &.-small {
         margin: 0;
+
         .colorCard__value {
             font-size: 1.3rem;
         }
     }
+
     &__header {
 
     }
+
     &__headerTitle {
         display: block;
         text-align: center;
@@ -596,6 +628,7 @@ section {
     &__body {
         padding: 1rem 0;
     }
+
     &__value {
         font-size: 3rem;
         display: block;
@@ -604,6 +637,7 @@ section {
         font-weight: 900;
     }
 }
+
 .profileShow {
     &__avatar {
         img {
@@ -616,9 +650,11 @@ section {
             padding: 3px;
         }
     }
+
     .row {
         width: 100%;
     }
+
     &__details {
         display: flex;
         align-items: center;
@@ -647,22 +683,22 @@ section {
 
 .editAvatar {
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 
 
-        img {
-            border-radius: 50%;
-            display: block;
-            margin: 0 auto;
-            width: 15rem;
-            border: 2px solid #c9d2e8;
-            box-shadow: 0 5px 5px 0 rgb(44 44 44 / 20%);
-            padding: 3px;
-        }
+    img {
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto;
+        width: 15rem;
+        border: 2px solid #c9d2e8;
+        box-shadow: 0 5px 5px 0 rgb(44 44 44 / 20%);
+        padding: 3px;
+    }
 }
 
 .profileEditShow {
@@ -709,6 +745,7 @@ section {
     line-height: 1.5;
     color: @darkBlue;
     border: 1px solid #bec2db;
+
     &:focus {
         outline-color: @blue;
     }
@@ -726,6 +763,7 @@ section {
 
 .checkbox-label {
     display: flex;
+
     input {
         width: auto;
         margin: .3rem .5rem 0 0
@@ -881,45 +919,48 @@ section {
     background: @white;
     z-index: 999;
     transition: .5s .5s ease;
+
     &.-ready {
         opacity: 0;
     }
 }
 
 
-
-#preload{
-    height:150px;
-    width:150px;
+#preload {
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
-    border:20px solid #e5e5e5;
-    animation:2.5s pre linear infinite;
+    border: 20px solid #e5e5e5;
+    animation: 2.5s pre linear infinite;
 
 }
+
 @keyframes pre {
-    0%{
-        transform:rotate(0deg);
-        border-top:20px solid @greenLight;
+    0% {
+        transform: rotate(0deg);
+        border-top: 20px solid @greenLight;
     }
     50% {
         border-top: 20px solid @blue;
     }
-    100%{
-        transform:rotate(360deg);
-        border-top:20px solid @greenLight;
+    100% {
+        transform: rotate(360deg);
+        border-top: 20px solid @greenLight;
     }
 }
 
 .announcementItem {
     margin: 2rem 0;
     border-radius: 10px;
-    box-shadow: 3px 3px 10px 5px rgba(0,0,0,.2);
+    box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, .2);
+    background: @white;
+
     &__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: .5rem 1rem;
-        border-bottom: 1px solid rgba(0,0,0,.1);
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
 
     }
 
@@ -938,7 +979,7 @@ section {
     }
 
     &__date {
-    font-size: .8rem;
+        font-size: .8rem;
         line-height: 1.1;
         font-weight: 600;
         color: @greenLight;
@@ -946,7 +987,7 @@ section {
     }
 
     &__status {
-    font-size: .8rem;
+        font-size: .8rem;
         line-height: 1.1;
         font-weight: 600;
 
@@ -954,6 +995,7 @@ section {
 
     &__buttons {
         display: flex;
+
         a {
             margin-left: .5rem;
         }
@@ -967,6 +1009,7 @@ section {
 
         ul {
             text-align: left;
+
             li {
 
             }
@@ -989,7 +1032,7 @@ section {
 }
 
 
-.lessonPlanEdit{
+.lessonPlanEdit {
     &__header {
         display: block;
         font-weight: 600;
@@ -1013,6 +1056,7 @@ section {
             text-align: center;
         }
     }
+
     th, td {
         padding: 12px 15px;
     }
@@ -1021,15 +1065,25 @@ section {
         tr {
             border-bottom: 1px solid #dddddd;
             text-align: center;
-            &:nth-of-type(even){
+
+            &:nth-of-type(even) {
                 background-color: #f3f3f3;
             }
+
             &:last-of-type {
                 border-bottom: 2px solid @greenLight;
             }
+
             &.active-row {
                 font-weight: bold;
                 color: @greenLight;
+            }
+
+            td {
+                &.tableButtons {
+                    display: flex;
+                    justify-content: center;
+                }
             }
         }
     }
@@ -1041,6 +1095,7 @@ section {
     width: 45px;
     height: 20px;
 }
+
 .switch input[type="checkbox"]:checked + .slider {
     background-color: turquoise;
 }
@@ -1057,6 +1112,7 @@ section {
 .round::before {
     border-radius: 50%;
 }
+
 .slider {
     position: absolute;
     top: 0;
@@ -1077,4 +1133,34 @@ section {
     height: 20px;
     background-color: white;
     transition: all 0.4s ease;
+}
+.pager {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    li {
+        margin: 0 .5rem;
+        font-size: 1.2rem;
+        border: 1px solid @blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.7rem;
+        height: 1.7rem;
+        border-radius: 3px;
+        &.prev, &.next {
+            border: none;
+        }
+    }
+    .my-active{
+        background-color: @blue;
+
+        span {
+
+            color: @white;
+
+        }
+
+    }
 }

@@ -101,7 +101,7 @@
                     Dzieci należące do grupy
                 </span>
                 <div class="card__buttons">
-                    <a class="primaryButton" href="{{route('attendance_list.edit', ['group_id'=>$group->id, 'date'=>date('Y-m-d', strtotime(\Carbon\Carbon::now()))])}}">Sprawdź obecność</a>
+                    <a class="primaryButton" href="{{route('director.attendance_list.edit', ['group_id'=>$group->id, 'date'=>date('Y-m-d', strtotime(\Carbon\Carbon::now()))])}}">Sprawdź obecność</a>
                 </div>
             </div>
             <div class="card__body">
@@ -138,7 +138,7 @@
                                 <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i
                                         class="fas fa-ban"></i></button>
                                 <a class="controlButton -green"
-                                   href="{{--{{route('director.groups.show', ['id'=>$kid->id])}}--}}"><i
+                                   href="{{route('director.kids.show', ['id'=>$kid->id])}}"><i
                                         class="far fa-hand-pointer"></i></a>
                             </td>
                         </tr>
@@ -209,7 +209,7 @@
                 </span>
                 <div class="card__buttons">
                     <a class="primaryButton"
-                       href="{{route('lesson_plan.edit', ['group_id' => $group->id])}}">Dodaj nowy dzień</a>
+                       href="{{route('director.lesson_plan.edit', ['group_id' => $group->id])}}">Dodaj nowy dzień</a>
                 </div>
             </div>
             <div class="card__body">
@@ -227,13 +227,13 @@
                             <td>{{$key + 1}}</td>
                             <td> {{date('d/m/Y', strtotime($plan->date))}}</td>
                             <td class="tableButtons">
-                                <a class="controlButton -blue" href="{{route('lesson_plan.edit', ['id'=>$plan->id, 'group_id'=>$group->id])}}"><i
+                                <a class="controlButton -blue" href="{{route('director.lesson_plan.edit', ['id'=>$plan->id, 'group_id'=>$group->id])}}"><i
                                         class="far fa-edit"></i></a>
-                                @php($delete = route('lesson_plan.delete', $plan->id))
+                                @php($delete = route('director.lesson_plan.delete', $plan->id))
                                 <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i
                                         class="fas fa-ban"></i></button>
                                 <a class="controlButton -green"
-                                   href="{{route('lesson_plan.show', ['id'=>$plan->id])}}"><i
+                                   href="{{route('director.lesson_plan.show', ['id'=>$plan->id])}}"><i
                                         class="far fa-hand-pointer"></i></a>
                             </td>
                         </tr>

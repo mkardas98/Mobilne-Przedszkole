@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Forms\GroupsForm;
+use App\Forms\GroupForm;
 use App\Models\Announcement;
 use App\Models\Group;
 use App\Models\Kid;
@@ -35,24 +35,24 @@ class GroupsController extends Controller
         if ($request->isMethod('post')) {
             $rules = [];
 
-            foreach (GroupsForm::FIELDS as $field) {
+            foreach (GroupForm::FIELDS as $field) {
                 $rules[$field['name']] = $field['rules'];
             }
 
             $request->validate($rules);
 
-            $form = $request->all();
-            $obj->name = $form['name'];
-            $obj->room = $form['room'];
-            $obj->color = $form['color'];
+            $post = $request->all();
+            $obj->name = $post['name'];
+            $obj->room = $post['room'];
+            $obj->color = $post['color'];
             if (!isset($form['status'])) {
-                $form['status'] = 0;
+                $post['status'] = 0;
             }
 
-            $obj->status = $form['status'];
+            $obj->status = $post['status'];
             $obj->save();
 
-            $obj->users()->sync($form['teachers']);
+            $obj->users()->sync($post['teachers']);
 
 
 
@@ -70,7 +70,7 @@ class GroupsController extends Controller
             $obj->teachers = array_unique($teachers);
 
         }
-        $form = new GroupsForm($obj);
+        $form = new GroupForm($obj);
 
 
         return view('director.groups.edit', [
@@ -82,8 +82,8 @@ class GroupsController extends Controller
     function directorDelete($id)
     {
         Group::find($id)->delete();
-        Group::where('group_id', $id)->delete();
-        Kid::where('group_id', $id)->update(['group_id', 0]);
+        UserGroup::where('group_id', $id)->delete();
+        Kid::where('group_id', $id)->update(['group_id'=> 0]);
         Announcement::where('group_id', $id)->delete();
         LessonPlan::where('group_id', $id)->delete();
 

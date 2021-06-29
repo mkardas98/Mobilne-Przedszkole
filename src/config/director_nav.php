@@ -23,7 +23,7 @@ return [
             'announcements' => [
                 'label' => 'Ogłoszenia',
                 'icon' => 'fas fa-bullhorn',
-                'route_name' => 'index.show',
+                'route_name' => 'director.announcements.index',
             ],
             'foods' => [
                 'label' => 'Jadłospis',

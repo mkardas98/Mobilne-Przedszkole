@@ -44,7 +44,7 @@ class LessonPlansController extends Controller
             $obj->plan = $post['plan'];
 
             $obj->save();
-            return redirect()->route('lesson_plan.edit',
+            return redirect()->route('director.lesson_plan.edit',
                 [
                     'id' => $obj->id,
                     'group_id' => $obj->group_id,
@@ -54,7 +54,7 @@ class LessonPlansController extends Controller
             )->with('success', 'Zmiany zostały zapisane!');
         }
 //        $obj->plan = json_decode($obj->plan);
-        return view('lesson_plan.edit', [
+        return view('director.lesson_plan.edit', [
             'obj' => $obj,
             'form' => $form,
             'group_id' => $group_id,
@@ -65,7 +65,7 @@ class LessonPlansController extends Controller
 
     public function show($id)
     {
-        return view('lesson_plan.show', ['obj' => LessonPlan::find($id)]);
+        return view('director.lesson_plan.show', ['obj' => LessonPlan::find($id)]);
     }
 
     public function delete($id)

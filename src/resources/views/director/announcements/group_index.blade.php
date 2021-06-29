@@ -6,26 +6,16 @@
            Ogłoszenia grupy {{$item->name}}
         </span>
         <div class="pageNavigation__buttons">
-            <a href="{{route('director.groups.show', $item->id)}}" class="primaryButton">Powrót</a>
+            <a href="{{route('director.groups.show', $item->id)}}" class="primaryButton -red">Powrót</a>
+            <a class="primaryButton"
+               href="{{route('director.announcement.edit', ['group_id' => $item->id])}}">Dodaj nowe
+                ogłoszenie</a>
         </div>
     </div>
 
     <section class="directorGroupAnnouncements">
-        <div class="card">
-            <div class="card__header justify-content-between">
-                <div class="card__header">
-                    <span class="card__headerTitle">
-                    Ogłoszenia grupy
-                </span>
-                    <div class="card__buttons">
-                        <a class="primaryButton"
-                           href="{{route('director.announcement.edit', ['group_id' => $item->id])}}">Dodaj nowe
-                            ogłoszenie</a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card__body">
+
                 @if(count($item->announcements)>0)
                     @foreach($item->announcements as $itemAnnouncement)
                         <div class="announcementItem">
@@ -54,11 +44,12 @@
                             </div>
                         </div>
                     @endforeach
+                        {{ $item->announcements->links('helpers.pagination') }}
+
                 @else
                     <span class="emptySection">Brak ogłoszeń dla tej grupy!</span>
                 @endif
-            </div>
-        </div>
+
     </section>
 
 @endsection

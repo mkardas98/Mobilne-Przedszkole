@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="{{$field['name']}}">{{__($field['label'])}}</label>
+    <label class="custom-label" for="{{$field['name']}}">{{__($field['label'])}}</label>
 
     <textarea id="{{$field['name']}}"
               name="{{$field['name']}}"

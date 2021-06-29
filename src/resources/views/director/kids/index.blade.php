@@ -42,7 +42,7 @@
                                     <td>{{$kid->first_name}}</td>
                                     <td>{{$kid->last_name}}</td>
                                     <td> {{date('d/m/Y', strtotime($kid->date_of_birth))}}</td>
-                                    <td> {{$kid->group->name}} </td>
+                                    <td> {!! $kid->group->name ?? '<strong>Nie przypisano!</strong>' !!} </td>
                                     <td>@if($kid->user){{$kid->user->first_name}} {{$kid->user->last_name}} @else Nie przypisano @endif</td>
                                     <td class="tableButtons">
                                         <a class="controlButton -blue" href="{{route('director.kids.edit', ['id'=>$kid->id])}}"><i class="far fa-edit"></i></a>
@@ -57,7 +57,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
     </section>
@@ -67,8 +66,6 @@
             $(document).ready(function() {
                 $('#dataTable').DataTable();
             });
-
-
         </script>
     @endpush
 

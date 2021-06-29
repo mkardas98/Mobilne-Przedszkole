@@ -73,7 +73,14 @@ class KidsController extends Controller
 
     public function directorShow($id)
     {
-        $kid = Kid::with('group')->find($id);
+        $kid = Kid::with('group', 'allergens', 'user', 'behaviors')->find($id);
+
+        //sortowanie po dacie
+        if ($kid->attendance_list) {
+            $attendance_list = $kid->attendance_list;
+            krsort($attendance_list);
+            $kid->attendance_list = $attendance_list;
+        }
 
         return view('director.kids.show', [
             'obj' => $kid

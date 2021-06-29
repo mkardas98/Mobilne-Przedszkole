@@ -39,21 +39,27 @@ class AllergensController extends Controller
                 $post = $request->all();
 
                 $obj->allergen = $post['allergen'];
-                $kid_id->allergens()->save();
+                $kid->allergens()->save($obj);
 
-                return redirect()->back(
+                return redirect()->route('director.allergens.edit',
                     [
                         'id' => $obj->id,
-                        'group_id' => $obj->group_id,
+                        'kid_id'=>$kid->id,
                         'obj' => $obj
                     ]
                 )->with('success', 'Zmiany zostały zapisane!');
             }
 
-            return view('allergens.edit', [
+            return view('director.allergens.edit', [
                 'obj' => $obj,
+                'kid_id' =>$kid_id,
                 'form' => $form,
             ]);
         }
+    }
+
+    public function directorDelete($id){
+        Allergen::find($id)->delete();
+        return redirect()->back();
     }
 }

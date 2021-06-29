@@ -21,7 +21,7 @@ class AnnouncementsController extends Controller
     }
 
 
-    public function edit(Request $request, $group_id, $id = 0)
+    public function directorEdit(Request $request, $group_id, $id = 0)
     {
         $obj = ($id > 0) ? Announcement::find($id) : new Announcement();
         $form = new AnnouncementForm($obj);
@@ -46,7 +46,7 @@ class AnnouncementsController extends Controller
             }
 
             $obj->save();
-            return redirect()->back('director.announcement.edit',
+            return redirect()->route('director.announcement.edit',
                 [
                     'id' => $obj->id,
                     'group_id' => $obj->group_id,
@@ -68,9 +68,16 @@ class AnnouncementsController extends Controller
         return redirect()->back()->with('success', 'Ogłoszenie został usunięte!');
     }
 
-    public function indexGroup($id)
+    public function directorIndexGroup($id)
     {
-        return view('director.announcements.group_index', ['item' => Group::with('announcements')->find($id)]);
+        $item =  Group::find($id);
+        $item->setRelation('announcements', $item->announcements()->orderBy('created_at', 'desc')->paginate(10));
+        return view('director.announcements.group_index', ['item' => $item]);
+    }
+
+    public function directorIndex()
+    {
+        return view('director.announcements.index', ['items'=>Announcement::with('group')->orderBy('created_at', 'desc')->paginate(10)]);
     }
 
 }

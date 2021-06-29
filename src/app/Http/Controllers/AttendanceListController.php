@@ -22,7 +22,7 @@ class AttendanceListController extends Controller
         $this->middleware('auth');
     }
 
-    public function edit(Request $request, $group_id, $date)
+    public function directorEdit(Request $request, $group_id, $date)
     {
         $kids = Kid::where('group_id', $group_id)->get();
 
@@ -44,7 +44,7 @@ class AttendanceListController extends Controller
                 $kid->save();
             }
 
-            return redirect()->route('attendance_list.edit', [
+            return redirect()->route('director.attendance_list.edit', [
                 'kids' => $kids,
                 'group_id' => $group_id,
                 'date' => $date,
@@ -52,7 +52,7 @@ class AttendanceListController extends Controller
         }
 
 
-        return view('attendance_list.edit',
+        return view('director.attendance_list.edit',
             [
                 'kids' => $kids,
                 'group_id' => $group_id,

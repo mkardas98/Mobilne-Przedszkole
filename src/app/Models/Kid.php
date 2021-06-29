@@ -23,16 +23,24 @@ class Kid extends Model
         'attendance_list' => 'array',
     ];
 
-    public function user(){
-       return $this->belongsTo(User::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
-    public function group(){
+
+    public function group()
+    {
         return $this->belongsTo(Group::class);
     }
 
     public function allergens()
     {
-        return $this->hasMany(Allergen::class);
+        return $this->hasMany(Allergen::class)->orderBy('created_at', 'desc');
+    }
+
+    public function behaviors()
+    {
+        return $this->hasMany(Behavior::class)->orderBy('created_at', 'desc');
     }
 
 

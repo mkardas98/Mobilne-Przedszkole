@@ -9,7 +9,7 @@ use App\Models\Group;
 use App\Models\User;
 
 
-class GroupsForm extends Form
+class GroupForm extends Form
 {
 
     const FIELDS = [
