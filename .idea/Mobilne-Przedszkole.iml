@@ -129,6 +129,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/seld/phar-utils" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/seld/jsonlint" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/artesaos/seotools" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

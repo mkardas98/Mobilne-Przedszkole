@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\ViewHistory;
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Cookie;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 class MainPageController extends Controller
 {
@@ -16,12 +17,11 @@ class MainPageController extends Controller
 
     public function index()
     {
-//        $now = CarbonImmutable::now();
-//        $weekStartDate = $now->startOfWeek();
-//        $weekEndDate = $now->endOfWeek();
-
+        SEOMeta::setTitle('test');
+        SEOMeta::setDescription('test description');
+        SEOMeta::addKeyword('tagses');
         $currentDay = date('Y-m-d', strtotime( Carbon::now()));
-//        dd($currentDay);
+
         if (!isset($_COOKIE['TodayIsVisitMobilnePrzedszkole'])) {
             setcookie('TodayIsVisitMobilnePrzedszkole', 1, time() + 60 * 60 * 24);
             if (ViewHistory::where('date', $currentDay)->first() === null) {

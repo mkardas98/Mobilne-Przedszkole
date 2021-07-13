@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class BasicFieldsController extends Controller
 {
-    public function edit($post)
+    private function edit($post)
     {
         foreach ($post as $name => $value) {
             if($name != "_token"){

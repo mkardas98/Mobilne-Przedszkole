@@ -123,6 +123,7 @@
       <path value="$PROJECT_DIR$/src/vendor/seld/phar-utils" />
       <path value="$PROJECT_DIR$/src/vendor/seld/jsonlint" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/src/vendor/artesaos/seotools" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

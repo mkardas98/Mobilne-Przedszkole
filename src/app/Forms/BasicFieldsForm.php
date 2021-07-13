@@ -19,8 +19,48 @@ class BasicFieldsForm extends Form
             'rules' => [],
             'options' => [],
         ],
-
-
+        'type_kindergarten' => [
+            'name' => 'type_kindergarten',
+            'type' => 'text',
+            'label' => 'Typ i rodzaj przedszkola',
+            'rules' => [],
+            'options' => [],
+        ],
+        'phone_kindergarten' => [
+            'name' => 'phone_kindergarten',
+            'type' => 'text',
+            'label' => 'Numer telefonu przedszkola',
+            'rules' => [],
+            'options' => [],
+        ],
+        'email_kindergarten' => [
+            'name' => 'email_kindergarten',
+            'type' => 'text',
+            'label' => 'E-mail przedszkola',
+            'rules' => [],
+            'options' => [],
+        ],
+        'address_kindergarten' => [
+            'name' => 'address_kindergarten',
+            'type' => 'text',
+            'label' => 'Adres',
+            'rules' => [],
+            'options' => [],
+        ],
+        'city_kindergarten' => [
+            'name' => 'city_kindergarten',
+            'type' => 'text',
+            'label' => 'Miasto',
+            'rules' => [],
+            'options' => [],
+        ],
+        'post_code_kindergarten' => [
+            'name' => 'post_code_kindergarten',
+            'type' => 'text',
+            'label' => 'Kod pocztowy',
+            'rules' => [],
+            'options' => [],
+        ],
 
     ];
 
