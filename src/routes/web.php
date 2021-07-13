@@ -3,10 +3,13 @@
 use App\Http\Controllers\AllergensController;
 use App\Http\Controllers\AnnouncementsController;
 use App\Http\Controllers\AttendanceListController;
+use App\Http\Controllers\BasicFieldsController;
 use App\Http\Controllers\BehaviorsController;
 use App\Http\Controllers\ConfigurationController;
+use App\Http\Controllers\EatMenuController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BasicFields;
 use App\Http\Controllers\LessonPlansController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
@@ -72,6 +75,14 @@ Route::middleware('is_director')->group(function(){
     Route::get('dyrektor/grupy/szczegoly/plan/usun/{id?}', [LessonPlansController::class, 'delete'])->name('director.lesson_plan.delete');
 
     Route::match(['get', 'post'], 'dyrektor/grupy/szczegoly/obecnosci/{group_id}/edytuj/{date}', [AttendanceListController::class, 'directorEdit'])->name('director.attendance_list.edit');
+
+    Route::get('dyrektor/jadlospis', [EatMenuController::class, 'directorIndex'])->name('director.eat_menu.index');
+    Route::match(['get', 'post'], 'dyrektor/jadlospis/edytuj/{id?}', [EatMenuController::class, 'directorEdit'])->name('director.eat_menu.edit');
+    Route::get('dyrektor/jadlospis/{id}', [EatMenuController::class, 'directorShow'])->name('director.eat_menu.show');
+    Route::get('dyrektor/jadlospis/usun/{id?}', [EatMenuController::class, 'delete'])->name('director.eat_menu.delete');
+
+    Route::match(['get', 'post'], 'dyrektor/dane-przedszkola', [BasicFieldsController::class, 'kindergartenDataEdit'])->name('director.kindergarten_data.edit');
+
 
 
 

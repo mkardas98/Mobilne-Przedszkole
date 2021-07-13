@@ -43,7 +43,10 @@ class Kid extends Model
         return $this->hasMany(Behavior::class)->orderBy('created_at', 'desc');
     }
 
-
+    public function attendanceList()
+    {
+        return $this->hasMany(AttendanceList::class)->orderBy('date', 'desc');
+    }
 }
 
 

@@ -21,6 +21,7 @@
                     <th>#</th>
                     <th>Imię i nazwisko</th>
                     <th>Obecność</th>
+                    <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,10 +31,17 @@
                           <td>{{$kid->first_name.' '.$kid->last_name}}</td>
                           <td>
                               <label class="switch">
-                                  <input type='hidden' value='0' name='attendance_list[{{$kid->id}}][{{$date}}]'>
-                                  <input name="attendance_list[{{$kid->id}}][{{$date}}]" hidden value="1" type="checkbox" @if(isset($kid->attendance_list[$date])){{$kid->attendance_list[$date] ? 'checked' : ''}} @else checked @endif />
+                                  <input type='hidden' value=0 name='attendance_list[{{$kid->id}}]'>
+                                  <input name="attendance_list[{{$kid->id}}]" hidden value=1 type="checkbox" @if($kid->attendance_list) checked @endif />
                                   <span class="slider round"></span>
+
+
                               </label>
+                          </td>
+                          <td>
+                              @if($kid->attendance_list === null)
+                              <small>Obecność nie sprawdzona!</small>
+                              @endif
                           </td>
                       </tr>
                   @endforeach

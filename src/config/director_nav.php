@@ -25,10 +25,10 @@ return [
                 'icon' => 'fas fa-bullhorn',
                 'route_name' => 'director.announcements.index',
             ],
-            'foods' => [
+            'eat_menu' => [
                 'label' => 'Jadłospis',
                 'icon' => 'fas fa-utensils',
-                'route_name' => 'index.show',
+                'route_name' => 'director.eat_menu.index',
             ],
 
         ]
@@ -72,7 +72,7 @@ return [
             'kindergarten_data' => [
                 'label' => 'Dane przedszkola',
                 'icon' => 'fas fa-info-circle',
-                'route_name' => 'index.show',
+                'route_name' => 'director.kindergarten_data.edit',
             ],
             'mail' => [
                 'label' => 'SMTP - Email',

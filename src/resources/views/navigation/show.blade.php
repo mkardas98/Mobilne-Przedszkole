@@ -33,7 +33,7 @@
                 <ul class="navApp__list">
                     @foreach($section['items'] as $item)
                         @php
-                            $isActive = str_starts_with($item['route_name'], str_replace(['edit', 'create', 'index', 'show'], '', request()->route()->getName()));
+                            $isActive = str_starts_with($item['route_name'], str_replace(['edit', 'index', 'show'], '', request()->route()->getName()));
                         @endphp
                         <li class="">
                             @if(isset($item['items']))

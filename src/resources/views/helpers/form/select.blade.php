@@ -9,5 +9,5 @@
     </select>
 
      {!! $errors->first('role', '<p class="help-block">:message</p>') !!}
-
+        {!! $errors->first($field['name'], '<p class="help-block">:message</p>') !!}
 </div>

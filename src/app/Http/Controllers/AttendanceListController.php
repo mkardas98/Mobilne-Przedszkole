@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Forms\AnnouncementForm;
 use App\Models\Announcement;
+use App\Models\AttendanceList;
 use App\Models\Group;
 use App\Models\Kid;
 use Carbon\Carbon;
@@ -26,29 +27,39 @@ class AttendanceListController extends Controller
     {
         $kids = Kid::where('group_id', $group_id)->get();
 
+        foreach ($kids as $kid) {
+            $_attendance_list = AttendanceList::where('date', '=', $date)
+                ->where('kid_id', '=', $kid->id)
+                ->first();
+            if($_attendance_list != null){
+                $kid->attendance_list = $_attendance_list->status;
+            } else {
+                $kid->attendance_list = null;
+            }
+        }
+
+
         if ($request->isMethod('post')) {
 
             $post = $request->all();
+            foreach ($kids as $kid) {
 
-            foreach ($post['attendance_list'] as $key => $item) {
-                $kid = $kids->find($key);
-                $_attendance_list = array();
-                if ($kid->attendance_list == null) {
-                    $kid->attendance_list = $_attendance_list;
-                } else {
-                    $_attendance_list = $kid->attendance_list;
-                }
-
-                $_attendance_list[$date] = $item[$date];
-                $kid->attendance_list = $_attendance_list;
-                $kid->save();
+                $kid->attendanceList()->UpdateOrCreate([
+                        'kid_id' => $kid->id,
+                        'date' => $date
+                    ],
+                        [
+                            'status' => $post['attendance_list'][$kid->id]
+                        ]
+                    );
+                $kid->attendance_list = $post['attendance_list'][$kid->id];
             }
 
             return redirect()->route('director.attendance_list.edit', [
                 'kids' => $kids,
                 'group_id' => $group_id,
                 'date' => $date,
-                ])->with('success', 'Zmiany zostały zapisane!');
+            ])->with('success', 'Zmiany zostały zapisane!');
         }
 
 

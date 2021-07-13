@@ -22,7 +22,6 @@ class CreateKidsTable extends Migration
             $table->date('date_of_birth')->nullable();
             $table->string('pesel', 11)->default('')->nullable();
             $table->string('avatar')->default('')->nullable();
-            $table->json('attendance_list')->nullable();
             $table->timestamps();
         });
     }
