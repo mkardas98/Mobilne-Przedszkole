@@ -7,6 +7,7 @@ namespace App\Forms;
 use App\Helpers\Form;
 use App\Models\Group;
 use App\Models\Kid;
+use App\Models\LessonPlan;
 use App\Models\User;
 
 
@@ -179,6 +180,6 @@ class LessonPlanForm extends Form
             $this->modelFields[$name] = $field;
         }
 
-        parent::__construct($model, Kid::class);
+        parent::__construct($model, LessonPlan::class);
     }
 }

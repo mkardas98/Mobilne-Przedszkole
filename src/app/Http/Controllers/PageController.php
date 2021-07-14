@@ -11,13 +11,13 @@ use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Cookie;
 use Artesaos\SEOTools\Facades\SEOMeta;
 
-class MainPageController extends Controller
+class PageController extends Controller
 {
 
 
     public function index()
     {
-        SEOMeta::setTitle('test');
+        SEOMeta::setTitle('Nazwa');
         SEOMeta::setDescription('test description');
         SEOMeta::addKeyword('tagses');
         $currentDay = date('Y-m-d', strtotime( Carbon::now()));
@@ -37,5 +37,10 @@ class MainPageController extends Controller
 
         return view('default.index');
 
+    }
+
+    public function newsShow($item)
+    {
+        return view('default.news.show', ['item'=>$item]);
     }
 }

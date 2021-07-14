@@ -6,6 +6,7 @@ namespace App\Forms;
 
 use App\Helpers\Form;
 use App\Models\Announcement;
+use App\Models\Behavior;
 use App\Models\Group;
 use App\Models\User;
 
@@ -50,6 +51,6 @@ class BehaviorForm extends Form
         }
 
 
-        parent::__construct($model, Announcement::class);
+        parent::__construct($model, Behavior::class);
     }
 }

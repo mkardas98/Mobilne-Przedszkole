@@ -5,6 +5,7 @@ namespace App\Forms;
 
 
 use App\Helpers\Form;
+use App\Models\Allergen;
 use App\Models\Announcement;
 use App\Models\Group;
 use App\Models\User;
@@ -37,6 +38,6 @@ class AllergenForm extends Form
         }
 
 
-        parent::__construct($model, Announcement::class);
+        parent::__construct($model, Allergen::class);
     }
 }

@@ -11,3 +11,5 @@ const deleteItem = (route) => {
         window.location = route;
     }
 }
+
+

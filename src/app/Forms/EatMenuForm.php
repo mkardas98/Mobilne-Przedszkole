@@ -5,6 +5,7 @@ namespace App\Forms;
 
 
 use App\Helpers\Form;
+use App\Models\EatMenu;
 use App\Models\Group;
 use App\Models\Kid;
 use App\Models\User;
@@ -69,6 +70,6 @@ class EatMenuForm extends Form
             $this->modelFields[$name] = $field;
         }
 
-        parent::__construct($model, Kid::class);
+        parent::__construct($model, EatMenu::class);
     }
 }

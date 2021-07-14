@@ -11,7 +11,8 @@ use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BasicFields;
 use App\Http\Controllers\LessonPlansController;
-use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KidsController;
 use App\Http\Controllers\UsersController;
@@ -30,9 +31,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainPageController::class, 'index'])->name('index.show');
 
-
+Route::get('/', [PageController::class, 'index'])->name('index.show');
 Auth::routes();
 
 //PROFILE
@@ -83,15 +83,16 @@ Route::middleware('is_director')->group(function(){
 
     Route::match(['get', 'post'], 'dyrektor/dane-przedszkola', [BasicFieldsController::class, 'kindergartenDataEdit'])->name('director.kindergarten_data.edit');
 
-
-
+    Route::get('dyrektor/aktualnosci', [NewsController::class, 'directorIndex'])->name('director.news.index');
+    Route::match(['get', 'post'], 'dyrektor/aktualnosci/edytuj/{id?}', [NewsController::class, 'directorEdit'])->name('director.news.edit');
+    Route::get('dyrektor/aktualnosci/usun/{id?}', [NewsController::class, 'delete'])->name('director.news.delete');
 
 });
-
-
-
 
 Route::get('nauczyciel', [HomeController::class, 'teacherHome'])->name('teacher_home.show')->middleware('is_teacher');
 Route::get('rodzic', [HomeController::class, 'parentHome'])->name('parent_home.show')->middleware('is_parent');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+require_once('web_news.php');
+

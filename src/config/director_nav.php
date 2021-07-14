@@ -50,7 +50,7 @@ return [
             'news' => [
                 'label' => 'Aktualności',
                 'icon' => 'fas fa-newspaper',
-                'route_name' => 'index.show',
+                'route_name' => 'director.news.index',
             ],
         ]
     ],
