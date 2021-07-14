@@ -41,6 +41,9 @@ class PageController extends Controller
 
     public function newsShow($item)
     {
+        SEOMeta::setTitle($item->seo->seo_title);
+        SEOMeta::setDescription($item->dseo_escription);
+        SEOMeta::addKeyword($item->seo_tags);
         return view('default.news.show', ['item'=>$item]);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\BasicFields;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 function getBasicField($name){
     $basicField = BasicFields::where('name', '=', $name)->first();
@@ -10,5 +11,7 @@ function getBasicField($name){
     }
     return '';
 }
+
+
 
 
