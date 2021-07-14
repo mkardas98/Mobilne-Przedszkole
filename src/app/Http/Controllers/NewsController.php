@@ -27,6 +27,7 @@ class NewsController extends Controller
 
     public function directorEdit(Request $request, $id = 0)
     {
+
         $obj = ($id > 0) ? News::with('seo')->find($id) : new News();
 
         $form = new NewsForm($obj);

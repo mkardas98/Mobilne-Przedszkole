@@ -12,6 +12,7 @@ function getBasicField($name){
     return '';
 }
 
-
-
+function uploadCkeditor(){
+    dump(5);
+}
 

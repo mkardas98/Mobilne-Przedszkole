@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+//        Unisharp\Ckeditor\ServiceProvider::class,
         /*
          * Package Service Providers...
          */

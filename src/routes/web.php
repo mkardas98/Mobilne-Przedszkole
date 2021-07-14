@@ -5,6 +5,7 @@ use App\Http\Controllers\AnnouncementsController;
 use App\Http\Controllers\AttendanceListController;
 use App\Http\Controllers\BasicFieldsController;
 use App\Http\Controllers\BehaviorsController;
+use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\EatMenuController;
 use App\Http\Controllers\GroupsController;
@@ -92,7 +93,8 @@ Route::middleware('is_director')->group(function(){
 Route::get('nauczyciel', [HomeController::class, 'teacherHome'])->name('teacher_home.show')->middleware('is_teacher');
 Route::get('rodzic', [HomeController::class, 'parentHome'])->name('parent_home.show')->middleware('is_parent');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::post('/ckeditor', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
 
 require_once('web_news.php');
 

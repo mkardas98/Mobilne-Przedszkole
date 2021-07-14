@@ -8,13 +8,14 @@
         "php": "^7.3|^8.0",
         "ext-json": "*",
         "artesaos/seotools": "^0.20.1",
+        "ckeditor/ckeditor": "^4.7",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.5",
-        "laravel/framework": "^8.40",
+        "laravel/framework": "^8.0",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.2"
+        "laravel/ui": "^3.2",
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

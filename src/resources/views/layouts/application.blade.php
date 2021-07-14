@@ -32,8 +32,10 @@
     <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/application.css')}}">
+{{--    <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>--}}
 
-    <script src="{{asset('js/ckeditor.js')}}"></script>
+{{--    <script src="{{asset('js/ckeditor.js')}}"></script>--}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
 
 </head>
 <body>

@@ -3,7 +3,9 @@
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 use App\Models\News;
+use Illuminate\Support\Facades\Schema;
 
+if((Schema::hasTable('news')) && (Schema::hasTable('seo')))
 $items = News::with(['seo'])->where('status', '=', 1)->get();
 
 Route::get('profil', [ProfileController::class, 'show'])->name('profile.show');

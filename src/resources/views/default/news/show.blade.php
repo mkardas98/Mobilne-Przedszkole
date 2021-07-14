@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @dump($item->text)
     <div>
         {!! $item->title !!}
     </div>
