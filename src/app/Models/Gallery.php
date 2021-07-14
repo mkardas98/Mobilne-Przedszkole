@@ -20,4 +20,9 @@ class Gallery extends Model
     {
         return $this->belongsTo(Seo::class);
     }
+
+    public function galleryItems()
+    {
+        return $this->hasMany(GalleryItem::class);
+    }
 }

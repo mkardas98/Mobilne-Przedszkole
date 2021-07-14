@@ -16,7 +16,9 @@ class CreateNewsTable extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->foreignId('seo_id')
-                ->unique();
+                ->unique()
+                ->constrained('seo')
+                ->cascadeOnDelete();
             $table->string('title', 200);
             $table->text('lead')->nullable();
             $table->text('text')->nullable();

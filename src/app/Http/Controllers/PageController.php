@@ -46,4 +46,11 @@ class PageController extends Controller
         SEOMeta::addKeyword($item->seo_tags);
         return view('default.news.show', ['item'=>$item]);
     }
+    public function galleryShow($item)
+    {
+        SEOMeta::setTitle($item->seo->seo_title);
+        SEOMeta::setDescription($item->dseo_escription);
+        SEOMeta::addKeyword($item->seo_tags);
+        return view('default.gallery.show', ['item'=>$item]);
+    }
 }

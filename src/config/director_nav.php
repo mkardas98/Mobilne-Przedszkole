@@ -45,7 +45,7 @@ return [
             'gallery' => [
                 'label' => 'Galeria',
                 'icon' => 'fas fa-images',
-                'route_name' => 'index.show',
+                'route_name' => 'director.gallery.index',
             ],
             'news' => [
                 'label' => 'Aktualności',

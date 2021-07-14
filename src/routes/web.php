@@ -8,6 +8,7 @@ use App\Http\Controllers\BehaviorsController;
 use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\EatMenuController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BasicFields;
@@ -88,6 +89,10 @@ Route::middleware('is_director')->group(function(){
     Route::match(['get', 'post'], 'dyrektor/aktualnosci/edytuj/{id?}', [NewsController::class, 'directorEdit'])->name('director.news.edit');
     Route::get('dyrektor/aktualnosci/usun/{id?}', [NewsController::class, 'delete'])->name('director.news.delete');
 
+    Route::get('dyrektor/galeria', [GalleryController::class, 'directorIndex'])->name('director.gallery.index');
+    Route::match(['get', 'post'],'dyrektor/galeria/edytuj/{id?}', [GalleryController::class, 'directorEdit'])->name('director.gallery.edit');
+
+
 });
 
 Route::get('nauczyciel', [HomeController::class, 'teacherHome'])->name('teacher_home.show')->middleware('is_teacher');
@@ -97,4 +102,5 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/ckeditor', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
 
 require_once('web_news.php');
+require_once('web_gallery.php');
 

@@ -19,6 +19,7 @@ class CreateGalleriesTable extends Migration
                 ->unique()
                 ->constrained('seo')
                 ->cascadeOnDelete();
+            $table->string('title', 200);
             $table->text('lead')->nullable();
             $table->text('text')->nullable();
             $table->boolean('status')->default(true);
