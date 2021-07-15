@@ -54,8 +54,8 @@
                                     </td>
                                     <td class="tableButtons">
                                         <a class="controlButton -blue" href="{{route('director.gallery.edit', ['id'=>$item->id])}}"><i class="far fa-edit"></i></a>
-{{--                                        @php($delete = route('director.news.delete', $item->id))--}}
-{{--                                        <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i class="fas fa-ban"></i></button>--}}
+                                        @php($delete = route('director.gallery.delete', $item->id))
+                                        <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i class="fas fa-ban"></i></button>
                                     </td>
                                 </tr>
                             @endforeach

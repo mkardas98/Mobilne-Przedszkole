@@ -23,11 +23,7 @@
                 <div class="row">
                     <div class="col-lg-4">
                        <div class="profileShow__avatar">
-                           @if(!(is_null($profile->avatar)))
-                               <img src="{{renderImage($profile->avatar, [300,300, 'fit'])}}" alt="">
-                           @else
-                               <img src="{{asset('images/app/profile/empty-avatar.jpg')}}" alt="">
-                           @endif
+                           <img src="{{renderImage($profile->avatar ?? asset('images/app/profile/empty-avatar.jpg'), [300,300, 'fit'])}}" alt="">
                        </div>
                     </div>
                     <div class="col-lg-8">

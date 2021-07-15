@@ -22,8 +22,8 @@ class BehaviorForm extends Form
             'label' => 'Typ',
             'rules' => ['required'],
             'options' => [
-                0 => 'Uwaga ',
-                1 => 'Pochwała'
+                0 => 'Negatywne ',
+                1 => 'Pozytywne'
             ],
         ],
         'text' => [

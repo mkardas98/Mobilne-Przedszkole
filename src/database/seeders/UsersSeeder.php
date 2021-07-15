@@ -22,19 +22,21 @@ class UsersSeeder extends Seeder
                 'phone'=>'123123123',
                 'avatar'=>'',
                 'date_of_birth' => '1977-03-03',
-                'email'=>'dyrektor@dyrektor.pl',
+                'email'=>'dyrektor@dyrektor1.pl',
                 'role'=>'0',
                 'password'=> bcrypt('dyrektor')
             ],
-//            [
-//                'login'=> 'NauNau031988',
-//                'first_name'=>'Nauczyciel',
-//                'last_name'=>'Nauczyciel',
-//                'email'=>'nauczyciel@nauczyciel.pl',
-//                'date_of_birth' => '1988-04-04',
-//                'role'=>'1',
-//                'password'=> bcrypt('nauczyciel'),
-//            ],
+            [
+                'login'=> 'Paulina',
+                'first_name'=>'Paulina',
+                'last_name'=>'Lautenszleger',
+                'phone'=>'123123123',
+                'avatar'=>'',
+                'date_of_birth' => '1977-03-03',
+                'email'=>'dyrektor@dyrektor2.pl',
+                'role'=>'0',
+                'password'=> bcrypt('123456')
+            ],
             [
                 'login'=> 'RodRod0519932',
                 'first_name'=>'Ania',
@@ -48,10 +50,10 @@ class UsersSeeder extends Seeder
                 'login'=> 'RodRod05199312',
                 'first_name'=>'Wojtek',
                 'last_name'=>'Nowak',
-                'email'=>'rodzic@rodzic.pl',
-                'date_of_birth' => '1993-05-05',
-                'role'=>'2',
-                'password'=> bcrypt('rodzic'),
+                'email'=>'nauczyciel@nauczyciel2.pl',
+                'date_of_birth' => '1992-05-05',
+                'role'=>'1',
+                'password'=> bcrypt('nauczyciel'),
             ],
         ];
 

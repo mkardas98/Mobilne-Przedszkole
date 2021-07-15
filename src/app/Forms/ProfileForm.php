@@ -72,12 +72,6 @@ class ProfileForm extends Form
         foreach (self::FIELDS as $name => $field) {
             $this->modelFields[$name] = $field;
         }
-
-//        $categories = OfferCategory::with([])->adminLocale()->get();
-//        foreach ($categories as $category) {
-//            $this->modelFields['offer_category_id']['options'][$category->id] = $category->title;
-//        }
-
         parent::__construct($model, User::class);
     }
 }

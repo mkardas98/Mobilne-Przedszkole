@@ -46,7 +46,9 @@ class GroupsController extends Controller
             $obj->room = $post['room'];
             $obj->color = $post['color'];
             if (!isset($form['status'])) {
-                $post['status'] = 0;
+                $obj->status = 0;
+            } else {
+                $post['status'] = 1;
             }
 
             $obj->status = $post['status'];

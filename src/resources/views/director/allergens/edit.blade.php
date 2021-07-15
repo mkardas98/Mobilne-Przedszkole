@@ -6,7 +6,7 @@
     <div class="pageNavigation">
         <span class="pageNavigation__title">Dodaj/edytuj alergen</span>
         <div class="pageNavigation__buttons">
-            <a href="{{route('director.kids.show', ['id' => $kid_id])}}" class="primaryButton -red">Anuluj</a>
+            <a href="{{route('director.kids.show', ['id' => $kid_id])}}" class="primaryButton -red">Cofnij</a>
             <button type="submit" onclick="event.preventDefault(); document.getElementById('allergenForm').submit();" class="primaryButton">Zapisz</button>
         </div>
     </div>

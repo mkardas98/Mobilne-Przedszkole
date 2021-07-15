@@ -4,7 +4,7 @@
     <div class="pageNavigation">
         <span class="pageNavigation__title">Dodaj/edytuj grupę</span>
         <div class="pageNavigation__buttons">
-            <a href="{{route('director.groups.index')}}" class="primaryButton -red">Anuluj</a>
+            <a href="{{route('director.groups.index')}}" class="primaryButton -red">Cofnij</a>
             <button type="submit" onclick="event.preventDefault(); document.getElementById('groupForm').submit();" class="primaryButton">Zapisz</button>
         </div>
     </div>

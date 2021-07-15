@@ -47,6 +47,20 @@ class BasicFieldsForm extends Form
             'rules' => [],
             'options' => [],
         ],
+        'nip_kindergarten' => [
+            'name' => 'nip_kindergarten',
+            'type' => 'text',
+            'label' => 'NIP',
+            'rules' => [],
+            'options' => [],
+        ],
+        'regon_kindergarten' => [
+            'name' => 'regon_kindergarten',
+            'type' => 'text',
+            'label' => 'REGON',
+            'rules' => [],
+            'options' => [],
+        ],
         'city_kindergarten' => [
             'name' => 'city_kindergarten',
             'type' => 'text',

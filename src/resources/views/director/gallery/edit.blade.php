@@ -4,7 +4,7 @@
     <div class="pageNavigation">
         <span class="pageNavigation__title">Dodaj/edytuj galerię</span>
         <div class="pageNavigation__buttons">
-            <a href="{{route('director.gallery.index')}}" class="primaryButton -red">Anuluj</a>
+            <a href="{{route('director.gallery.index')}}" class="primaryButton -red">Cofnij</a>
             <button type="submit" onclick="event.preventDefault(); document.getElementById('galleryForm').submit();" class="primaryButton">Zapisz</button>
         </div>
     </div>
@@ -37,5 +37,10 @@
             </div>
         </div>
     </form>
+    @if($obj->id)
+        @include('director.gallery.item.edit', ['galleryItems'=>$galleryItems])
+    @endif
+
+
 
 @endsection

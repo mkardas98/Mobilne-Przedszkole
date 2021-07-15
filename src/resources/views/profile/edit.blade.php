@@ -8,8 +8,6 @@
         </span>
         </div>
         <div class="row justify-content-center">
-            @include('helpers.alert')
-
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card__header">
@@ -17,7 +15,7 @@
                     Edytuj dane twojego profilu
                 </span>
                         <div class="card__buttons">
-                            <a href="{{route('profile.show')}}" class="primaryButton -red">Anuluj</a>
+                            <a href="{{route('profile.show')}}" class="primaryButton -red">Cofnij</a>
                             <button onclick="event.preventDefault(); document.getElementById('profileForm').submit();" class="primaryButton ">Zapisz</button>
                         </div>
                     </div>
@@ -27,12 +25,9 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="editAvatar">
-                                        @if(!(is_null($profile->avatar)))
-                                            <img src="{{renderImage($profile->avatar, [300,300, 'fit'])}}" alt="">
-                                        @else
-                                            <img src="{{asset('images/app/profile/empty-avatar.jpg')}}" alt="">
-                                        @endif
-                                            <div class="input-file-container">
+                                        <img src="{{renderImage($profile->avatar ?? asset('images/app/profile/empty-avatar.jpg'), [300,300, 'fit'])}}" alt="">
+
+                                        <div class="input-file-container">
                                                 <label tabindex="0" for="avatar" class="input-file-trigger primaryButton">Zmień zdjęcie profilowe</label>
                                                 <input class="input-file" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
                                                 <p class="file-return"></p>

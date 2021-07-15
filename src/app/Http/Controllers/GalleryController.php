@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Forms\GalleryForm;
 use App\Forms\SeoForm;
 use App\Models\Gallery;
+use App\Models\GalleryItem;
 use App\Models\Seo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class GalleryController extends Controller
 {
-
 
 
     public function __construct()
@@ -28,9 +29,8 @@ class GalleryController extends Controller
 
     public function directorEdit(Request $request, $id = 0)
     {
-
         $obj = ($id > 0) ? Gallery::with('seo')->find($id) : new Gallery();
-
+        $galleryItems = GalleryItem::where('gallery_id', '=', $obj->id)->get();
         $form = new GalleryForm($obj);
         $seoForm = new SeoForm();
         if ($obj->seo) {
@@ -47,7 +47,7 @@ class GalleryController extends Controller
                 $rulesSeo[$field['name']] = $field['rules'];
             }
             $seo_id = null;
-            if($obj->seo){
+            if ($obj->seo) {
                 $seo_id = $obj->seo->id;
             }
             $rulesSeo['seo_url'][] = Rule::unique('seo')->ignore($seo_id);
@@ -89,22 +89,55 @@ class GalleryController extends Controller
 
         return view('director.gallery.edit', [
             'obj' => $obj,
+            'galleryItems' => $galleryItems,
             'form' => $form,
             'seoForm' => $seoForm
         ]);
     }
 
-//
-//    function directorDelete($id)
-//    {
-//        Group::find($id)->delete();
-//        UserGroup::where('group_id', $id)->delete();
-//        Kid::where('group_id', $id)->update(['group_id'=> 0]);
-//        Announcement::where('group_id', $id)->delete();
-//        LessonPlan::where('group_id', $id)->delete();
-//
-//        return redirect()->back()->with('success', 'Grupa została usunięta!');
-//    }
+    public function addImages(Request $request, $id_gallery){
+
+
+        $post = $request->all();
+        $name = $post['name'];
+        if(!$name){
+            $name = '';
+        }
+
+        $gallery = Gallery::find($id_gallery);
+           foreach ($post['images'] as $item){
+               $filename = $item->getClientOriginalName();
+               $filename = Filenameclean($filename);
+               $dir = 'gallery/'.$id_gallery.'/';
+               $destFilename = $dir . $filename;
+               $destFilename = FileAvoidDuplicate($destFilename, Storage::disk('public'));
+               Storage::disk('public')->put($destFilename, $item->get());
+
+               $galleryItem = new GalleryItem();
+               $galleryItem->name = $name;
+               $galleryItem->url = $destFilename;
+               $gallery->galleryItems()->save($galleryItem);
+           }
+
+        return back()->with('success', 'Zdjęcia zostały dodane!');
+
+
+    }
+
+    public function delete($id)
+    {
+       $gallery =  Gallery::find($id);
+        $gallery->galleryItems()->delete();
+        $gallery->delete();
+        return redirect()->back()->with('success', 'Galeria została usunięta!');
+    }
+
+    public function deleteItem($id){
+        GalleryItem::find($id)->delete();
+        return redirect()->back()->with('success', 'Zdjęcie zostało usunięte!');
+
+    }
+
 //
 //    public function directorShow($id)
 //    {

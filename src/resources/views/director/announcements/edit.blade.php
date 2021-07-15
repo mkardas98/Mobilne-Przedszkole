@@ -6,7 +6,7 @@
     <div class="pageNavigation">
         <span class="pageNavigation__title">Dodaj/edytuj ogłoszenie</span>
         <div class="pageNavigation__buttons">
-            <a href="{{route('director.groups.show', ['id' => $group_id])}}" class="primaryButton -red">Anuluj</a>
+            <a href="{{route('director.groups.show', ['id' => $group_id])}}" class="primaryButton -red">Cofnij</a>
             <button type="submit" onclick="event.preventDefault(); document.getElementById('announcementForm').submit();" class="primaryButton">Zapisz</button>
         </div>
     </div>

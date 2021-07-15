@@ -5,7 +5,7 @@
     <div class="pageNavigation">
         <span class="pageNavigation__title">Dodaj/edytuj jadłospis</span>
         <div class="pageNavigation__buttons">
-            <a href="{{route('director.eat_menu.index')}}" class="primaryButton -red">Anuluj</a>
+            <a href="{{route('director.eat_menu.index')}}" class="primaryButton -red">Cofnij</a>
             <button type="submit" onclick="event.preventDefault(); document.getElementById('eatMenu').submit();"
                     class="primaryButton">Zapisz
             </button>

@@ -8,7 +8,7 @@
             Edytuj użytkownika
         </span>
             <div class="pageNavigation__buttons">
-                <a href="{{route('director.users.index')}}" class="primaryButton -red">Anuluj</a>
+                <a href="{{route('director.users.index')}}" class="primaryButton -red">Cofnij</a>
                 <button onclick="event.preventDefault(); document.getElementById('userForm').submit();" class="primaryButton ">Zapisz</button>
             </div>
         </div>

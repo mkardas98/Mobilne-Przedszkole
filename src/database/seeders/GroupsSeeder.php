@@ -17,24 +17,24 @@ class GroupsSeeder extends Seeder
      */
     public function run()
     {
-        $group = [
-            [
-                'room' => 'A2',
-                'name' => 'Biedronki',
-                'color' => '#fddd34',
-                'status' => 1
-            ],
-            [
-                'room' => 'A3',
-                'name' => 'Zajączki',
-                'color' => '#53da34',
-                'status' => 1
-            ],
-
-        ];
-
-        foreach ($group as $key => $value) {
-            Group::create($value);
-        }
+//        $group = [
+//            [
+//                'room' => 'A2',
+//                'name' => 'Biedronki',
+//                'color' => '#fddd34',
+//                'status' => 1
+//            ],
+//            [
+//                'room' => 'A3',
+//                'name' => 'Zajączki',
+//                'color' => '#53da34',
+//                'status' => 1
+//            ],
+//
+//        ];
+//
+//        foreach ($group as $key => $value) {
+//            Group::create($value);
+//        }
     }
 }

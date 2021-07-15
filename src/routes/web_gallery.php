@@ -5,8 +5,8 @@ use App\Models\Gallery;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 
-if((Schema::hasTable('news')) && (Schema::hasTable('seo'))){
-    $items = Gallery::with(['seo'])->where('status', '=', 1)->get();
+if((Schema::hasTable('gallery')) && (Schema::hasTable('seo'))){
+    $items = Gallery::with(['seo', 'galleryItems'])->where('status', '=', 1)->get();
     if(count($items)>0){
         foreach ($items as $item){
             if($item->seo){
@@ -15,6 +15,7 @@ if((Schema::hasTable('news')) && (Schema::hasTable('seo'))){
         }
     }
 }
+
 
 
 

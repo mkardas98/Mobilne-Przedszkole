@@ -30,6 +30,12 @@
                                 {!! $form->renderFieldGroup('address_kindergarten') !!}
                             </div>
                             <div class="col-md-6">
+                                {!! $form->renderFieldGroup('nip_kindergarten') !!}
+                            </div>
+                            <div class="col-md-6">
+                                {!! $form->renderFieldGroup('regon_kindergarten') !!}
+                            </div>
+                            <div class="col-md-6">
                                 {!! $form->renderFieldGroup('city_kindergarten') !!}
                             </div>
                             <div class="col-md-6">

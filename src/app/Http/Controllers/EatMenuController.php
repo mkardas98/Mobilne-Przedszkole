@@ -27,7 +27,7 @@ class EatMenuController extends Controller
 
     public function directorIndex()
     {
-        $items = EatMenu::all();
+        $items = EatMenu::orderBy('date', 'desc')->get();
         return view('director.eat_menu.index', ['items' => $items]);
     }
 

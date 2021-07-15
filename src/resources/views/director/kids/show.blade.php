@@ -228,7 +228,7 @@
                                     <tr>
                                         <td>{{$key + 1}}</td>
                                         <td>{{date('d/m/Y', strtotime($item->created_at))}}</td>
-                                        <td>{!!$item->type ? '<i class="fas fa-smile-beam true"></i> Pochwała' : '<i class="fas fa-frown false"></i> Uwaga' !!}</td>
+                                        <td>{!!$item->type ? '<i class="fas fa-smile-beam true"></i> Pozytywne' : '<i class="fas fa-frown false"></i> Negatywne' !!}</td>
                                         <td>{{$item->text}}</td>
                                         <td class="tableButtons">
                                             <a class="controlButton -blue"
@@ -301,7 +301,7 @@
                     </div>
 
                     <div class="card__body">
-                        @if($obj->attendance_list)
+                        @if($obj->attendanceList)
                             <table id="attendanceTable" class="ui celled table">
                                 <thead>
                                 <tr>
@@ -311,11 +311,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($obj->attendance_list as $key=>$item)
+                                @foreach($obj->attendanceList as $key=>$item)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{date('d/m/Y', strtotime($key))}}</td>
-                                        <td>{!! $item ? '<i class="fas fa-check-circle true"></i> TAK' :  '<i class="fas fa-times-circle false"></i> NIE'!!}</td>
+                                        <td>{{date('d/m/Y', strtotime($item->date))}}</td>
+                                        <td>{!! $item->status ? '<i class="fas fa-check-circle true"></i> TAK' :  '<i class="fas fa-times-circle false"></i> NIE'!!}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

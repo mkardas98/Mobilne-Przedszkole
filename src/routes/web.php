@@ -91,6 +91,11 @@ Route::middleware('is_director')->group(function(){
 
     Route::get('dyrektor/galeria', [GalleryController::class, 'directorIndex'])->name('director.gallery.index');
     Route::match(['get', 'post'],'dyrektor/galeria/edytuj/{id?}', [GalleryController::class, 'directorEdit'])->name('director.gallery.edit');
+    Route::get('dyrektor/galeria/usun/{id?}', [GalleryController::class, 'delete'])->name('director.gallery.delete');
+
+
+    Route::post( 'dyrektor/galeria/dodaj-zdjecia/{id_gallery}', [GalleryController::class, 'addImages'])->name('director.gallery.item.upload');
+    Route::get('dyrektor/galeria/zdjecie/usun/{id?}', [GalleryController::class, 'deleteItem'])->name('director.gallery.item.delete');
 
 
 });
