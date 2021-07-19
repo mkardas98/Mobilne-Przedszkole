@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @dump($item->text)
+<div style="text-align: center">
     <div>
         {!! $item->title !!}
     </div>
@@ -11,4 +11,5 @@
     <div>
         {!! $item->text !!}
     </div>
+</div>
 @endsection

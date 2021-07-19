@@ -1,1 +1,0 @@
-mysql --host="serwer2000157.home.pl" --port=3306 --user="33460706_mobilneprzedszkole" --password="Ayano31031998" 33460706_mobilneprzedszkole

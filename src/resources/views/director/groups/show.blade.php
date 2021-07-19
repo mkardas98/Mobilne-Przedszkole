@@ -58,11 +58,11 @@
                                 </span>
                             </div>
                             <div class="colorCard__body">
-                            <span class="colorCard__value">
-                                 @foreach($group->users as $user)
+                                @foreach($group->users as $user)
+                                <span class="colorCard__value">
                     {{$user->first_name}} {{$user->last_name}}
-                                @endforeach
                             </span>
+                                @endforeach
                             </div>
                         </div>
                     </div>
