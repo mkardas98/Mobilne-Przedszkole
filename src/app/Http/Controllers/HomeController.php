@@ -47,7 +47,7 @@ class HomeController extends Controller
 
     public function directorHome()
     {
-       $viewsHistory = ViewHistory::all()->sortBy('date')->take(14);
+       $viewsHistory = ViewHistory::all()->sortBy('date')->take(-14);
         $data = [];
         $data['groups'] = count(Group::where('status', 1)->get());
         $data['teachers'] = count(User::where('role', 1)->get());

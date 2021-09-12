@@ -96,6 +96,7 @@ Route::middleware('is_director')->group(function(){
 
     Route::post( 'dyrektor/galeria/dodaj-zdjecia/{id_gallery}', [GalleryController::class, 'addImages'])->name('director.gallery.item.upload');
     Route::get('dyrektor/galeria/zdjecie/usun/{id?}', [GalleryController::class, 'deleteItem'])->name('director.gallery.item.delete');
+    Route::post('dyrektor/galeria/zdjecie/setType', [GalleryController::class, 'setCoverGalleryItem'])->name('director.gallery.item.setCover');
 
 
 });
@@ -104,7 +105,7 @@ Route::get('nauczyciel', [HomeController::class, 'teacherHome'])->name('teacher_
 Route::get('rodzic', [HomeController::class, 'parentHome'])->name('parent_home.show')->middleware('is_parent');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::post('/ckeditor', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
+Route::get('/ckeditor', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
 
 require_once('web_news.php');
 require_once('web_gallery.php');

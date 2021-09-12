@@ -30,7 +30,7 @@ class GalleryController extends Controller
     public function directorEdit(Request $request, $id = 0)
     {
         $obj = ($id > 0) ? Gallery::with('seo')->find($id) : new Gallery();
-        $galleryItems = GalleryItem::where('gallery_id', '=', $obj->id)->get();
+        $galleryItems = GalleryItem::with([])->where('gallery_id', '=', $obj->id)->get();
         $form = new GalleryForm($obj);
         $seoForm = new SeoForm();
         if ($obj->seo) {
@@ -135,6 +135,19 @@ class GalleryController extends Controller
     public function deleteItem($id){
         GalleryItem::find($id)->delete();
         return redirect()->back()->with('success', 'Zdjęcie zostało usunięte!');
+
+    }
+
+    public function setCoverGalleryItem(Request $request) {
+        $post = $request->all();
+        GalleryItem::with([])->where('gallery_id', '=', $post['gallery_id'])->where('type', '=', 'cover')->update(['type'=>'']);
+        if($post['value'] === 'true'){
+           GalleryItem::with([])->where('id', $post['id'])->update(['type' => 'cover']);
+        }
+
+        return([
+            'status' => 'success'
+        ]);
 
     }
 

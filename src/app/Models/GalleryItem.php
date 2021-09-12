@@ -11,8 +11,13 @@ class GalleryItem extends Model
     protected $fillable = [
         'gallery_id',
         'name',
+        'type',
         'url',
     ];
+
+    public static function where(string $string, string $string1, $gallery_id)
+    {
+    }
 
     public function gallery()
     {

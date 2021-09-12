@@ -17,6 +17,7 @@ class CreateGalleryItemsTable extends Migration
             $table->id();
             $table->integer('gallery_id');
             $table->string('name', 255);
+            $table->char('type', 50)->default('');
             $table->string('url', 255 );
             $table->timestamps();
         });

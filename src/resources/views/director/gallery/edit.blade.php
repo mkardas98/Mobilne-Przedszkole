@@ -38,7 +38,7 @@
         </div>
     </form>
     @if($obj->id)
-        @include('director.gallery.item.edit', ['galleryItems'=>$galleryItems])
+        @include('director.gallery.item.edit', ['galleryItems'=>$galleryItems, 'gallery_id' => $obj->id])
     @endif
 
 

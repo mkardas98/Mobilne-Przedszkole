@@ -15,6 +15,7 @@
                         <th><i class="fas fa-hashtag"></i></th>
                         <th>Zdjęcie</th>
                         <th>Nazwa</th>
+                        <th>Miniaturka</th>
                         <th><i class="fas fa-cogs"></i> Zarządzanie</th>
                     </tr>
                     </thead>
@@ -28,6 +29,12 @@
                                     alt="" class="avatar">
                             </td>
                             <td>{{$galleryItem->name}}</td>
+                            <td>
+                                <input class="typeGallery" onchange="changeCover({{$galleryItem->id}}, this)"
+                                       id="cover{{$galleryItem->id}}"
+                                       type="checkbox" {{ $galleryItem->type == 'cover' ? 'checked="checked"' : '' }}">
+
+                            </td>
                             <td class="tableButtons">
                                 @php($delete = route('director.gallery.item.delete', $galleryItem->id))
                                 <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i
@@ -62,14 +69,17 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card__body">
-                            <form id="galleryItems" action="{{route('director.gallery.item.upload', ['id_gallery'=>$obj->id])}}" method="post" enctype="multipart/form-data">
+                            <form id="galleryItems"
+                                  action="{{route('director.gallery.item.upload', ['id_gallery'=>$obj->id])}}"
+                                  method="post" enctype="multipart/form-data">
                                 @csrf
                                 <label for="name" class="custom-label">Nazwa zdjęcia/zdjęć:</label>
                                 <input id="name" type="text" name="name">
                                 <div class="file-drop-area">
                                     <span class="fake-btn">Wybierz zdjęcia</span>
                                     <span class="file-msg">lub przęciągnij je tutaj!</span>
-                                    <input id="uploadImg" class="file-input" name="images[]" onchange="loadFiles(event)" accept="image/*" type="file"
+                                    <input id="uploadImg" class="file-input" name="images[]" onchange="loadFiles(event)"
+                                           accept="image/*" type="file"
                                            multiple>
                                 </div>
                                 <div class="imagesPreview"></div>
@@ -86,7 +96,39 @@
 </div>
 @push('scripts.body.bottom')
     <script>
-        function updateInput(){
+
+        const changeCover = (id, checkbox) => {
+            let isChecked = $(checkbox).is(':checked');
+            const itemsCheckbox = $('.typeGallery');
+            itemsCheckbox.prop('checked', false);
+            itemsCheckbox.attr("disabled", true);
+
+            if (isChecked) {
+                $(checkbox).prop('checked', true);
+            }
+
+            let _data = {
+                _token: '{{csrf_token()}}',
+                id: id,
+                value: isChecked,
+                gallery_id: {{$gallery_id}},
+            }
+            setCover(_data, itemsCheckbox);
+        }
+
+        const setCover = (_data, itemsCheckbox) => {
+            $.ajax({
+                method: "POST",
+                url: "{{route('director.gallery.item.setCover')}}",
+                data: _data,
+            }).done(function( data ) {
+                if(data['status'] === 'success'){
+                    itemsCheckbox.attr("disabled", false);
+                }
+            });
+        }
+
+        function updateInput() {
             const $fileInput = $('.file-input');
             const $droparea = $('.file-drop-area');
 
@@ -110,12 +152,13 @@
                 }
             });
         }
+
         function validate() {
             var uploadImg = document.getElementById('uploadImg');
             //uploadImg.files: FileList
             for (var i = 0; i < uploadImg.files.length; i++) {
                 var f = uploadImg.files[i];
-                if (!endsWith(f.name.toLowerCase(), 'jpg') && !endsWith(f.name.toLowerCase(),'png') && !endsWith(f.name.toLowerCase(),'jpeg') && !endsWith(f.name.toLowerCase(),'gif') && !endsWith(f.name.toLowerCase(),'svg')) {
+                if (!endsWith(f.name.toLowerCase(), 'jpg') && !endsWith(f.name.toLowerCase(), 'png') && !endsWith(f.name.toLowerCase(), 'jpeg') && !endsWith(f.name.toLowerCase(), 'gif') && !endsWith(f.name.toLowerCase(), 'svg')) {
                     alert(f.name + " nie jest zdjęciem!");
                     return false;
                 } else {
@@ -130,7 +173,7 @@
         }
 
         function loadFiles(e) {
-            if(validate()){
+            if (validate()) {
                 updateInput();
                 const container = document.querySelector('.imagesPreview')
                 const items = e.target.files;
