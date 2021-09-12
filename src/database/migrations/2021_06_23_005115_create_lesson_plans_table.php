@@ -16,7 +16,6 @@ class CreateLessonPlansTable extends Migration
         Schema::create('lesson_plan', function (Blueprint $table) {
             $table->id();
             $table->integer('group_id')->default(0);
-            $table->date('date');
             $table->json('plan');
             $table->timestamps();
         });

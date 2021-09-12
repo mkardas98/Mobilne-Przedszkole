@@ -10,12 +10,15 @@ class LessonPlan extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'group_id',
-        'date',
         'plan',
     ];
     protected $casts = [
         'plan' => 'array',
     ];
+
+    public function group(){
+        return $this->belongsTo(Group::class);
+    }
 
 
 

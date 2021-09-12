@@ -81,6 +81,11 @@ section {
     &.-dark {
         background: @darkBlue;
     }
+    &.-delete {
+        width: fit-content;
+        margin: 0 auto;
+        padding: .3rem;
+    }
 }
 
 .controlButton {
@@ -1328,5 +1333,43 @@ section {
         height: 100%;
         width: 100%;
         object-fit: cover;
+    }
+}
+
+#lessonPlanForm{
+    .controlButton {
+        margin: 0 auto;
+    }
+}
+
+.lessonPlan {
+    &__item {
+        display: flex;
+        margin-bottom: .5rem;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid fade(@grey, 50%);
+        align-items: center;
+        &:last-child {
+            margin-bottom: 0;
+            border-bottom: unset;
+            padding-bottom: 0;
+        }
+    }
+    &__time {
+        min-width: 15%;
+        background: @blue;
+        padding: .5rem 1rem;
+        text-align: center;
+        color: @white;
+        font-weight: 500;
+        height: 100%;
+        margin-right: 1rem;
+        border-radius: 16px;
+    }
+    &__desc {
+        p {
+            margin-bottom: 0;
+            letter-spacing: .5px;
+        }
     }
 }

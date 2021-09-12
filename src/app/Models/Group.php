@@ -31,6 +31,6 @@ class Group extends Model
     }
 
     public function lessonPlan(){
-        return $this->hasMany(LessonPlan::class)->orderBy('date', 'desc');
+        return $this->hasOne(LessonPlan::class);
     }
 }

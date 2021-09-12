@@ -72,9 +72,9 @@ Route::middleware('is_director')->group(function(){
     Route::get('dyrektor/grupy/szczegoly/{id}/ogloszenia', [AnnouncementsController::class, 'directorIndexGroup'])->name('director.announcement.group.index');
     Route::get('dyrektor/ogloszenia', [AnnouncementsController::class, 'directorIndex'])->name('director.announcements.index');
 
-    Route::match(['get', 'post'], 'dyrektor/grupy/szczegoly/plan/{group_id}/edytuj/{id?}', [LessonPlansController::class, 'edit'])->name('director.lesson_plan.edit');
-    Route::get('dyrektor/grupy/szczegoly/plan/{id?}', [LessonPlansController::class, 'show'])->name('director.lesson_plan.show');
-    Route::get('dyrektor/grupy/szczegoly/plan/usun/{id?}', [LessonPlansController::class, 'delete'])->name('director.lesson_plan.delete');
+    Route::match(['get', 'post'], 'dyrektor/grupy/szczegoly/{group_id}/plan/edytuj', [LessonPlansController::class, 'edit'])->name('director.lesson_plan.edit');
+//    Route::get('dyrektor/grupy/szczegoly/{group_id}/plan', [LessonPlansController::class, 'show'])->name('director.lesson_plan.show');
+    Route::get('dyrektor/grupy/szczegoly/plan/{group_id}/plan/edytuj', [LessonPlansController::class, 'delete'])->name('director.lesson_plan.delete');
 
     Route::match(['get', 'post'], 'dyrektor/grupy/szczegoly/obecnosci/{group_id}/edytuj/{date}', [AttendanceListController::class, 'directorEdit'])->name('director.attendance_list.edit');
 

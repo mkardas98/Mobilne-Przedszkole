@@ -59,7 +59,7 @@
                             </div>
                             <div class="colorCard__body">
                                 @foreach($group->users as $user)
-                                <span class="colorCard__value">
+                                    <span class="colorCard__value">
                     {{$user->first_name}} {{$user->last_name}}
                             </span>
                                 @endforeach
@@ -101,11 +101,13 @@
                     Dzieci należące do grupy
                 </span>
                 <div class="card__buttons">
-                    <a class="primaryButton" href="{{route('director.attendance_list.edit', ['group_id'=>$group->id, 'date'=>date('Y-m-d', strtotime(\Carbon\Carbon::now()))])}}">Sprawdź obecność</a>
+                    <a class="primaryButton"
+                       href="{{route('director.attendance_list.edit', ['group_id'=>$group->id, 'date'=>date('Y-m-d', strtotime(\Carbon\Carbon::now()))])}}">Sprawdź
+                        obecność</a>
                 </div>
             </div>
             <div class="card__body">
-                <table id="dataTable" class="ui celled table" >
+                <table id="dataTable" class="ui celled table">
                     <thead>
                     <tr>
                         <th><i class="fas fa-hashtag"></i></th>
@@ -165,36 +167,39 @@
 
             <div class="card__body">
                 @if(count($group->announcements)>0)
-               @foreach($group->announcements as $item)
-                    <div class="announcementItem">
-                        <div class="announcementItem__header">
-                            <div class="announcementItem__details">
+                    @foreach($group->announcements as $item)
+                        <div class="announcementItem">
+                            <div class="announcementItem__header">
+                                <div class="announcementItem__details">
 
                                 <span class="announcementItem__date">
                                     DODANO: {{date('d/m/Y H:i', strtotime($item->created_at))}}
                                 </span>
-                                <span class="announcementItem__status">
+                                    <span class="announcementItem__status">
                                     {!! $item->status ? '<i class="fas fa-eye"></i> Ogłoszenie widoczne' : ' <i class="fas fa-eye-slash"></i> Ogłoszenie niewidoczne' !!}
                                 </span>
+                                </div>
+                                <div class="announcementItem__buttons">
+                                    <a class="controlButton -blue"
+                                       href="{{route('director.announcement.edit', ['group_id' => $group->id, 'id'=>$item->id])}}"><i
+                                            class="far fa-edit"></i></a>
+                                    @php($delete = route('director.announcement.delete', ['id'=>$item->id]))
+                                    <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i
+                                            class="fas fa-ban"></i></button>
+                                </div>
                             </div>
-                            <div class="announcementItem__buttons">
-                                <a class="controlButton -blue" href="{{route('director.announcement.edit', ['group_id' => $group->id, 'id'=>$item->id])}}"><i class="far fa-edit"></i></a>
-                                @php($delete = route('director.announcement.delete', ['id'=>$item->id]))
-                                <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i
-                                        class="fas fa-ban"></i></button>
-                            </div>
-                        </div>
-                        <div class="announcementItem__text">
+                            <div class="announcementItem__text">
                              <span class="announcementItem__title">
                                     {{$item->title}}
                                 </span>
-                            {!! $item->text !!}
+                                {!! $item->text !!}
+                            </div>
                         </div>
-                    </div>
-                @endforeach
-                   @if(count($group->announcements) == 3)
-                       <a href="{{route('director.announcement.group.index', $group->id)}}" class="primaryButton -green">Zobacz wszystie ogłoszenia</a>
-                       @endif
+                    @endforeach
+                    @if(count($group->announcements) == 3)
+                        <a href="{{route('director.announcement.group.index', $group->id)}}"
+                           class="primaryButton -green">Zobacz wszystie ogłoszenia</a>
+                    @endif
                 @else
                     <span class="emptySection">Brak ogłoszeń dla tej grupy!</span>
                 @endif
@@ -205,41 +210,28 @@
         <div class="card">
             <div class="card__header">
                 <span class="card__headerTitle">
-                    Plan zajęć
+                    Standardowy plan dnia
                 </span>
                 <div class="card__buttons">
                     <a class="primaryButton"
-                       href="{{route('director.lesson_plan.edit', ['group_id' => $group->id])}}">Dodaj nowy dzień</a>
+                       href="{{route('director.lesson_plan.edit', ['group_id' => $group->id])}}">Edytuj</a>
                 </div>
             </div>
             <div class="card__body">
-                <table id="dataTable2" class="ui celled table">
-                    <thead>
-                    <tr>
-                        <th><i class="fas fa-hashtag"></i></th>
-                        <th>Data</th>
-                        <th><i class="fas fa-cogs"></i> Zarządzanie</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($group->lessonPlan as $key=>$plan)
-                        <tr>
-                            <td>{{$key + 1}}</td>
-                            <td> {{date('d/m/Y', strtotime($plan->date))}}</td>
-                            <td class="tableButtons">
-                                <a class="controlButton -blue" href="{{route('director.lesson_plan.edit', ['id'=>$plan->id, 'group_id'=>$group->id])}}"><i
-                                        class="far fa-edit"></i></a>
-                                @php($delete = route('director.lesson_plan.delete', $plan->id))
-                                <button class="controlButton -red" onclick="deleteItem('{{$delete}}')"><i
-                                        class="fas fa-ban"></i></button>
-                                <a class="controlButton -green"
-                                   href="{{route('director.lesson_plan.show', ['id'=>$plan->id])}}"><i
-                                        class="far fa-hand-pointer"></i></a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                @if(isset($group->lessonPlan->plan) && count($group->lessonPlan->plan)>0)
+                    <div class="lessonPlan">
+                        @foreach($group->lessonPlan->plan as $plan)
+                            <div class="lessonPlan__item">
+                                    <span class="lessonPlan__time">{{$plan['time']}}</span>
+                                    <div class="lessonPlan__desc">
+                                        <p>{{$plan['desc']}}</p>
+                                    </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <span class="emptySection">Plan dnia grupy nie został dodany lub jest pusty.</span>
+                @endif
             </div>
         </div>
     </section>
@@ -251,7 +243,6 @@
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();
-            $('#dataTable2').DataTable();
         });
 
 

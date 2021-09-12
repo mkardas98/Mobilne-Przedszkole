@@ -48,10 +48,9 @@ class GroupsController extends Controller
             if (!isset($form['status'])) {
                 $obj->status = 0;
             } else {
-                $post['status'] = 1;
+                $obj->status = 1;
             }
 
-            $obj->status = $post['status'];
             $obj->save();
 
             $obj->users()->sync($post['teachers']);

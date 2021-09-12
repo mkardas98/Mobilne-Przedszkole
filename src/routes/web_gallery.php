@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 
 if((Schema::hasTable('gallery')) && (Schema::hasTable('seo'))){
     $items = Gallery::with(['seo', 'galleryItems'])->where('status', '=', 1)->get();
+
     if(count($items)>0){
         foreach ($items as $item){
             if($item->seo){
