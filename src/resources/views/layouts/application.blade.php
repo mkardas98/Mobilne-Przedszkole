@@ -32,9 +32,7 @@
     <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/application.css')}}">
-{{--    <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>--}}
-
-{{--    <script src="{{asset('js/ckeditor.js')}}"></script>--}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
 
 </head>
@@ -54,7 +52,7 @@
             @endif
         @else
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('chats.index')}}">
                     <img src="{{asset('images/app/icons/messages.svg')}}" alt="">
                     Wiadomości
                 </a>
@@ -75,24 +73,6 @@
                     </form>
                 </a>
             </li>
-            {{--            <li class="nav-item dropdown">--}}
-            {{--                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
-            {{--                    <img src="{{asset('images/app/login/user.svg')}}" alt=""> {{Auth::user()->first_name}} {{Auth::user()->last_name}}--}}
-            {{--                </a>--}}
-
-            {{--                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
-
-            {{--                    <a class="dropdown-item" href="{{ route('logout') }}"--}}
-            {{--                       onclick="event.preventDefault();--}}
-            {{--                                                     document.getElementById('logout-form').submit();">--}}
-            {{--                        {{ __('Wyloguj') }}--}}
-            {{--                    </a>--}}
-
-            {{--                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
-            {{--                        @csrf--}}
-            {{--                    </form>--}}
-            {{--                </div>--}}
-            {{--            </li>--}}
         @endguest
     </ul>
 
@@ -119,10 +99,12 @@
 <div class="load"><div id="preload"></div></div>
 
 <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
 <script src="{{asset('js/chart.min.js')}}"></script>
 <script src="{{asset('js/jquery.dataTables.min.js')}}" defer></script>
 <script src="{{asset('js/scripts.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
+
 @stack('scripts.body.bottom')
 </body>
 </html>

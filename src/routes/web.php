@@ -5,20 +5,19 @@ use App\Http\Controllers\AnnouncementsController;
 use App\Http\Controllers\AttendanceListController;
 use App\Http\Controllers\BasicFieldsController;
 use App\Http\Controllers\BehaviorsController;
+use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\EatMenuController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\BasicFields;
 use App\Http\Controllers\LessonPlansController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KidsController;
 use App\Http\Controllers\UsersController;
-use App\Models\LessonPlan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,12 +36,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'index'])->name('index.show');
 Auth::routes();
 
-//PROFILE
-Route::get('profil', [ProfileController::class, 'show'])->name('profile.show');
-Route::match(['get', 'post'], 'profil/edytuj', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::post('profil/edytuj/haslo', [ProfileController::class, 'changePassword'])->name('profile_password.edit');
+
+Route::middleware('auth')->group(function(){
+    Route::get('profil', [ProfileController::class, 'show'])->name('profile.show');
+    Route::match(['get', 'post'], 'profil/edytuj', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('profil/edytuj/haslo', [ProfileController::class, 'changePassword'])->name('profile_password.edit');
+    Route::get('profil', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('wiadomosci', [ChatsController::class, 'index'])->name('chats.index');
+    Route::get('wiadomosci/nowa-konwersacja', [ChatsController::class, 'newChat'])->name('chats.new_chat');
+    Route::post('wiadomosci/nowa-konwersacja/utworz', [ChatsController::class, 'create'])->name('chats.create');
+    Route::get('wiadomosci/{id}', [ChatsController::class, 'show'])->name('chats.show');
+    Route::post('wiadomosci/{id}/odpowiedz', [ChatsController::class, 'addMessage'])->name('chats.add_message');
+
+});
 
 //DYREKTOR
+
 Route::middleware('is_director')->group(function(){
     Route::get('dyrektor', [HomeController::class, 'directorHome'])->name('director_home.show');
     Route::get('dyrektor/grupy', [GroupsController::class, 'directorIndex'])->name('director.groups.index');
