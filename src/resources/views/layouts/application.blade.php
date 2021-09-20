@@ -51,12 +51,7 @@
                 </li>
             @endif
         @else
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('chats.index')}}">
-                    <img src="{{asset('images/app/icons/messages.svg')}}" alt="">
-                    Wiadomości
-                </a>
-            </li>
+           @include('chats.messages_icon')
             <li>
                 <a class="nav-link" href="{{route('profile.show')}}">
                     <img src="{{asset('images/app/icons/user-config.svg')}}" alt="">

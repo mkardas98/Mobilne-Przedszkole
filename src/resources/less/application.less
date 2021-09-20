@@ -169,6 +169,7 @@ section {
             margin: 0 .25rem;
 
             a {
+                position: relative;
                 font-size: .9rem;
                 color: @grey;
                 letter-spacing: 1px;
@@ -191,6 +192,22 @@ section {
             }
         }
     }
+}
+
+.newMessagesIcon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: @white;
+    bottom: 0;
+    left: 0;
+    background: @red;
+    height: 1.25rem;
+    width: 1.25rem;
+    transform: translate(20%, -10%);
+    font-size: .8rem;
 }
 
 .footerApp {
@@ -1536,4 +1553,83 @@ section {
     opacity: .7;
     font-weight: 600;
     color: @darkBlue;
+}
+
+.chatItems {
+    .chatItem {
+        display: flex;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid fade(@black, 20%);
+        align-items: center;
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        &__imageWrapper {
+            position: relative;
+            margin-right: 2rem;
+        }
+        &__avatar {
+            display: block;
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        &__newMessage {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: @red;
+            color: @white;
+            font-size: .7rem;
+            white-space: nowrap;
+            display: block;
+            padding: .2rem .3rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            border-radius: 3px;
+        }
+
+        &__right {
+            flex: 1;
+        }
+        &__user {
+            color: @black;
+            font-weight: 600;
+        }
+        &__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: .75rem;
+        }
+        &__lastMessage {
+            display: flex;
+            flex-direction: column;
+            margin-top: .25rem;
+            padding-top: .25rem;
+            border-top: 1px solid fade(@black, 12%);
+            color: @black;
+            margin-bottom: 0;
+
+            span {
+                font-size: .8rem;
+                letter-spacing: 1px;
+                font-weight: 500;
+                color: @greenLight;
+            }
+        }
+        &__dateLastMassage {
+            font-size: .8rem;
+            font-weight: 500;
+            color: @black;
+        }
+        a {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
 }
