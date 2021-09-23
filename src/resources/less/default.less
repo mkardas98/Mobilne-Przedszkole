@@ -1,0 +1,39 @@
+@blue: #333399;
+@white: #ffffff;
+@black: #000000;
+.header {
+    background: @blue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 10px 3px 15px -1px fade(@black, 65%);
+
+}
+
+.nav {
+    ul {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            a {
+                display: block;
+                padding: .75rem 1.5rem;
+                text-transform: uppercase;
+                font-weight: 500;
+                letter-spacing: 1px;
+            color: @white;
+            }
+        }
+    }
+}
+
+.start {
+&__image {
+    width: 100%;
+}
+}
