@@ -7,8 +7,10 @@ use App\Models\Announcement;
 use App\Models\Group;
 use App\Models\Kid;
 use App\Models\LessonPlan;
+use App\Models\User;
 use App\Models\UserGroup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupsController extends Controller
 {
@@ -45,7 +47,7 @@ class GroupsController extends Controller
             $obj->name = $post['name'];
             $obj->room = $post['room'];
             $obj->color = $post['color'];
-            if (!isset($form['status'])) {
+            if (!isset($post['status'])) {
                 $obj->status = 0;
             } else {
                 $obj->status = 1;
@@ -99,6 +101,14 @@ class GroupsController extends Controller
         return view('director.groups.show', [
             'group' => $group,
         ]);
+    }
+
+    public function teacherIndex()
+    {
+        $user = User::find(Auth::id());
+        $items = $user->groups;
+//        $items = Group::with('users')->->orderBy('name')->get();
+        return view('teacher.groups.index', ['items' => $items]);
     }
 
 }

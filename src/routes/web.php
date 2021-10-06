@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'index'])->name('index.show');
 Auth::routes();
 
+Route::get('/ckeditor', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
 
 Route::middleware('auth')->group(function(){
     Route::get('profil', [ProfileController::class, 'show'])->name('profile.show');
@@ -47,7 +48,6 @@ Route::middleware('auth')->group(function(){
     Route::post('wiadomosci/nowa-konwersacja/utworz', [ChatsController::class, 'create'])->name('chats.create');
     Route::get('wiadomosci/{id}', [ChatsController::class, 'show'])->name('chats.show');
     Route::post('wiadomosci/{id}/odpowiedz', [ChatsController::class, 'addMessage'])->name('chats.add_message');
-
 });
 
 //DYREKTOR
@@ -109,12 +109,15 @@ Route::middleware('is_director')->group(function(){
 
 
 });
+Route::middleware('is_teacher')->group(function(){
+    Route::get('nauczyciel', [HomeController::class, 'teacherHome'])->name('teacher_home.show');
+    Route::get('nauczyciel/grupy', [GroupsController::class, 'teacherIndex'])->name('teacher.groups.index');
 
-Route::get('nauczyciel', [HomeController::class, 'teacherHome'])->name('teacher_home.show')->middleware('is_teacher');
+});
+
 Route::get('rodzic', [HomeController::class, 'parentHome'])->name('parent_home.show')->middleware('is_parent');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/ckeditor', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
 
 require_once('web_news.php');
 require_once('web_gallery.php');

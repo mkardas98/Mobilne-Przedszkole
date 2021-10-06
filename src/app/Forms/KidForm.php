@@ -77,6 +77,7 @@ class KidForm extends Form
         }
 
         $parents = User::where('role', '=', '2')
+//            ->where('kid_id', 0)
             ->orderBy('last_name')
             ->get();
 

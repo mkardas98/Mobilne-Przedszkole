@@ -1,6 +1,8 @@
 @extends('layouts.application')
 
 @section('content')
+
+
     <section class="directorGroupsIndex">
 
         <div class="pageNavigation">

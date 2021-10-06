@@ -28,7 +28,6 @@ class KidsController extends Controller
         $form = new KidForm($obj);
 
         if ($request->isMethod('post')) {
-
             $rules = [];
 
             foreach (KidForm::FIELDS as $field) {
@@ -47,16 +46,17 @@ class KidsController extends Controller
 
             Kid::where('user_id', $post['user_id'])
                 ->update(['user_id' => 0]);
+
             $obj->user_id = $post['user_id'];
             $obj->group_id = $post['group_id'];
 
             if (isset($post['avatar'])) {
                 updateAvatar($post['avatar'], $obj);
             }
-
-
             $obj->save();
-            return redirect()->route('director.kids.edit', ['id' => $obj->id])->with('success', 'Zmiany zostały zapisane!');
+
+            User::where('id', $obj->user_id)
+            ->update(['kid_id' => $obj->id]);
         }
 
         return view('director.kids.edit', [
